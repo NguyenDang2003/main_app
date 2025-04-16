@@ -1,8 +1,23 @@
 from flask import Flask, request, jsonify
 import serial
 import time
+import atexit
 
-ser = serial.Serial('/dev/serial0', 115200, timeout=1)
+# Khởi tạo kết nối UART
+try:
+    ser = serial.Serial('/dev/serial0', 115200, timeout=1)
+    if not ser.is_open:
+        ser.open()
+except serial.SerialException as e:
+    print(f"❌ Không thể mở /dev/serial0: {e}")
+    ser = None
+
+# Đảm bảo đóng UART khi chương trình kết thúc
+@atexit.register
+def cleanup():
+    if ser and ser.is_open:
+        print("🔌 Đóng kết nối serial trước khi thoát...")
+        ser.close()
 
 IN_Engi_RPM_ID = 1
 IN_CK_Gap_ID = 2
