@@ -41,26 +41,29 @@ class FunctionMain extends StatelessWidget {
                           minimumSize: Size(double.infinity, 250),
                           padding: EdgeInsets.all(16),
                         ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Image.asset(
-                              'assets/images/waveform.png',
-                              width: 150,
-                              height: 150,
-                              color: Colors.white,
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ), // Khoảng cách giữa hình ảnh và chữ
-                            Text(
-                              "WAVEFORM SIMULATE",
-                              style: TextStyle(
+                        child: FittedBox(
+                          fit: BoxFit.scaleDown,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Image.asset(
+                                'assets/images/waveform.png',
+                                width: 150,
+                                height: 150,
                                 color: Colors.white,
-                                fontSize: 30,
                               ),
-                            ),
-                          ],
+                              SizedBox(
+                                height: 10,
+                              ), // Khoảng cách giữa hình ảnh và chữ
+                              Text(
+                                "WAVEFORM SIMULATE",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 30,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
@@ -87,26 +90,30 @@ class FunctionMain extends StatelessWidget {
                           minimumSize: Size(double.infinity, 250),
                           padding: EdgeInsets.all(16),
                         ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Image.asset(
-                              'assets/images/candashboard.png',
-                              width: 150,
-                              height: 150,
-                              color: Colors.white,
+                        child: FittedBox(
+                          fit: BoxFit.scaleDown,
+                          child: FittedBox(
+                            fit: BoxFit.scaleDown,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Image.asset(
+                                  'assets/images/candashboard.png',
+                                  width: 150,
+                                  height: 150,
+                                  color: Colors.white,
+                                ),
+                                SizedBox(height: 10),
+                                Text(
+                                  "DASHBOARD SIMULATE",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 30,
+                                  ),
+                                ),
+                              ],
                             ),
-                            SizedBox(
-                              height: 10,
-                            ), // Khoảng cách giữa hình ảnh và chữ
-                            Text(
-                              "DASHBOARD SIMULATE",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 30,
-                              ),
-                            ),
-                          ],
+                          ),
                         ),
                       ),
                     ),
@@ -133,26 +140,29 @@ class FunctionMain extends StatelessWidget {
                           minimumSize: Size(double.infinity, 250),
                           padding: EdgeInsets.all(16),
                         ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Image.asset(
-                              'assets/images/obd.png',
-                              width: 150,
-                              height: 150,
-                              color: Colors.white,
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ), // Khoảng cách giữa hình ảnh và chữ
-                            Text(
-                              "OBD",
-                              style: TextStyle(
+                        child: FittedBox(
+                          fit: BoxFit.scaleDown,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Image.asset(
+                                'assets/images/obd.png',
+                                width: 150,
+                                height: 150,
                                 color: Colors.white,
-                                fontSize: 30,
                               ),
-                            ),
-                          ],
+                              SizedBox(
+                                height: 10,
+                              ), // Khoảng cách giữa hình ảnh và chữ
+                              Text(
+                                "ON-BOARD DIAGNOSTICS",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 30,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
@@ -179,26 +189,29 @@ class FunctionMain extends StatelessWidget {
                           minimumSize: Size(double.infinity, 250),
                           padding: EdgeInsets.all(16),
                         ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Image.asset(
-                              'assets/images/softwareupdate.png',
-                              width: 150,
-                              height: 150,
-                              color: Colors.white,
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ), // Khoảng cách giữa hình ảnh và chữ
-                            Text(
-                              "SOFTWARE UPDATE",
-                              style: TextStyle(
+                        child: FittedBox(
+                          fit: BoxFit.scaleDown,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Image.asset(
+                                'assets/images/softwareupdate.png',
+                                width: 150,
+                                height: 150,
                                 color: Colors.white,
-                                fontSize: 30,
                               ),
-                            ),
-                          ],
+                              SizedBox(
+                                height: 10,
+                              ), // Khoảng cách giữa hình ảnh và chữ
+                              Text(
+                                "SOFTWARE UPDATE",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 30,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),

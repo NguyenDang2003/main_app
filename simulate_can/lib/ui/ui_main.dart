@@ -122,46 +122,25 @@ class MainScreenState extends State<UiMain> {
     required VoidCallback onTap,
     required IconData iconData,
   }) {
-    return GestureDetector(
-      onTap: onTap,
-      child: LayoutBuilder(
-        builder: (context, constraints) {
-          // Nếu chiều rộng của item < 100 thì chỉ hiện icon
-          bool showText = constraints.maxWidth > 120;
-
-          return Container(
-            height: 40,
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-              color: isSelected ? Colors.red : Colors.white,
-              borderRadius: BorderRadius.circular(5),
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(
-                  iconData,
-                  color: isSelected ? Colors.white : Colors.red,
-                  size: 20,
-                ),
-                if (showText) ...[
-                  SizedBox(width: 10),
-                  Flexible(
-                    child: Text(
-                      title,
-                      style: TextStyle(
-                        color: isSelected ? Colors.white : Colors.red,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      overflow: TextOverflow.ellipsis,
-                      softWrap: false,
-                    ),
-                  ),
-                ],
-              ],
-            ),
-          );
-        },
+    return Tooltip(
+      message: title,
+      waitDuration: Duration(milliseconds: 300), // thời gian chờ khi hover
+      child: GestureDetector(
+        onTap: onTap,
+        child: Container(
+          height: 40,
+          width: 50, // giữ cố định chiều ngang
+          alignment: Alignment.center,
+          decoration: BoxDecoration(
+            color: isSelected ? Colors.red : Colors.white,
+            borderRadius: BorderRadius.circular(5),
+          ),
+          child: Icon(
+            iconData,
+            color: isSelected ? Colors.white : Colors.red,
+            size: 20,
+          ),
+        ),
       ),
     );
   }

@@ -36,53 +36,48 @@ class DashboardHuyndaiState extends State<DashboardHuyndai> {
             ),
           ),
           Align(
-            alignment: Alignment(1, -1), // Giữ nguyên vị trí
+            alignment: Alignment(1, -1), // Góc trên bên phải
             child: Container(
-              height: MediaQuery.of(context).size.width * 0.075,
-              width: MediaQuery.of(context).size.width * 0.2,
+              width: 130, // Cố định gọn chiều rộng
               decoration: BoxDecoration(
                 color: Colors.black,
-                border: Border.all(
-                  color: Colors.black,
-                  width: 2,
-                ), // Viền xung quanh
+                border: Border.all(color: Colors.white, width: 1),
+                borderRadius: BorderRadius.circular(8),
               ),
-              padding: EdgeInsets.all(
-                8,
-              ), // Tạo khoảng cách giữa viền và nội dung
+              padding: const EdgeInsets.all(8),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
                 children: [
                   Text(
                     'CONNECTION',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
+                      fontSize: 12,
                       color: Colors.white,
                     ),
                   ),
-                  const SizedBox(
-                    height: 8,
-                  ), // Khoảng cách giữa tiêu đề và trạng thái
+                  const SizedBox(height: 6),
                   Container(
-                    padding: EdgeInsets.symmetric(vertical: 4, horizontal: 8),
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 2,
+                      horizontal: 6,
+                    ),
                     decoration: BoxDecoration(
-                      color:
-                          isConnectedDashboard
-                              ? Colors.green
-                              : Colors.red, // Màu nền theo trạng thái
+                      color: isConnectedDashboard ? Colors.green : Colors.red,
                       borderRadius: BorderRadius.circular(4),
                     ),
-                    child: Text(
-                      isConnectedDashboard ? 'Connected' : 'Disconnected',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
+                    child: FittedBox(
+                      child: Text(
+                        isConnectedDashboard ? 'Connected' : 'Disconnected',
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
                       ),
                     ),
                   ),
-                  const SizedBox(
-                    height: 8,
-                  ), // Khoảng cách giữa trạng thái và nút
+                  const SizedBox(height: 6),
                   Row(
                     children: [
                       Expanded(
@@ -93,13 +88,14 @@ class DashboardHuyndaiState extends State<DashboardHuyndai> {
                             });
                           },
                           style: ElevatedButton.styleFrom(
-                            foregroundColor: Colors.white,
                             backgroundColor: Colors.green,
+                            foregroundColor: Colors.white,
+                            padding: const EdgeInsets.symmetric(vertical: 6),
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.zero, // Button vuông
+                              borderRadius: BorderRadius.zero,
                             ),
                           ),
-                          child: Text('Connect'),
+                          child: Text('On', style: TextStyle(fontSize: 12)),
                         ),
                       ),
                       Expanded(
@@ -110,13 +106,14 @@ class DashboardHuyndaiState extends State<DashboardHuyndai> {
                             });
                           },
                           style: ElevatedButton.styleFrom(
-                            foregroundColor: Colors.white,
                             backgroundColor: Colors.red,
+                            foregroundColor: Colors.white,
+                            padding: const EdgeInsets.symmetric(vertical: 6),
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.zero, // Button vuông
+                              borderRadius: BorderRadius.zero,
                             ),
                           ),
-                          child: Text('Disconnect'),
+                          child: Text('Off', style: TextStyle(fontSize: 12)),
                         ),
                       ),
                     ],
@@ -125,6 +122,7 @@ class DashboardHuyndaiState extends State<DashboardHuyndai> {
               ),
             ),
           ),
+
           // --------------------------------------------------
           Align(
             alignment: Alignment(-0.85, 0.5), // Điều chỉnh vị trí theo tỷ lệ
@@ -173,43 +171,50 @@ class DashboardHuyndaiState extends State<DashboardHuyndai> {
           Align(
             alignment: Alignment(-0.73, 0.65),
             child: GestureDetector(
-              onTap: () => setState(() => isActive1 = !isActive1),
               child: SizedBox(
-                height: MediaQuery.of(context).size.width * 0.04,
-                width: MediaQuery.of(context).size.width * 0.15,
+                height: MediaQuery.of(context).size.width * 0.05,
+                width: MediaQuery.of(context).size.width * 0.1,
                 child: Container(
-                  padding: EdgeInsets.all(10), // Khoảng cách bên trong
-                  decoration: BoxDecoration(
-                    color: Colors.grey[200], // Màu nền cho TextField
-                  ), // Bo góc
+                  padding: EdgeInsets.all(
+                    5,
+                  ), // Đặt padding là 0 để TextField lấp đầy
+                  decoration: BoxDecoration(color: Colors.grey[200]),
                   child: Row(
                     children: [
                       Expanded(
+                        // Sử dụng Expanded để TextField lấp đầy không gian còn lại
                         child: TextField(
                           controller: engineSpeedController,
                           decoration: InputDecoration(
+                            contentPadding: EdgeInsets.symmetric(
+                              vertical: 0,
+                              horizontal: 8,
+                            ), // Canh nội dung TextField
                             label: Text(
                               "RPM",
                               style: TextStyle(
                                 fontFamily: 'Roboto',
                                 fontWeight: FontWeight.bold,
+                                fontSize: 12,
                               ),
                             ),
-                            border: OutlineInputBorder(), // Viền ô nhập
-                          ),
-                        ),
-                      ),
-                      Expanded(
-                        child: ElevatedButton(
-                          onPressed: () {},
-                          style: ElevatedButton.styleFrom(
-                            foregroundColor: Colors.white,
-                            backgroundColor: Colors.green,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.zero, // Button vuông
+                            labelStyle: TextStyle(
+                              color: Colors.red,
+                              fontWeight: FontWeight.bold,
                             ),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Colors.red,
+                              ), // Viền khi không focus
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Colors.red,
+                                width: 2,
+                              ), // Viền khi focus
+                            ),
+                            border: OutlineInputBorder(),
                           ),
-                          child: Text('Check'),
                         ),
                       ),
                     ],
@@ -218,6 +223,7 @@ class DashboardHuyndaiState extends State<DashboardHuyndai> {
               ),
             ),
           ),
+
           // ---------------------------------------------------------------
           Align(
             alignment: Alignment(-0.46, -0.52), // Điều chỉnh vị trí theo tỷ lệ

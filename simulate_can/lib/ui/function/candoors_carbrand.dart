@@ -66,8 +66,11 @@ class CanDoorsCarbrand extends StatelessWidget {
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisSize: MainAxisSize.min,
         children: [
-          Image.asset(nameimage, width: 200, height: 200),
+          Flexible(
+            child: Image.asset(nameimage, height: 120, fit: BoxFit.contain),
+          ),
           const SizedBox(height: 10),
           Text(carbrand, style: TextStyle(color: Colors.white, fontSize: 20)),
         ],
