@@ -64,7 +64,7 @@ startid_sending = 165
 
 # Nhập 4 byte header 1 lần
 startid = 165 # var to start read (startid)
-pageid = 195 # =195 to send data if indexid = 5
+pageid = 192 # =195 to send data if indexid = 5
 # typeid = int(input("typid (0-255): ")) #chose what num send?
 indexid = 5 
 
@@ -106,7 +106,8 @@ def send_data():
     field_map = {
         "rpm": IN_Engi_RPM_ID,
         "gap": IN_CK_Gap_ID,
-        "bate": IN_CK_Bate_ID
+        "bate": IN_CK_Bate_ID,
+        
     }
 
     typeid = field_map.get(field.lower())

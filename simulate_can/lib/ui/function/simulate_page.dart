@@ -27,7 +27,7 @@ class SimulatePage extends StatefulWidget {
 class _SimulateUIstate extends State<SimulatePage> {
   // Hàm gửi dữ liệu
   void sendData(String field, int value) async {
-    final url = Uri.parse('http://192.168.0.186:8000/send'); // thay <raspi-ip>
+    final url = Uri.parse('http://127.0.0.1:8000/send'); // thay <raspi-ip>
 
     try {
       final response = await http.post(

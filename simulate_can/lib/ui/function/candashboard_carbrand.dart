@@ -11,6 +11,7 @@ void main() {
 }
 
 class CandashboardCarbrand extends StatelessWidget {
+  const CandashboardCarbrand({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(

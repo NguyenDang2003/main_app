@@ -124,29 +124,44 @@ class MainScreenState extends State<UiMain> {
   }) {
     return GestureDetector(
       onTap: onTap,
-      child: Container(
-        height: 40,
-        alignment: Alignment.center,
-        // margin: const EdgeInsets.symmetric(horizontal: 10),
-        // padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
-        decoration: BoxDecoration(
-          color: isSelected ? Colors.red : Colors.white,
-          borderRadius: BorderRadius.circular(5),
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(iconData, color: Colors.white, size: 20),
-            const SizedBox(width: 10),
-            Text(
-              title,
-              style: TextStyle(
-                color: isSelected ? Colors.white : Colors.red,
-                fontWeight: FontWeight.bold,
-              ),
+      child: LayoutBuilder(
+        builder: (context, constraints) {
+          // Nếu chiều rộng của item < 100 thì chỉ hiện icon
+          bool showText = constraints.maxWidth > 120;
+
+          return Container(
+            height: 40,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              color: isSelected ? Colors.red : Colors.white,
+              borderRadius: BorderRadius.circular(5),
             ),
-          ],
-        ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  iconData,
+                  color: isSelected ? Colors.white : Colors.red,
+                  size: 20,
+                ),
+                if (showText) ...[
+                  SizedBox(width: 10),
+                  Flexible(
+                    child: Text(
+                      title,
+                      style: TextStyle(
+                        color: isSelected ? Colors.white : Colors.red,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      overflow: TextOverflow.ellipsis,
+                      softWrap: false,
+                    ),
+                  ),
+                ],
+              ],
+            ),
+          );
+        },
       ),
     );
   }

@@ -9,10 +9,8 @@ void main() async {
   await windowManager.ensureInitialized();
 
   windowManager.waitUntilReadyToShow().then((_) async {
-    await windowManager.setMinimumSize(const Size(1600, 900));
-    await windowManager.setSize(
-      const Size(1600, 900),
-    ); // Đặt kích thước ban đầu
+    await windowManager.setMinimumSize(const Size(800, 450));
+    await windowManager.setSize(const Size(800, 450)); // Đặt kích thước ban đầu
     windowManager.setAspectRatio(16 / 9);
     await windowManager.setResizable(true);
     await windowManager.show();

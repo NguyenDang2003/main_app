@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:simulate_can/var.dart';
 
 class DashboardHuyndai extends StatefulWidget {
+  const DashboardHuyndai({super.key});
   @override
-  _DashboardHuyndaiState createState() => _DashboardHuyndaiState();
+  DashboardHuyndaiState createState() => DashboardHuyndaiState();
 }
 
-class _DashboardHuyndaiState extends State<DashboardHuyndai> {
+class DashboardHuyndaiState extends State<DashboardHuyndai> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

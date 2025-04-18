@@ -5,6 +5,7 @@ import 'package:simulate_can/ui/function/candoors_carbrand.dart';
 import 'package:simulate_can/ui/function/software_update.dart';
 
 class FunctionMain extends StatelessWidget {
+  const FunctionMain({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(

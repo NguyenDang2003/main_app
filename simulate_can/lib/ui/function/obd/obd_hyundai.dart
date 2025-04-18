@@ -3,11 +3,12 @@ import 'package:simulate_can/ui/function/obd/candoor/doors_hyundai.dart';
 import 'package:simulate_can/ui/function/obd/datastream/data_hyundai.dart';
 
 class ObdMain extends StatefulWidget {
+  const ObdMain({super.key});
   @override
-  _ObdMainState createState() => _ObdMainState();
+  ObdMainState createState() => ObdMainState();
 }
 
-class _ObdMainState extends State<ObdMain> {
+class ObdMainState extends State<ObdMain> {
   final PageController _pageController = PageController();
   int _currentPage = 0;
 

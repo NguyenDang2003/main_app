@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'dart:ui'; // Để sử dụng BackdropFilter
 
 class DashboardFord extends StatefulWidget {
+  const DashboardFord({super.key});
   @override
-  _DashboardFordState createState() => _DashboardFordState();
+  DashboardFordState createState() => DashboardFordState();
 }
 
-class _DashboardFordState extends State<DashboardFord> {
+class DashboardFordState extends State<DashboardFord> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,7 +39,7 @@ class _DashboardFordState extends State<DashboardFord> {
             child: BackdropFilter(
               filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0), // Làm mờ ảnh
               child: Container(
-                color: Colors.black.withOpacity(0), // Đảm bảo ảnh vẫn nhìn thấy
+                color: Colors.black.withAlpha(0), // Đảm bảo ảnh vẫn nhìn thấy
               ),
             ),
           ),
@@ -47,8 +48,8 @@ class _DashboardFordState extends State<DashboardFord> {
             child: Container(
               padding: EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: Colors.white.withOpacity(
-                  0.7,
+                color: Colors.white.withAlpha(
+                  179,
                 ), // Màu nền của khung chữ với độ mờ
                 borderRadius: BorderRadius.circular(10),
               ),
