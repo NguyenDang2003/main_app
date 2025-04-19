@@ -14,8 +14,15 @@ void main() {
   );
 }
 
-class CandashboardCarbrand extends StatelessWidget {
+class CandashboardCarbrand extends StatefulWidget {
   const CandashboardCarbrand({super.key});
+
+  @override
+  State<CandashboardCarbrand> createState() => _CandashboardCarbrandState();
+}
+
+class _CandashboardCarbrandState extends State<CandashboardCarbrand> {
+  final ScrollController _scrollController = ScrollController();
 
   @override
   Widget build(BuildContext context) {
@@ -32,23 +39,31 @@ class CandashboardCarbrand extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: GridView.builder(
-          physics: const ClampingScrollPhysics(),
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 4,
-            crossAxisSpacing: 10,
-            mainAxisSpacing: 10,
-            childAspectRatio: 1,
-          ),
-          itemCount: carBrands.length,
-          itemBuilder: (context, index) {
-            return _carbuildbrand(
-              context: context,
-              nameimage: carBrands[index]['image']!,
-              carbrand: carBrands[index]['name']!,
-              index: index,
+        child: GestureDetector(
+          onPanUpdate: (details) {
+            _scrollController.jumpTo(
+              _scrollController.offset - details.delta.dy,
             );
           },
+          child: GridView.builder(
+            controller: _scrollController,
+            physics: const ClampingScrollPhysics(),
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 4,
+              crossAxisSpacing: 10,
+              mainAxisSpacing: 10,
+              childAspectRatio: 1,
+            ),
+            itemCount: carBrands.length,
+            itemBuilder: (context, index) {
+              return _carbuildbrand(
+                context: context,
+                nameimage: carBrands[index]['image']!,
+                carbrand: carBrands[index]['name']!,
+                index: index,
+              );
+            },
+          ),
         ),
       ),
     );

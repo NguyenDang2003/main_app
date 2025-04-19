@@ -1,5 +1,18 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:simulate_can/var.dart';
+
+void main() {
+  runApp(
+    MaterialApp(
+      debugShowCheckedModeBanner: false,
+      scrollBehavior: MaterialScrollBehavior().copyWith(
+        dragDevices: {PointerDeviceKind.touch, PointerDeviceKind.mouse},
+      ),
+      home: const Cardoc(),
+    ),
+  );
+}
 
 class Cardoc extends StatelessWidget {
   const Cardoc({super.key});
@@ -8,7 +21,7 @@ class Cardoc extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           "CAR DOCUMENTS",
           style: TextStyle(
             fontSize: 24,
@@ -18,9 +31,12 @@ class Cardoc extends StatelessWidget {
         ),
         centerTitle: true,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
+      body: ScrollConfiguration(
+        behavior: MaterialScrollBehavior().copyWith(
+          dragDevices: {PointerDeviceKind.touch, PointerDeviceKind.mouse},
+        ),
         child: ListView.builder(
+          physics: const ClampingScrollPhysics(),
           itemCount: carBrands.length,
           itemBuilder: (context, index) {
             return _carBrandItem(
@@ -54,7 +70,7 @@ class Cardoc extends StatelessWidget {
           carbrand,
           style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
         ),
-        trailing: Icon(Icons.arrow_forward_ios),
+        trailing: const Icon(Icons.arrow_forward_ios),
         onTap: () {
           Navigator.push(
             context,
