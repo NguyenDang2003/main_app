@@ -25,7 +25,6 @@ class CanDoorsHyundai extends State<DoorsHyundai> {
 
       body: Stack(
         children: [
-          // Ảnh nền bảng đồng hồ
           Positioned.fill(
             child: Image.asset(
               "assets/images/door.png",

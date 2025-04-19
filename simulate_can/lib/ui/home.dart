@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter/gestures.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -7,115 +8,120 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Stack(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(height: 50),
-                  Text(
-                    "Find the best solution together.",
-                    style: GoogleFonts.poppins(
-                      fontSize: 28,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black87,
+      body: ScrollConfiguration(
+        behavior: MaterialScrollBehavior().copyWith(
+          dragDevices: {PointerDeviceKind.touch, PointerDeviceKind.mouse},
+        ),
+        child: Stack(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(height: 50),
+                    Text(
+                      "Find the best solution together.",
+                      style: GoogleFonts.poppins(
+                        fontSize: 28,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black87,
+                      ),
                     ),
-                  ),
-                  SizedBox(height: 10),
-                  Text(
-                    "We not only advise but also consider your thoughts to find the best solution for each car engine problem.",
-                    style: GoogleFonts.poppins(
-                      fontSize: 20,
-                      color: Colors.black54,
+                    SizedBox(height: 10),
+                    Text(
+                      "We not only advise but also consider your thoughts to find the best solution for each car engine problem.",
+                      style: GoogleFonts.poppins(
+                        fontSize: 20,
+                        color: Colors.black54,
+                      ),
                     ),
-                  ),
-                  SizedBox(height: 20),
-                  Row(
-                    children: [
-                      ElevatedButton(
-                        onPressed: () {},
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.redAccent,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8),
+                    SizedBox(height: 20),
+                    Row(
+                      children: [
+                        ElevatedButton(
+                          onPressed: () {},
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.redAccent,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                          ),
+                          child: Text(
+                            "Get Started",
+                            style: TextStyle(color: Colors.white),
                           ),
                         ),
-                        child: Text(
-                          "Get Started",
-                          style: TextStyle(color: Colors.white),
+                        SizedBox(width: 10),
+                        TextButton(
+                          onPressed: () {},
+                          child: Text(
+                            "Learn More",
+                            style: TextStyle(color: Colors.redAccent),
+                          ),
                         ),
-                      ),
-                      SizedBox(width: 10),
-                      TextButton(
-                        onPressed: () {},
-                        child: Text(
-                          "Learn More",
-                          style: TextStyle(color: Colors.redAccent),
+                      ],
+                    ),
+
+                    SizedBox(height: 30),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        // Cột trái (service boxes)
+                        Expanded(
+                          flex: 2,
+                          child: Column(
+                            children: [
+                              Row(
+                                children: [
+                                  _buildServiceBox("Tech Development"),
+                                  const SizedBox(width: 20),
+                                  _buildServiceBox("Tech Development"),
+                                ],
+                              ),
+                              const SizedBox(height: 20),
+                              Row(
+                                children: [
+                                  _buildServiceBox("Tech Development"),
+                                  const SizedBox(width: 20),
+                                  _buildServiceBox("Tech Development"),
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
 
-                  SizedBox(height: 30),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      // Cột trái (service boxes)
-                      Expanded(
-                        flex: 2,
-                        child: Column(
-                          children: [
-                            Row(
-                              children: [
-                                _buildServiceBox("Tech Development"),
-                                const SizedBox(width: 20),
-                                _buildServiceBox("Tech Development"),
-                              ],
-                            ),
-                            const SizedBox(height: 20),
-                            Row(
-                              children: [
-                                _buildServiceBox("Tech Development"),
-                                const SizedBox(width: 20),
-                                _buildServiceBox("Tech Development"),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
+                        const SizedBox(width: 20),
 
-                      const SizedBox(width: 20),
-
-                      // Cột phải (ảnh)
-                      Flexible(
-                        flex: 1,
-                        child: Align(
-                          alignment: Alignment.topRight,
-                          child: AspectRatio(
-                            aspectRatio:
-                                2.5, // Hoặc dùng MediaQuery như bạn đang dùng
-                            child: Container(
-                              constraints: BoxConstraints(minHeight: 100),
-                              decoration: BoxDecoration(
-                                image: DecorationImage(
-                                  image: AssetImage('assets/images/home.jpg'),
-                                  fit: BoxFit.cover,
+                        // Cột phải (ảnh)
+                        Flexible(
+                          flex: 1,
+                          child: Align(
+                            alignment: Alignment.topRight,
+                            child: AspectRatio(
+                              aspectRatio:
+                                  2.5, // Hoặc dùng MediaQuery như bạn đang dùng
+                              child: Container(
+                                constraints: BoxConstraints(minHeight: 100),
+                                decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                    image: AssetImage('assets/images/home.jpg'),
+                                    fit: BoxFit.cover,
+                                  ),
                                 ),
                               ),
                             ),
                           ),
                         ),
-                      ),
-                    ],
-                  ),
-                ],
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
