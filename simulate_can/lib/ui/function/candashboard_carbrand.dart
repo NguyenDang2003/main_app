@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:simulate_can/var.dart';
 
@@ -5,18 +6,22 @@ void main() {
   runApp(
     MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: CandashboardCarbrand(),
+      scrollBehavior: MaterialScrollBehavior().copyWith(
+        dragDevices: {PointerDeviceKind.touch, PointerDeviceKind.mouse},
+      ),
+      home: const CandashboardCarbrand(),
     ),
   );
 }
 
 class CandashboardCarbrand extends StatelessWidget {
   const CandashboardCarbrand({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           "DASHBOARD SIMULATE - CAR BRANDS",
           style: TextStyle(
             fontFamily: 'Roboto',
@@ -28,11 +33,12 @@ class CandashboardCarbrand extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: GridView.builder(
+          physics: const ClampingScrollPhysics(),
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 4, // 2 cột trong một hàng
+            crossAxisCount: 4,
             crossAxisSpacing: 10,
             mainAxisSpacing: 10,
-            childAspectRatio: 1, // Điều chỉnh tỷ lệ ảnh
+            childAspectRatio: 1,
           ),
           itemCount: carBrands.length,
           itemBuilder: (context, index) {
@@ -74,7 +80,10 @@ class CandashboardCarbrand extends StatelessWidget {
             child: Image.asset(nameimage, height: 120, fit: BoxFit.contain),
           ),
           const SizedBox(height: 10),
-          Text(carbrand, style: TextStyle(color: Colors.white, fontSize: 20)),
+          Text(
+            carbrand,
+            style: const TextStyle(color: Colors.white, fontSize: 20),
+          ),
         ],
       ),
     );
