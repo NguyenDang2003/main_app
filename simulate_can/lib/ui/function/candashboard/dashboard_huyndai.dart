@@ -557,7 +557,16 @@ class DashboardHuyndaiState extends State<DashboardHuyndai> {
           Align(
             alignment: Alignment(-0.06, 0.6), // Điều chỉnh vị trí theo tỷ lệ
             child: GestureDetector(
-              onTap: () => setState(() => hyundaiisActive5 = !hyundaiisActive5),
+              onTap: () {
+                setState(() {
+                  hyundaiisActive5 = !hyundaiisActive5;
+                  if (hyundaiisActive5 == true) {
+                    sendData('1', 'SBELT', '160');
+                  } else {
+                    sendData('1', 'SBELT', '00');
+                  }
+                });
+              },
               child: ColorFiltered(
                 colorFilter: ColorFilter.mode(
                   hyundaiisActive5 ? Colors.red : Colors.grey,
