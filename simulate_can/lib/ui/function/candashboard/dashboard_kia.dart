@@ -173,7 +173,16 @@ class DashboardKiaState extends State<DashboardKia> {
           Align(
             alignment: Alignment(-0.2, 0.8),
             child: GestureDetector(
-              onTap: () => setState(() => kiaisActive1 = !kiaisActive1),
+              onTap: () {
+                setState(() {
+                  kiaisActive1 = !kiaisActive1;
+                  if (kiaisActive1 == true) {
+                    sendData('1', 'EBD', '04');
+                  } else {
+                    sendData('1', 'EBD', '00');
+                  }
+                });
+              },
               child: ColorFiltered(
                 colorFilter: ColorFilter.mode(
                   kiaisActive1 ? Colors.red : Colors.grey,
@@ -336,7 +345,16 @@ class DashboardKiaState extends State<DashboardKia> {
           Align(
             alignment: Alignment(-0.315, -0.25), // Điều chỉnh vị trí theo tỷ lệ
             child: GestureDetector(
-              onTap: () => setState(() => kiaisActive2 = !kiaisActive2),
+              onTap: () {
+                setState(() {
+                  kiaisActive2 = !kiaisActive2;
+                  if (kiaisActive2 == true) {
+                    sendData('1', 'LEFT', '40');
+                  } else {
+                    sendData('1', 'LEFT', '08');
+                  }
+                });
+              },
               child: ColorFiltered(
                 colorFilter: ColorFilter.mode(
                   kiaisActive2 ? Colors.green : Colors.grey,
@@ -356,7 +374,16 @@ class DashboardKiaState extends State<DashboardKia> {
           Align(
             alignment: Alignment(0.315, -0.25), // Điều chỉnh vị trí theo tỷ lệ
             child: GestureDetector(
-              onTap: () => setState(() => kiaisActive3 = !kiaisActive3),
+              onTap: () {
+                setState(() {
+                  kiaisActive3 = !kiaisActive3;
+                  if (kiaisActive3 == true) {
+                    sendData('1', 'RIGHT', '40');
+                  } else {
+                    sendData('1', 'RIGHT', '00');
+                  }
+                });
+              },
               child: ColorFiltered(
                 colorFilter: ColorFilter.mode(
                   kiaisActive3 ? Colors.green : Colors.grey,
@@ -454,7 +481,17 @@ class DashboardKiaState extends State<DashboardKia> {
           Align(
             alignment: Alignment(0.2, -0.1), // Điều chỉnh vị trí theo tỷ lệ
             child: GestureDetector(
-              onTap: () => setState(() => kiaisActive7 = !kiaisActive7),
+              onTap: () {
+                setState(() {
+                  kiaisActive7 = !kiaisActive7;
+                  if (kiaisActive7 == true) {
+                    sendData('1', 'MDPS', '01');
+                  } else {
+                    sendData('1', 'MDPS', '00');
+                  }
+                });
+              },
+
               child: ColorFiltered(
                 colorFilter: ColorFilter.mode(
                   kiaisActive7 ? Colors.red : Colors.grey,

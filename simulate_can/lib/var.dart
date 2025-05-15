@@ -278,17 +278,17 @@ bool kiaisActive2 = false;
 // Biến cho đèn nhanh phải
 bool kiaisActive3 = false;
 // Biến cho đèn báo động cơ
-bool kiaisActive4 = false;
+bool kiaisActive4 = true;
 // Biến cho đèn báo seat belt
 bool kiaisActive5 = false;
 // Biến cho đèn esp cân bằng điện tử on
-bool kiaisActive6 = false;
+bool kiaisActive6 = true;
 // Biến cho đèn hệ thống lái
-bool kiaisActive7 = false;
+bool kiaisActive7 = true;
 // Biến cho đèn báo áp suất lốp
-bool kiaisActive8 = false;
+bool kiaisActive8 = true;
 // Biến cho đèn báo abs
-bool kiaisActive9 = false;
+bool kiaisActive9 = true;
 // Biến cho đèn báo fuel
 bool kiaisActive10 = false;
 
