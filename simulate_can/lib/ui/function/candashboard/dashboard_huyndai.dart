@@ -248,8 +248,17 @@ class DashboardHuyndaiState extends State<DashboardHuyndai> {
           Align(
             alignment: Alignment(-0.75, 0.6),
             child: GestureDetector(
-              onTap:
-                  () => setState(() => hyundaiisActive14 = !hyundaiisActive14),
+              onTap: () {
+                setState(() {
+                  hyundaiisActive14 != hyundaiisActive14;
+                  if (hyundaiisActive14 == true) {
+                    sendData('1', 'TMS', '03');
+                  } else {
+                    sendData('1', 'TMS', '00');
+                  }
+                });
+              },
+
               child: ColorFiltered(
                 colorFilter: ColorFilter.mode(
                   hyundaiisActive14 ? Colors.red : Colors.grey,
@@ -402,9 +411,9 @@ class DashboardHuyndaiState extends State<DashboardHuyndai> {
                 setState(() {
                   hyundaiisActive = !hyundaiisActive;
                   if (hyundaiisActive == true) {
-                    sendData('1', 'MIL', '00');
-                  } else {
                     sendData('1', 'MIL', '02');
+                  } else {
+                    sendData('1', 'MIL', '00');
                   }
                 });
               },
