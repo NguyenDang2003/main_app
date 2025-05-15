@@ -10,7 +10,7 @@ class DashboardHuyndai extends StatefulWidget {
 }
 
 class DashboardHuyndaiState extends State<DashboardHuyndai> {
-  void sendData(int addr, String field, int value) async {
+  void sendData(String addr, String field, String value) async {
     final url = Uri.parse('http://127.0.0.1:8000/send'); // thay <raspi-ip>
 
     try {
@@ -402,9 +402,9 @@ class DashboardHuyndaiState extends State<DashboardHuyndai> {
                 setState(() {
                   hyundaiisActive = !hyundaiisActive;
                   if (hyundaiisActive == true) {
-                    sendData(1, 'MIL', 00);
+                    sendData('1', 'MIL', '00');
                   } else {
-                    sendData(1, 'MIL', 02);
+                    sendData('1', 'MIL', '02');
                   }
                 });
               },
