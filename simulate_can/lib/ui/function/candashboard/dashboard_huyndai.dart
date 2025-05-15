@@ -250,7 +250,7 @@ class DashboardHuyndaiState extends State<DashboardHuyndai> {
             child: GestureDetector(
               onTap: () {
                 setState(() {
-                  hyundaiisActive14 != hyundaiisActive14;
+                  hyundaiisActive14 = !hyundaiisActive14;
                   if (hyundaiisActive14 == true) {
                     sendData('1', 'TMS', '03');
                   } else {

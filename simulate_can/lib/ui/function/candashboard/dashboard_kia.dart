@@ -54,7 +54,7 @@ class DashboardKiaState extends State<DashboardKia> {
         children: [
           Positioned.fill(
             child: Image.asset(
-              "assets/images/Dashboard/kia.png", // Thay bằng ảnh bảng đồng hồ của bạn
+              "assets/images/Dashboard/KIA.png", // Thay bằng ảnh bảng đồng hồ của bạn
               fit: BoxFit.cover,
             ),
           ),
@@ -476,11 +476,11 @@ class DashboardKiaState extends State<DashboardKia> {
             child: GestureDetector(
               onTap: () {
                 setState(() {
-                  kiaisActive8 != kiaisActive8;
+                  kiaisActive8 = !kiaisActive8;
                   if (kiaisActive8 == true) {
-                    sendData('1', 'TMS', '03');
+                    sendData('1', 'TPMS', '03');
                   } else {
-                    sendData('1', 'TMS', '00');
+                    sendData('1', 'TPMS', '00');
                   }
                 });
               },
@@ -507,9 +507,9 @@ class DashboardKiaState extends State<DashboardKia> {
                 setState(() {
                   kiaisActive9 = !kiaisActive9;
                   if (kiaisActive9 == true) {
-                    sendData('1', 'ABS', '01');
+                    sendData('1', 'ABS', '03');
                   } else {
-                    sendData('1', 'ABS', '00');
+                    sendData('1', 'ABS', '02');
                   }
                 });
               },
