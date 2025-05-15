@@ -88,11 +88,19 @@ flutter:
     - assets/images/left.png
     - assets/images/leftright.png
     - assets/images/right.png
+    - assets/images/seatbelt.png
+    - assets/images/esp.png
+    - assets/images/esp_off.png
+    - assets/images/fuel.png
     - assets/images/steering.png
     - assets/images/tranmision.png
     - assets/images/tyrepressure.png
     - assets/images/doorwarning.png
     - assets/images/door.png
+    - assets/images/battery.png
+    - assets/images/airbag.png
+    - assets/images/brake1.png
+    - assets/images/trunk.png
     - assets/images/carbrand/audi.png
     - assets/images/carbrand/bmw.png
     - assets/images/carbrand/chevrolet.png
@@ -117,6 +125,12 @@ flutter:
     - assets/images/carbrand/mitsubishi.png
     - assets/images/softwareupdate.png
     - assets/images/obd.png
+    - assets/images/Dashboard/KIA.png
+    - assets/images/Dashboard/HYUNDAI.png
+    - assets/images/carbrand/kia.png
+    - assets/images/fusebox/civic2024_fusebox1.png
+    - assets/images/fusebox/civic2024_fusebox2.png
+    - assets/images/fusebox/xpander2019_fusebox.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

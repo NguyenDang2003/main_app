@@ -1,15 +1,5 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:simulate_can/ui/function/graph/graph_abs1.dart';
-import 'package:simulate_can/ui/function/graph/graph_abs2.dart';
-import 'package:simulate_can/ui/function/graph/graph_abs3.dart';
-import 'package:simulate_can/ui/function/graph/graph_abs4.dart';
-import 'package:simulate_can/ui/function/graph/graph_ana1.dart';
-import 'package:simulate_can/ui/function/graph/graph_ana2.dart';
-import 'package:simulate_can/ui/function/graph/graph_ana3.dart';
-import 'package:simulate_can/ui/function/graph/graph_ana4.dart';
-import 'package:simulate_can/ui/function/graph/graph_camshaft.dart';
-import 'package:simulate_can/ui/function/graph/graph_enginespeed.dart';
 
 // import 'package:sleek_circular_slider/sleek_circular_slider.dart';
 import 'package:simulate_can/var.dart';
@@ -52,7 +42,7 @@ class _SimulateUIstate extends State<SimulatePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "SIMULATE - ENGINE",
+          "WAVEFORM SIMULATION",
           style: TextStyle(
             fontFamily: 'Roboto',
             fontSize: 30,
@@ -86,25 +76,7 @@ class _SimulateUIstate extends State<SimulatePage> {
                   ),
                 ),
                 const SizedBox(height: 10),
-                Center(
-                  child: ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.green,
-                      foregroundColor: Colors.white,
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 24,
-                        vertical: 12,
-                      ),
-                    ),
-                    child:
-                        isSending
-                            ? CircularProgressIndicator(
-                              color: Colors.white,
-                            ) // Hiển thị loading
-                            : Text('SEND DATA'),
-                  ),
-                ),
+
                 const SizedBox(height: 10),
                 // Tiêu đề "Engine Speed"
                 Container(
@@ -129,9 +101,9 @@ class _SimulateUIstate extends State<SimulatePage> {
                     Expanded(
                       child: Slider(
                         value: crankValue,
-                        min: 0,
+                        min: 500,
                         max: 6000,
-                        divisions: 120,
+                        divisions: 110,
                         label: crankValue.toInt().toString(),
                         activeColor: Colors.red, // Màu của phần đã trượt
                         inactiveColor:
@@ -175,7 +147,7 @@ class _SimulateUIstate extends State<SimulatePage> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          'Number Of Ideal TEETH',
+                          'Ideal Teeth Count',
                           style: TextStyle(fontSize: 18),
                         ),
                         SizedBox(
@@ -202,7 +174,7 @@ class _SimulateUIstate extends State<SimulatePage> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text('Gap TEETH', style: TextStyle(fontSize: 18)),
+                        Text('Teeth Gap', style: TextStyle(fontSize: 18)),
                         SizedBox(
                           width: 60,
                           child: TextField(
@@ -225,23 +197,16 @@ class _SimulateUIstate extends State<SimulatePage> {
                 SizedBox(
                   width: 200,
                   child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => GraphEnginespeed(),
-                        ),
-                      );
-                    },
+                    onPressed: () {},
                     style: ElevatedButton.styleFrom(
                       foregroundColor: Colors.white,
-                      backgroundColor: Colors.red,
+                      backgroundColor: Colors.green,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.zero, // Button vuông
                       ),
                     ),
                     child: Text(
-                      'Graph',
+                      'SEND SIGNAL',
                       style: TextStyle(
                         fontFamily: 'Roboto',
                         fontWeight: FontWeight.bold,
@@ -266,244 +231,667 @@ class _SimulateUIstate extends State<SimulatePage> {
                 ),
 
                 // Nhập số teeth
-                Center(
-                  child: SizedBox(
-                    width: 500,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          'CampIn_Crk_TeethDef',
-                          style: TextStyle(fontSize: 18),
-                        ),
-                        SizedBox(
-                          width: 60,
-                          child: TextField(
-                            controller: indefteethController,
-                            keyboardType: TextInputType.number,
-                            decoration: InputDecoration(hintText: '72'),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                Center(
-                  child: SizedBox(
-                    width: 500,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          'CampEx_Crk_TeethDef',
-                          style: TextStyle(fontSize: 18),
-                        ),
-                        SizedBox(
-                          width: 60,
-                          child: TextField(
-                            controller: exdefteethController,
-                            keyboardType: TextInputType.number,
-                            decoration: InputDecoration(hintText: '72'),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-
-                Center(
-                  child: SizedBox(
-                    width: 700,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text('Teeth_Gap_1', style: TextStyle(fontSize: 18)),
-                        const SizedBox(width: 20),
-                        SizedBox(
-                          width: 500,
-                          child: Row(
-                            children: [
-                              Expanded(
-                                child: TextField(
-                                  controller: gap1teethController,
-                                  keyboardType: TextInputType.number,
-                                  decoration: InputDecoration(hintText: '0'),
-                                ),
-                              ),
-                              const SizedBox(width: 20),
-                              Expanded(
-                                child: TextField(
-                                  controller: gap11teethController,
-                                  keyboardType: TextInputType.number,
-                                  decoration: InputDecoration(hintText: '0'),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                Center(
-                  child: SizedBox(
-                    width: 700,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text('Teeth_Gap_2', style: TextStyle(fontSize: 18)),
-                        const SizedBox(width: 20),
-                        SizedBox(
-                          width: 500,
-                          child: Row(
-                            children: [
-                              Expanded(
-                                child: TextField(
-                                  controller: gap2teethController,
-                                  keyboardType: TextInputType.number,
-                                  decoration: InputDecoration(hintText: '0'),
-                                ),
-                              ),
-                              const SizedBox(width: 20),
-                              Expanded(
-                                child: TextField(
-                                  controller: gap22teethController,
-                                  keyboardType: TextInputType.number,
-                                  decoration: InputDecoration(hintText: '0'),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                Center(
-                  child: SizedBox(
-                    width: 700,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text('Teeth_Gap_3', style: TextStyle(fontSize: 18)),
-                        const SizedBox(width: 20),
-                        SizedBox(
-                          width: 500,
-                          child: Row(
-                            children: [
-                              Expanded(
-                                child: TextField(
-                                  controller: gap3teethController,
-                                  keyboardType: TextInputType.number,
-                                  decoration: InputDecoration(hintText: '0'),
-                                ),
-                              ),
-                              const SizedBox(width: 20),
-                              Expanded(
-                                child: TextField(
-                                  controller: gap33teethController,
-                                  keyboardType: TextInputType.number,
-                                  decoration: InputDecoration(hintText: '0'),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                Center(
-                  child: SizedBox(
-                    width: 700,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text('Teeth_Gap_4', style: TextStyle(fontSize: 18)),
-                        SizedBox(
-                          width: 500,
-                          child: Row(
-                            children: [
-                              Expanded(
-                                child: TextField(
-                                  controller: gap4teethController,
-                                  keyboardType: TextInputType.number,
-                                  decoration: InputDecoration(hintText: '0'),
-                                ),
-                              ),
-                              const SizedBox(width: 20),
-                              Expanded(
-                                child: TextField(
-                                  controller: gap44teethController,
-                                  keyboardType: TextInputType.number,
-                                  decoration: InputDecoration(hintText: '0'),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                Center(
-                  child: SizedBox(
-                    width: 700,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text('Teeth_Gap_5', style: TextStyle(fontSize: 18)),
-                        SizedBox(
-                          width: 500,
-                          child: Row(
-                            children: [
-                              Expanded(
-                                child: TextField(
-                                  controller: gap5teethController,
-                                  keyboardType: TextInputType.number,
-                                  decoration: InputDecoration(hintText: '0'),
-                                ),
-                              ),
-                              const SizedBox(width: 20),
-                              Expanded(
-                                child: TextField(
-                                  controller: gap55teethController,
-                                  keyboardType: TextInputType.number,
-                                  decoration: InputDecoration(hintText: '0'),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 10),
-                SizedBox(
-                  width: 200,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => GraphCamshaft(),
-                        ),
-                      );
+                ScrollConfiguration(
+                  behavior: MaterialScrollBehavior().copyWith(
+                    dragDevices: {
+                      PointerDeviceKind.touch,
+                      PointerDeviceKind.mouse,
                     },
-                    style: ElevatedButton.styleFrom(
-                      foregroundColor: Colors.white,
-                      backgroundColor: Colors.red,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.zero, // Button vuông
-                      ),
-                    ),
-                    child: Text(
-                      'Graph',
-                      style: TextStyle(
-                        fontFamily: 'Roboto',
-                        fontWeight: FontWeight.bold,
-                      ),
+                  ),
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: [
+                        Column(
+                          children: [
+                            const SizedBox(height: 20),
+                            Container(
+                              padding: EdgeInsets.all(10),
+                              decoration: BoxDecoration(
+                                color: Colors.redAccent,
+                              ),
+                              child: Text(
+                                "INDUCTIVE CAMSHAFT SIGNAL",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: "Roboto",
+                                  fontSize: 15,
+                                ),
+                              ),
+                            ),
+                            Center(
+                              child: SizedBox(
+                                width: 260,
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      'Number of Teeth',
+                                      style: TextStyle(fontSize: 18),
+                                    ),
+                                    SizedBox(
+                                      width: 60,
+                                      child: TextField(
+                                        controller: numCampInducteethController,
+                                        keyboardType: TextInputType.number,
+                                        decoration: InputDecoration(
+                                          hintText: '72',
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            const SizedBox(height: 20),
+                            Center(
+                              child: SizedBox(
+                                width: 260,
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      'Cam IN Crank Offset',
+                                      style: TextStyle(fontSize: 18),
+                                    ),
+                                    SizedBox(
+                                      width: 60,
+                                      child: TextField(
+                                        controller: difInCampCrkInducController,
+                                        keyboardType: TextInputType.number,
+                                        decoration: InputDecoration(
+                                          hintText: '0',
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            const SizedBox(height: 20),
+                            Center(
+                              child: SizedBox(
+                                width: 260,
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      'Cam EX Crank Offset',
+                                      style: TextStyle(fontSize: 18),
+                                    ),
+                                    SizedBox(
+                                      width: 60,
+                                      child: TextField(
+                                        controller: difExCampCrkInducController,
+                                        keyboardType: TextInputType.number,
+                                        decoration: InputDecoration(
+                                          hintText: '0',
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            const SizedBox(height: 20),
+                            Column(
+                              children: [
+                                Row(
+                                  children: [
+                                    Text(
+                                      "Teeth Width",
+                                      style: TextStyle(fontSize: 18),
+                                    ),
+                                    const SizedBox(width: 50),
+                                    Text(
+                                      "Gap Width",
+                                      style: TextStyle(fontSize: 18),
+                                    ),
+                                  ],
+                                ),
+                                Center(
+                                  child: SizedBox(
+                                    width: 360,
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          '1st',
+                                          style: TextStyle(fontSize: 18),
+                                        ),
+                                        const SizedBox(width: 20),
+                                        SizedBox(
+                                          width: 300,
+                                          child: Row(
+                                            children: [
+                                              Expanded(
+                                                child: TextField(
+                                                  controller:
+                                                      teeth1widthController,
+                                                  keyboardType:
+                                                      TextInputType.number,
+                                                  decoration: InputDecoration(
+                                                    hintText: '0',
+                                                  ),
+                                                ),
+                                              ),
+                                              const SizedBox(width: 20),
+                                              Expanded(
+                                                child: TextField(
+                                                  controller:
+                                                      gap1widthController,
+                                                  keyboardType:
+                                                      TextInputType.number,
+                                                  decoration: InputDecoration(
+                                                    hintText: '0',
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                Center(
+                                  child: SizedBox(
+                                    width: 360,
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        SizedBox(
+                                          width: 40,
+                                          child: Text(
+                                            '2nd',
+                                            style: TextStyle(fontSize: 18),
+                                          ),
+                                        ),
+                                        const SizedBox(width: 20),
+                                        SizedBox(
+                                          width: 300,
+                                          child: Row(
+                                            children: [
+                                              Expanded(
+                                                child: TextField(
+                                                  controller:
+                                                      teeth2widthController,
+                                                  keyboardType:
+                                                      TextInputType.number,
+                                                  decoration: InputDecoration(
+                                                    hintText: '0',
+                                                  ),
+                                                ),
+                                              ),
+                                              const SizedBox(width: 20),
+                                              Expanded(
+                                                child: TextField(
+                                                  controller:
+                                                      gap2widthController,
+                                                  keyboardType:
+                                                      TextInputType.number,
+                                                  decoration: InputDecoration(
+                                                    hintText: '0',
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                Center(
+                                  child: SizedBox(
+                                    width: 360,
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        SizedBox(
+                                          width: 40,
+                                          child: Text(
+                                            '3rd',
+                                            style: TextStyle(fontSize: 18),
+                                          ),
+                                        ),
+                                        const SizedBox(width: 20),
+                                        SizedBox(
+                                          width: 300,
+                                          child: Row(
+                                            children: [
+                                              Expanded(
+                                                child: TextField(
+                                                  controller:
+                                                      teeth3widthController,
+                                                  keyboardType:
+                                                      TextInputType.number,
+                                                  decoration: InputDecoration(
+                                                    hintText: '0',
+                                                  ),
+                                                ),
+                                              ),
+                                              const SizedBox(width: 20),
+                                              Expanded(
+                                                child: TextField(
+                                                  controller:
+                                                      gap3widthController,
+                                                  keyboardType:
+                                                      TextInputType.number,
+                                                  decoration: InputDecoration(
+                                                    hintText: '0',
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                Center(
+                                  child: SizedBox(
+                                    width: 360,
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        SizedBox(
+                                          width: 40,
+                                          child: Text(
+                                            '4th',
+                                            style: TextStyle(fontSize: 18),
+                                          ),
+                                        ),
+                                        const SizedBox(width: 20),
+                                        SizedBox(
+                                          width: 300,
+                                          child: Row(
+                                            children: [
+                                              Expanded(
+                                                child: TextField(
+                                                  controller:
+                                                      teeth4widthController,
+                                                  keyboardType:
+                                                      TextInputType.number,
+                                                  decoration: InputDecoration(
+                                                    hintText: '0',
+                                                  ),
+                                                ),
+                                              ),
+                                              const SizedBox(width: 20),
+                                              Expanded(
+                                                child: TextField(
+                                                  controller:
+                                                      gap4widthController,
+                                                  keyboardType:
+                                                      TextInputType.number,
+                                                  decoration: InputDecoration(
+                                                    hintText: '0',
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+
+                                Center(
+                                  child: SizedBox(
+                                    width: 360,
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        SizedBox(
+                                          width: 40,
+                                          child: Text(
+                                            '5th',
+                                            style: TextStyle(fontSize: 18),
+                                          ),
+                                        ),
+                                        const SizedBox(width: 20),
+                                        SizedBox(
+                                          width: 300,
+                                          child: Row(
+                                            children: [
+                                              Expanded(
+                                                child: TextField(
+                                                  controller:
+                                                      teeth5widthController,
+                                                  keyboardType:
+                                                      TextInputType.number,
+                                                  decoration: InputDecoration(
+                                                    hintText: '0',
+                                                  ),
+                                                ),
+                                              ),
+                                              const SizedBox(width: 20),
+                                              Expanded(
+                                                child: TextField(
+                                                  controller:
+                                                      gap5widthController,
+                                                  keyboardType:
+                                                      TextInputType.number,
+                                                  decoration: InputDecoration(
+                                                    hintText: '0',
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                Center(
+                                  child: SizedBox(
+                                    width: 360,
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        SizedBox(
+                                          width: 40,
+                                          child: Text(
+                                            '6th',
+                                            style: TextStyle(fontSize: 18),
+                                          ),
+                                        ),
+                                        const SizedBox(width: 20),
+                                        SizedBox(
+                                          width: 300,
+                                          child: Row(
+                                            children: [
+                                              Expanded(
+                                                child: TextField(
+                                                  controller:
+                                                      teeth6widthController,
+                                                  keyboardType:
+                                                      TextInputType.number,
+                                                  decoration: InputDecoration(
+                                                    hintText: '0',
+                                                  ),
+                                                ),
+                                              ),
+                                              const SizedBox(width: 20),
+                                              Expanded(
+                                                child: TextField(
+                                                  controller:
+                                                      gap6widthController,
+                                                  keyboardType:
+                                                      TextInputType.number,
+                                                  decoration: InputDecoration(
+                                                    hintText: '0',
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                Center(
+                                  child: SizedBox(
+                                    width: 360,
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        SizedBox(
+                                          width: 40,
+                                          child: Text(
+                                            '7th',
+                                            style: TextStyle(fontSize: 18),
+                                          ),
+                                        ),
+                                        const SizedBox(width: 20),
+                                        SizedBox(
+                                          width: 300,
+                                          child: Row(
+                                            children: [
+                                              Expanded(
+                                                child: TextField(
+                                                  controller:
+                                                      teeth7widthController,
+                                                  keyboardType:
+                                                      TextInputType.number,
+                                                  decoration: InputDecoration(
+                                                    hintText: '0',
+                                                  ),
+                                                ),
+                                              ),
+                                              const SizedBox(width: 20),
+                                              Expanded(
+                                                child: TextField(
+                                                  controller:
+                                                      gap7widthController,
+                                                  keyboardType:
+                                                      TextInputType.number,
+                                                  decoration: InputDecoration(
+                                                    hintText: '0',
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                Center(
+                                  child: SizedBox(
+                                    width: 360,
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        SizedBox(
+                                          width: 40,
+                                          child: Text(
+                                            '8th',
+                                            style: TextStyle(fontSize: 18),
+                                          ),
+                                        ),
+                                        const SizedBox(width: 20),
+                                        SizedBox(
+                                          width: 300,
+                                          child: Row(
+                                            children: [
+                                              Expanded(
+                                                child: TextField(
+                                                  controller:
+                                                      teeth8widthController,
+                                                  keyboardType:
+                                                      TextInputType.number,
+                                                  decoration: InputDecoration(
+                                                    hintText: '0',
+                                                  ),
+                                                ),
+                                              ),
+                                              const SizedBox(width: 20),
+                                              Expanded(
+                                                child: TextField(
+                                                  controller:
+                                                      gap8widthController,
+                                                  keyboardType:
+                                                      TextInputType.number,
+                                                  decoration: InputDecoration(
+                                                    hintText: '0',
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+
+                                const SizedBox(height: 10),
+                                SizedBox(
+                                  width: 200,
+                                  child: ElevatedButton(
+                                    onPressed: () {},
+                                    style: ElevatedButton.styleFrom(
+                                      foregroundColor: Colors.white,
+                                      backgroundColor: Colors.green,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.zero, // Button vuông
+                                      ),
+                                    ),
+                                    child: Text(
+                                      'SEND SIGNAL',
+                                      style: TextStyle(
+                                        fontFamily: 'Roboto',
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                        const SizedBox(width: 100),
+                        Column(
+                          children: [
+                            const SizedBox(height: 20),
+                            Container(
+                              padding: EdgeInsets.all(10),
+                              decoration: BoxDecoration(
+                                color: Colors.redAccent,
+                              ),
+                              child: Text(
+                                "HALL CAMSHAFT SIGNAL",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: "Roboto",
+                                  fontSize: 15,
+                                ),
+                              ),
+                            ),
+                            Center(
+                              child: SizedBox(
+                                width: 260,
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      'Number of Teeth',
+                                      style: TextStyle(fontSize: 18),
+                                    ),
+                                    SizedBox(
+                                      width: 60,
+                                      child: TextField(
+                                        controller: numCampHallteethController,
+                                        keyboardType: TextInputType.number,
+                                        decoration: InputDecoration(
+                                          hintText: '72',
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            const SizedBox(height: 20),
+                            Center(
+                              child: SizedBox(
+                                width: 260,
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      'Cam IN Crank Offset',
+                                      style: TextStyle(fontSize: 18),
+                                    ),
+                                    SizedBox(
+                                      width: 60,
+                                      child: TextField(
+                                        controller: difInCampCrkHallController,
+                                        keyboardType: TextInputType.number,
+                                        decoration: InputDecoration(
+                                          hintText: '0',
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            const SizedBox(height: 20),
+                            Center(
+                              child: SizedBox(
+                                width: 260,
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      'Cam EX Crank Offset',
+                                      style: TextStyle(fontSize: 18),
+                                    ),
+                                    SizedBox(
+                                      width: 60,
+                                      child: TextField(
+                                        controller: difExCampCrkHallController,
+                                        keyboardType: TextInputType.number,
+                                        decoration: InputDecoration(
+                                          hintText: '0',
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+
+                            const SizedBox(height: 440),
+                            SizedBox(
+                              width: 200,
+                              child: ElevatedButton(
+                                onPressed: () {},
+                                style: ElevatedButton.styleFrom(
+                                  foregroundColor: Colors.white,
+                                  backgroundColor: Colors.green,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius:
+                                        BorderRadius.zero, // Button vuông
+                                  ),
+                                ),
+                                child: Text(
+                                  'SEND SIGNAL',
+                                  style: TextStyle(
+                                    fontFamily: 'Roboto',
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
                   ),
                 ),
@@ -524,132 +912,35 @@ class _SimulateUIstate extends State<SimulatePage> {
                     textAlign: TextAlign.center,
                   ),
                 ),
+                const SizedBox(height: 20),
+                Center(
+                  child: SizedBox(
+                    width: 500,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('Teeth Count', style: TextStyle(fontSize: 18)),
+                        const SizedBox(width: 20),
+                        SizedBox(
+                          width: 300,
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: TextField(
+                                  controller: teethabsController,
+                                  keyboardType: TextInputType.number,
+                                  decoration: InputDecoration(hintText: '0'),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
 
-                // Row(
-                //   mainAxisAlignment: MainAxisAlignment.center,
-                //   children: [
-                //     Column(
-                //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //       children: [
-                //         Text('ABS1', style: TextStyle(fontSize: 18)),
-                //         SizedBox(
-                //           height: 300,
-                //           child: Expanded(
-                //             child: SleekCircularSlider(
-                //               initialValue: 0,
-                //               min: 0,
-                //               max: 150,
-                //               appearance: CircularSliderAppearance(
-                //                 size: 250,
-                //                 infoProperties: InfoProperties(
-                //                   modifier: (value) {
-                //                     return '${value.toInt()} km/h';
-                //                   },
-                //                 ),
-                //               ),
-                //               onChange: (value) {
-                //                 setState(() {
-                //                   abs1 = value;
-                //                 });
-                //               },
-                //             ),
-                //           ),
-                //         ),
-                //         // Text('${abs1.toInt()} km/h', style: TextStyle(fontSize: 18)),
-                //       ],
-                //     ),
-                //     Column(
-                //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //       children: [
-                //         Text('ABS2', style: TextStyle(fontSize: 18)),
-                //         SizedBox(
-                //           height: 300,
-                //           child: Expanded(
-                //             child: SleekCircularSlider(
-                //               initialValue: 0,
-                //               min: 0,
-                //               max: 150,
-                //               appearance: CircularSliderAppearance(
-                //                 size: 250,
-                //                 infoProperties: InfoProperties(
-                //                   modifier: (value) {
-                //                     return '${value.toInt()} km/h';
-                //                   },
-                //                 ),
-                //               ),
-                //               onChange: (value) {
-                //                 setState(() {
-                //                   abs2 = value;
-                //                 });
-                //               },
-                //             ),
-                //           ),
-                //         ),
-                //         // Text('${abs1.toInt()} km/h', style: TextStyle(fontSize: 18)),
-                //       ],
-                //     ),
-                //     Column(
-                //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //       children: [
-                //         Text('ABS1', style: TextStyle(fontSize: 18)),
-                //         SizedBox(
-                //           height: 300,
-                //           child: Expanded(
-                //             child: SleekCircularSlider(
-                //               initialValue: 0,
-                //               min: 0,
-                //               max: 150,
-                //               appearance: CircularSliderAppearance(
-                //                 size: 250,
-                //                 infoProperties: InfoProperties(
-                //                   modifier: (value) {
-                //                     return '${value.toInt()} km/h';
-                //                   },
-                //                 ),
-                //               ),
-                //               onChange: (value) {
-                //                 setState(() {
-                //                   abs3 = value;
-                //                 });
-                //               },
-                //             ),
-                //           ),
-                //         ),
-                //         // Text('${abs1.toInt()} km/h', style: TextStyle(fontSize: 18)),
-                //       ],
-                //     ),
-                //     Column(
-                //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //       children: [
-                //         Text('ABS1', style: TextStyle(fontSize: 18)),
-                //         SizedBox(
-                //           height: 300,
-                //           child: Expanded(
-                //             child: SleekCircularSlider(
-                //               initialValue: 0,
-                //               min: 0,
-                //               max: 150,
-                //               appearance: CircularSliderAppearance(
-                //                 size: 250,
-                //                 infoProperties: InfoProperties(
-                //                   modifier: (value) {
-                //                     return '${value.toInt()} km/h';
-                //                   },
-                //                 ),
-                //               ),
-                //               onChange: (value) {
-                //                 setState(() {
-                //                   abs4 = value;
-                //                 });
-                //               },
-                //             ),
-                //           ),
-                //         ),
-                //         // Text('${abs1.toInt()} km/h', style: TextStyle(fontSize: 18)),
-                //       ],
-                //     ),
-                //   ],
-                // ),
+                const SizedBox(height: 20),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -658,8 +949,8 @@ class _SimulateUIstate extends State<SimulatePage> {
                       child: Slider(
                         value: abs1,
                         min: 0,
-                        max: 150,
-                        divisions: 150,
+                        max: 1000,
+                        divisions: 50,
                         label: abs1.toInt().toString(),
                         activeColor: Colors.red, // Màu của phần đã trượt
                         inactiveColor:
@@ -672,38 +963,8 @@ class _SimulateUIstate extends State<SimulatePage> {
                         },
                       ),
                     ),
-                    Text(
-                      '${abs1.toInt()} km/h',
-                      style: TextStyle(fontSize: 18),
-                    ),
+                    Text('${abs1.toInt()} rpm', style: TextStyle(fontSize: 18)),
                     const SizedBox(width: 10),
-                    SizedBox(
-                      width: 200,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => GraphAbs1(),
-                            ),
-                          );
-                        },
-                        style: ElevatedButton.styleFrom(
-                          foregroundColor: Colors.white,
-                          backgroundColor: Colors.red,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.zero, // Button vuông
-                          ),
-                        ),
-                        child: Text(
-                          'Graph',
-                          style: TextStyle(
-                            fontFamily: 'Roboto',
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                    ),
                   ],
                 ),
                 const SizedBox(height: 20),
@@ -715,8 +976,8 @@ class _SimulateUIstate extends State<SimulatePage> {
                       child: Slider(
                         value: abs2,
                         min: 0,
-                        max: 150,
-                        divisions: 150,
+                        max: 1000,
+                        divisions: 50,
                         label: abs2.toInt().toString(),
                         activeColor: Colors.red, // Màu của phần đã trượt
                         inactiveColor:
@@ -728,38 +989,8 @@ class _SimulateUIstate extends State<SimulatePage> {
                         },
                       ),
                     ),
-                    Text(
-                      '${abs2.toInt()} km/h',
-                      style: TextStyle(fontSize: 18),
-                    ),
+                    Text('${abs2.toInt()} rpm', style: TextStyle(fontSize: 18)),
                     const SizedBox(width: 10),
-                    SizedBox(
-                      width: 200,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => GraphAbs2(),
-                            ),
-                          );
-                        },
-                        style: ElevatedButton.styleFrom(
-                          foregroundColor: Colors.white,
-                          backgroundColor: Colors.red,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.zero, // Button vuông
-                          ),
-                        ),
-                        child: Text(
-                          'Graph',
-                          style: TextStyle(
-                            fontFamily: 'Roboto',
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                    ),
                   ],
                 ),
                 const SizedBox(height: 20),
@@ -771,8 +1002,8 @@ class _SimulateUIstate extends State<SimulatePage> {
                       child: Slider(
                         value: abs3,
                         min: 0,
-                        max: 150,
-                        divisions: 150,
+                        max: 1000,
+                        divisions: 50,
                         label: abs3.toInt().toString(),
                         activeColor: Colors.red, // Màu của phần đã trượt
                         inactiveColor:
@@ -784,38 +1015,8 @@ class _SimulateUIstate extends State<SimulatePage> {
                         },
                       ),
                     ),
-                    Text(
-                      '${abs3.toInt()} km/h',
-                      style: TextStyle(fontSize: 18),
-                    ),
+                    Text('${abs3.toInt()} rpm', style: TextStyle(fontSize: 18)),
                     const SizedBox(width: 10),
-                    SizedBox(
-                      width: 200,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => GraphAbs3(),
-                            ),
-                          );
-                        },
-                        style: ElevatedButton.styleFrom(
-                          foregroundColor: Colors.white,
-                          backgroundColor: Colors.red,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.zero, // Button vuông
-                          ),
-                        ),
-                        child: Text(
-                          'Graph',
-                          style: TextStyle(
-                            fontFamily: 'Roboto',
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                    ),
                   ],
                 ),
                 const SizedBox(height: 20),
@@ -827,8 +1028,8 @@ class _SimulateUIstate extends State<SimulatePage> {
                       child: Slider(
                         value: abs4,
                         min: 0,
-                        max: 150,
-                        divisions: 150,
+                        max: 1000,
+                        divisions: 50,
                         label: abs4.toInt().toString(),
                         activeColor: Colors.red, // Màu của phần đã trượt
                         inactiveColor:
@@ -840,38 +1041,8 @@ class _SimulateUIstate extends State<SimulatePage> {
                         },
                       ),
                     ),
-                    Text(
-                      '${abs4.toInt()} km/h',
-                      style: TextStyle(fontSize: 18),
-                    ),
+                    Text('${abs4.toInt()} rpm', style: TextStyle(fontSize: 18)),
                     const SizedBox(width: 10),
-                    SizedBox(
-                      width: 200,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => GraphAbs4(),
-                            ),
-                          );
-                        },
-                        style: ElevatedButton.styleFrom(
-                          foregroundColor: Colors.white,
-                          backgroundColor: Colors.red,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.zero, // Button vuông
-                          ),
-                        ),
-                        child: Text(
-                          'Graph',
-                          style: TextStyle(
-                            fontFamily: 'Roboto',
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                    ),
                   ],
                 ),
 
@@ -891,214 +1062,313 @@ class _SimulateUIstate extends State<SimulatePage> {
                   ),
                 ),
 
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                Column(
                   children: [
-                    Text('ANALOG1', style: TextStyle(fontSize: 18)),
-                    Expanded(
-                      child: Slider(
-                        value: ana1,
-                        min: 0,
-                        max: 5,
-                        divisions: 5,
-                        label: ana1.toInt().toString(),
-                        activeColor: Colors.red, // Màu của phần đã trượt
-                        inactiveColor:
-                            Colors.red.shade100, // Màu của phần chưa trượt
-                        onChanged: (value) {
-                          setState(() {
-                            ana1 = value;
-                          });
-                        },
-                      ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('ANALOG1', style: TextStyle(fontSize: 18)),
+                        Expanded(
+                          child: Slider(
+                            value: ana1,
+                            min: 0,
+                            max: 5,
+                            divisions: 50,
+                            label: ana1.toStringAsFixed(2),
+                            activeColor: Colors.red,
+                            inactiveColor: Colors.red.shade100,
+                            onChanged: (value) {
+                              setState(() {
+                                ana1 = value;
+                              });
+                            },
+                          ),
+                        ),
+                        Text(
+                          '${ana1.toStringAsFixed(2)} V',
+                          style: TextStyle(fontSize: 18),
+                        ),
+                        const SizedBox(width: 10),
+                      ],
                     ),
-                    Text('${ana1.toInt()} V', style: TextStyle(fontSize: 18)),
-                    const SizedBox(width: 10),
-                    SizedBox(
-                      width: 200,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => GraphAna1(),
-                            ),
-                          );
-                        },
-                        style: ElevatedButton.styleFrom(
-                          foregroundColor: Colors.white,
-                          backgroundColor: Colors.red,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.zero, // Button vuông
+                    const SizedBox(height: 20),
+
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('ANALOG2', style: TextStyle(fontSize: 18)),
+                        Expanded(
+                          child: Slider(
+                            value: ana2,
+                            min: 0,
+                            max: 5,
+                            divisions: 50,
+                            label: ana2.toStringAsFixed(2),
+                            activeColor: Colors.red,
+                            inactiveColor: Colors.red.shade100,
+                            onChanged: (value) {
+                              setState(() {
+                                ana2 = value;
+                              });
+                            },
                           ),
                         ),
-                        child: Text(
-                          'Graph',
-                          style: TextStyle(
-                            fontFamily: 'Roboto',
-                            fontWeight: FontWeight.bold,
+                        Text(
+                          '${ana2.toStringAsFixed(2)} V',
+                          style: TextStyle(fontSize: 18),
+                        ),
+                        const SizedBox(width: 10),
+                      ],
+                    ),
+                    const SizedBox(height: 20),
+
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('ANALOG3', style: TextStyle(fontSize: 18)),
+                        Expanded(
+                          child: Slider(
+                            value: ana3,
+                            min: 0,
+                            max: 5,
+                            divisions: 50,
+                            label: ana3.toStringAsFixed(2),
+                            activeColor: Colors.red,
+                            inactiveColor: Colors.red.shade100,
+                            onChanged: (value) {
+                              setState(() {
+                                ana3 = value;
+                              });
+                            },
                           ),
                         ),
-                      ),
+                        Text(
+                          '${ana3.toStringAsFixed(2)} V',
+                          style: TextStyle(fontSize: 18),
+                        ),
+                        const SizedBox(width: 10),
+                      ],
+                    ),
+                    const SizedBox(height: 20),
+
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('ANALOG4', style: TextStyle(fontSize: 18)),
+                        Expanded(
+                          child: Slider(
+                            value: ana4,
+                            min: 0,
+                            max: 5,
+                            divisions: 50,
+                            label: ana4.toStringAsFixed(2),
+                            activeColor: Colors.red,
+                            inactiveColor: Colors.red.shade100,
+                            onChanged: (value) {
+                              setState(() {
+                                ana4 = value;
+                              });
+                            },
+                          ),
+                        ),
+                        Text(
+                          '${ana4.toStringAsFixed(2)} V',
+                          style: TextStyle(fontSize: 18),
+                        ),
+                        const SizedBox(width: 10),
+                      ],
+                    ),
+                    const SizedBox(height: 20),
+
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('ANALOG5', style: TextStyle(fontSize: 18)),
+                        Expanded(
+                          child: Slider(
+                            value: ana5,
+                            min: 0,
+                            max: 5,
+                            divisions: 50,
+                            label: ana5.toStringAsFixed(2),
+                            activeColor: Colors.red,
+                            inactiveColor: Colors.red.shade100,
+                            onChanged: (value) {
+                              setState(() {
+                                ana5 = value;
+                              });
+                            },
+                          ),
+                        ),
+                        Text(
+                          '${ana5.toStringAsFixed(2)} V',
+                          style: TextStyle(fontSize: 18),
+                        ),
+                        const SizedBox(width: 10),
+                      ],
+                    ),
+                    const SizedBox(height: 20),
+
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('ANALOG6', style: TextStyle(fontSize: 18)),
+                        Expanded(
+                          child: Slider(
+                            value: ana6,
+                            min: 0,
+                            max: 5,
+                            divisions: 50,
+                            label: ana6.toStringAsFixed(2),
+                            activeColor: Colors.red,
+                            inactiveColor: Colors.red.shade100,
+                            onChanged: (value) {
+                              setState(() {
+                                ana6 = value;
+                              });
+                            },
+                          ),
+                        ),
+                        Text(
+                          '${ana6.toStringAsFixed(2)} V',
+                          style: TextStyle(fontSize: 18),
+                        ),
+                        const SizedBox(width: 10),
+                      ],
                     ),
                   ],
                 ),
-                const SizedBox(height: 20),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text('ANALOG2', style: TextStyle(fontSize: 18)),
-                    Expanded(
-                      child: Slider(
-                        value: ana2,
-                        min: 0,
-                        max: 5,
-                        divisions: 5,
-                        label: ana2.toInt().toString(),
-                        activeColor: Colors.red, // Màu của phần đã trượt
-                        inactiveColor:
-                            Colors.red.shade100, // Màu của phần chưa trượt
-                        onChanged: (value) {
-                          setState(() {
-                            ana2 = value;
-                          });
-                        },
-                      ),
+
+                // Phần Actuator
+                Container(
+                  width: double.infinity,
+                  padding: EdgeInsets.all(10),
+                  color: Colors.blueGrey[300],
+                  child: Text(
+                    'ACTUATOR',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
                     ),
-                    Text('${ana2.toInt()} V', style: TextStyle(fontSize: 18)),
-                    const SizedBox(width: 10),
-                    SizedBox(
-                      width: 200,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => GraphAna2(),
-                            ),
-                          );
-                        },
-                        style: ElevatedButton.styleFrom(
-                          foregroundColor: Colors.white,
-                          backgroundColor: Colors.red,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.zero, // Button vuông
-                          ),
-                        ),
-                        child: Text(
-                          'Graph',
-                          style: TextStyle(
-                            fontFamily: 'Roboto',
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
+                    textAlign: TextAlign.center,
+                  ),
                 ),
-                const SizedBox(height: 20),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                Column(
                   children: [
-                    Text('ANALOG3', style: TextStyle(fontSize: 18)),
-                    Expanded(
-                      child: Slider(
-                        value: ana3,
-                        min: 0,
-                        max: 5,
-                        divisions: 5,
-                        label: ana3.toInt().toString(),
-                        activeColor: Colors.red, // Màu của phần đã trượt
-                        inactiveColor:
-                            Colors.red.shade100, // Màu của phần chưa trượt
-                        onChanged: (value) {
-                          setState(() {
-                            ana3 = value;
-                          });
-                        },
-                      ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('ACTUA1', style: TextStyle(fontSize: 18)),
+                        Expanded(
+                          child: Slider(
+                            value: actua1,
+                            min: 0,
+                            max: 100,
+                            divisions: 100,
+                            label: actua1.toInt().toString(),
+                            activeColor: Colors.red,
+                            inactiveColor: Colors.red.shade100,
+                            onChanged: (value) {
+                              setState(() {
+                                actua1 = value;
+                              });
+                            },
+                          ),
+                        ),
+                        Text(
+                          '${actua1.toInt()} Hz',
+                          style: TextStyle(fontSize: 18),
+                        ),
+                        const SizedBox(width: 10),
+                      ],
                     ),
-                    Text('${ana3.toInt()} V', style: TextStyle(fontSize: 18)),
-                    const SizedBox(width: 10),
-                    SizedBox(
-                      width: 200,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => GraphAna3(),
-                            ),
-                          );
-                        },
-                        style: ElevatedButton.styleFrom(
-                          foregroundColor: Colors.white,
-                          backgroundColor: Colors.red,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.zero, // Button vuông
+                    const SizedBox(height: 20),
+
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('ACTUA2', style: TextStyle(fontSize: 18)),
+                        Expanded(
+                          child: Slider(
+                            value: actua2,
+                            min: 0,
+                            max: 100,
+                            divisions: 100,
+                            label: actua2.toInt().toString(),
+                            activeColor: Colors.red,
+                            inactiveColor: Colors.red.shade100,
+                            onChanged: (value) {
+                              setState(() {
+                                actua2 = value;
+                              });
+                            },
                           ),
                         ),
-                        child: Text(
-                          'Graph',
-                          style: TextStyle(
-                            fontFamily: 'Roboto',
-                            fontWeight: FontWeight.bold,
-                          ),
+                        Text(
+                          '${actua2.toInt()} Hz',
+                          style: TextStyle(fontSize: 18),
                         ),
-                      ),
+                        const SizedBox(width: 10),
+                      ],
                     ),
-                  ],
-                ),
-                const SizedBox(height: 20),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text('ANALOG4', style: TextStyle(fontSize: 18)),
-                    Expanded(
-                      child: Slider(
-                        value: ana4,
-                        min: 0,
-                        max: 5,
-                        divisions: 5,
-                        label: ana4.toInt().toString(),
-                        activeColor: Colors.red, // Màu của phần đã trượt
-                        inactiveColor:
-                            Colors.red.shade100, // Màu của phần chưa trượt
-                        onChanged: (value) {
-                          setState(() {
-                            ana4 = value;
-                          });
-                        },
-                      ),
+                    const SizedBox(height: 20),
+
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('ACTUA3', style: TextStyle(fontSize: 18)),
+                        Expanded(
+                          child: Slider(
+                            value: actua3,
+                            min: 0,
+                            max: 100,
+                            divisions: 100,
+                            label: actua3.toInt().toString(),
+                            activeColor: Colors.red,
+                            inactiveColor: Colors.red.shade100,
+                            onChanged: (value) {
+                              setState(() {
+                                actua3 = value;
+                              });
+                            },
+                          ),
+                        ),
+                        Text(
+                          '${actua3.toInt()} Hz',
+                          style: TextStyle(fontSize: 18),
+                        ),
+                        const SizedBox(width: 10),
+                      ],
                     ),
-                    Text('${ana4.toInt()} V', style: TextStyle(fontSize: 18)),
-                    const SizedBox(width: 10),
-                    SizedBox(
-                      width: 200,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => GraphAna4(),
-                            ),
-                          );
-                        },
-                        style: ElevatedButton.styleFrom(
-                          foregroundColor: Colors.white,
-                          backgroundColor: Colors.red,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.zero, // Button vuông
+                    const SizedBox(height: 20),
+
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('ACTUA4', style: TextStyle(fontSize: 18)),
+                        Expanded(
+                          child: Slider(
+                            value: actua4,
+                            min: 0,
+                            max: 100,
+                            divisions: 100,
+                            label: actua4.toInt().toString(),
+                            activeColor: Colors.red,
+                            inactiveColor: Colors.red.shade100,
+                            onChanged: (value) {
+                              setState(() {
+                                actua4 = value;
+                              });
+                            },
                           ),
                         ),
-                        child: Text(
-                          'Graph',
-                          style: TextStyle(
-                            fontFamily: 'Roboto',
-                            fontWeight: FontWeight.bold,
-                          ),
+                        Text(
+                          '${actua4.toInt()} Hz',
+                          style: TextStyle(fontSize: 18),
                         ),
-                      ),
+                        const SizedBox(width: 10),
+                      ],
                     ),
                   ],
                 ),

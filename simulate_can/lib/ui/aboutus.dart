@@ -48,17 +48,10 @@ class AboutUsPage extends StatelessWidget {
                 ),
                 SizedBox(height: 8),
                 Text(
-                  "- DANG BUI CHI NGUYEN - Software Engineer",
+                  "FAST - FUTURE AUTOMOTIVE SOLUTION TESTING",
                   style: TextStyle(fontSize: 18, fontFamily: 'Roboto'),
                 ),
-                Text(
-                  "- NGUYEN DANG TAN PHAT - Automotive Communication Expert",
-                  style: TextStyle(fontSize: 18, fontFamily: 'Roboto'),
-                ),
-                Text(
-                  "- NGUYEN TAM NHAN - Embedded Systems Specialist",
-                  style: TextStyle(fontSize: 18, fontFamily: 'Roboto'),
-                ),
+
                 SizedBox(height: 20),
 
                 // Contact Information
@@ -80,7 +73,7 @@ class AboutUsPage extends StatelessWidget {
                   style: TextStyle(fontSize: 18, fontFamily: 'Roboto'),
                 ),
                 Text(
-                  "Website: (To be updated)",
+                  "Youtube: https://www.youtube.com/@automotivesolutiontesting",
                   style: TextStyle(fontSize: 18, fontFamily: 'Roboto'),
                 ),
                 SizedBox(height: 20),

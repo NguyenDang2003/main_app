@@ -30,7 +30,7 @@ class _CanDoorsCarbrandState extends State<CanDoorsCarbrand> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          "OBD - CAR BRANDS",
+          "ON-BOARD DIAGNOSTICS",
           style: TextStyle(
             fontFamily: 'Roboto',
             fontSize: 40,

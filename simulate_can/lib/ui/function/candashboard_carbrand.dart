@@ -29,7 +29,7 @@ class _CandashboardCarbrandState extends State<CandashboardCarbrand> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          "DASHBOARD SIMULATE - CAR BRANDS",
+          "DASHBOARD SIMULATION",
           style: TextStyle(
             fontFamily: 'Roboto',
             fontSize: 40,

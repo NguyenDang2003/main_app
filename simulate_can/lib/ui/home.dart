@@ -31,7 +31,7 @@ class Home extends StatelessWidget {
                     ),
                     SizedBox(height: 10),
                     Text(
-                      "We not only advise but also consider your thoughts to find the best solution for each car engine problem.",
+                      "We provide expert advice and take your ideas into account to solve every engine issue effectively.",
                       style: GoogleFonts.poppins(
                         fontSize: 20,
                         color: Colors.black54,
@@ -75,17 +75,17 @@ class Home extends StatelessWidget {
                             children: [
                               Row(
                                 children: [
-                                  _buildServiceBox("Tech Development"),
+                                  _buildServiceBox("CAN Bus Communication"),
                                   const SizedBox(width: 20),
-                                  _buildServiceBox("Tech Development"),
+                                  _buildServiceBox("Sensor Signal Simulation"),
                                 ],
                               ),
                               const SizedBox(height: 20),
                               Row(
                                 children: [
-                                  _buildServiceBox("Tech Development"),
+                                  _buildServiceBox("ECU Testing Interface"),
                                   const SizedBox(width: 20),
-                                  _buildServiceBox("Tech Development"),
+                                  _buildServiceBox("Vehicle Data Monitoring"),
                                 ],
                               ),
                             ],
@@ -101,7 +101,7 @@ class Home extends StatelessWidget {
                             alignment: Alignment.topRight,
                             child: AspectRatio(
                               aspectRatio:
-                                  2.5, // Hoặc dùng MediaQuery như bạn đang dùng
+                                  1.5, // Hoặc dùng MediaQuery như bạn đang dùng
                               child: Container(
                                 constraints: BoxConstraints(minHeight: 100),
                                 decoration: BoxDecoration(

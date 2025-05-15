@@ -56,7 +56,7 @@ class FunctionMain extends StatelessWidget {
                                 height: 10,
                               ), // Khoảng cách giữa hình ảnh và chữ
                               Text(
-                                "WAVEFORM SIMULATE",
+                                "WAVEFORM SIMULATION",
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 30,
@@ -105,7 +105,7 @@ class FunctionMain extends StatelessWidget {
                                 ),
                                 SizedBox(height: 10),
                                 Text(
-                                  "DASHBOARD SIMULATE",
+                                  "DASHBOARD SIMULATION",
                                   style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 30,
