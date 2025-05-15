@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'dart:ui'; // Để sử dụng BackdropFilter
 import 'package:simulate_can/var.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class DashboardKia extends StatefulWidget {
   const DashboardKia({super.key});
@@ -9,6 +11,26 @@ class DashboardKia extends StatefulWidget {
 }
 
 class DashboardKiaState extends State<DashboardKia> {
+  void sendData(String addr, String field, String value) async {
+    final url = Uri.parse('http://127.0.0.1:8000/send'); // thay <raspi-ip>
+
+    try {
+      final response = await http.post(
+        url,
+        headers: {'Content-Type': 'application/json'},
+        body: jsonEncode({'addr': addr, 'field': field, 'value': value}),
+      );
+
+      if (response.statusCode == 200) {
+        print('✅ Gửi thành công tới $addr: $field = $value');
+      } else {
+        print('❌ Lỗi khi gửi: ${response.body}');
+      }
+    } catch (e) {
+      print('❌ Lỗi kết nối: $e');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -354,7 +376,16 @@ class DashboardKiaState extends State<DashboardKia> {
           Align(
             alignment: Alignment(0.05, 0.81), // Điều chỉnh vị trí theo tỷ lệ
             child: GestureDetector(
-              onTap: () => setState(() => kiaisActive4 = !kiaisActive4),
+              onTap: () {
+                setState(() {
+                  kiaisActive4 = !kiaisActive4;
+                  if (kiaisActive4 == true) {
+                    sendData('1', 'MIL', '02');
+                  } else {
+                    sendData('1', 'MIL', '00');
+                  }
+                });
+              },
               child: ColorFiltered(
                 colorFilter: ColorFilter.mode(
                   kiaisActive4 ? Colors.yellow : Colors.grey,
@@ -394,7 +425,16 @@ class DashboardKiaState extends State<DashboardKia> {
           Align(
             alignment: Alignment(0.15, -0.25), // Điều chỉnh vị trí theo tỷ lệ
             child: GestureDetector(
-              onTap: () => setState(() => kiaisActive6 = !kiaisActive6),
+              onTap: () {
+                setState(() {
+                  kiaisActive6 = !kiaisActive6;
+                  if (kiaisActive6 == true) {
+                    sendData('1', 'SBELT', '160');
+                  } else {
+                    sendData('1', 'SBELT', '00');
+                  }
+                });
+              },
               child: ColorFiltered(
                 colorFilter: ColorFilter.mode(
                   kiaisActive6 ? Colors.yellow : Colors.grey,
@@ -434,7 +474,16 @@ class DashboardKiaState extends State<DashboardKia> {
           Align(
             alignment: Alignment(-0.35, 0.75), // Điều chỉnh vị trí theo tỷ lệ
             child: GestureDetector(
-              onTap: () => setState(() => kiaisActive8 = !kiaisActive8),
+              onTap: () {
+                setState(() {
+                  kiaisActive8 != kiaisActive8;
+                  if (kiaisActive8 == true) {
+                    sendData('1', 'TMS', '03');
+                  } else {
+                    sendData('1', 'TMS', '00');
+                  }
+                });
+              },
               child: ColorFiltered(
                 colorFilter: ColorFilter.mode(
                   kiaisActive8 ? Colors.yellow : Colors.grey,
@@ -454,7 +503,16 @@ class DashboardKiaState extends State<DashboardKia> {
           Align(
             alignment: Alignment(0.12, 0.8), // Điều chỉnh vị trí theo tỷ lệ
             child: GestureDetector(
-              onTap: () => setState(() => kiaisActive9 = !kiaisActive9),
+              onTap: () {
+                setState(() {
+                  kiaisActive9 = !kiaisActive9;
+                  if (kiaisActive9 == true) {
+                    sendData('1', 'ABS', '01');
+                  } else {
+                    sendData('1', 'ABS', '00');
+                  }
+                });
+              },
               child: ColorFiltered(
                 colorFilter: ColorFilter.mode(
                   kiaisActive9 ? Colors.yellow : Colors.grey,
