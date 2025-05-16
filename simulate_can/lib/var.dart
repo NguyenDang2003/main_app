@@ -94,7 +94,7 @@ final List<Widget> pages = [
 bool isConnectedCarDoor = false;
 // Biến dùng cho simulate
 bool isSending = false;
-double crankValue = 1500;
+int crankValue = 1500;
 
 TextEditingController teethabsController = TextEditingController();
 double abs1 = 0;

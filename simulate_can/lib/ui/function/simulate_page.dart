@@ -111,7 +111,7 @@ class _SimulateUIstate extends State<SimulatePage> {
                         onChanged: (value) {
                           setState(() {
                             crankValue = value;
-                            sendData('2', 'rpm', crankValue.toString());
+                            sendData('2', 'rpm', crankValue.toInt().toString());
                           });
                         },
                       ),
