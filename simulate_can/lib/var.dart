@@ -116,6 +116,8 @@ double actua4 = 0;
 
 TextEditingController teethController = TextEditingController();
 TextEditingController gapteethController = TextEditingController();
+bool crksending = false;
+
 TextEditingController numCampInducteethController = TextEditingController();
 TextEditingController difInCampCrkInducController = TextEditingController();
 TextEditingController difExCampCrkInducController = TextEditingController();

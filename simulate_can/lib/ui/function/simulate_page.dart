@@ -17,18 +17,18 @@ class SimulatePage extends StatefulWidget {
 
 class _SimulateUIstate extends State<SimulatePage> {
   // Hàm gửi dữ liệu
-  void sendData(String field, int value) async {
+  void sendData(String addr, String field, String value) async {
     final url = Uri.parse('http://127.0.0.1:8000/send'); // thay <raspi-ip>
 
     try {
       final response = await http.post(
         url,
         headers: {'Content-Type': 'application/json'},
-        body: jsonEncode({'field': field, 'value': value}),
+        body: jsonEncode({'addr': addr, 'field': field, 'value': value}),
       );
 
       if (response.statusCode == 200) {
-        print('✅ Gửi thành công: $field = $value');
+        print('✅ Gửi thành công tới $addr: $field = $value');
       } else {
         print('❌ Lỗi khi gửi: ${response.body}');
       }
@@ -111,7 +111,7 @@ class _SimulateUIstate extends State<SimulatePage> {
                         onChanged: (value) {
                           setState(() {
                             crankValue = value;
-                            sendData('rpm', crankValue.toInt());
+                            sendData('2', 'rpm', crankValue.toString());
                           });
                         },
                       ),
@@ -159,7 +159,7 @@ class _SimulateUIstate extends State<SimulatePage> {
                             onSubmitted: (value) {
                               final teeth = int.tryParse(value);
                               if (teeth != null) {
-                                sendData('bate', teeth);
+                                sendData('2', 'bate', teeth.toString());
                               }
                             },
                           ),
@@ -184,7 +184,7 @@ class _SimulateUIstate extends State<SimulatePage> {
                             onSubmitted: (value) {
                               final gap = int.tryParse(value);
                               if (gap != null) {
-                                sendData('gap', gap);
+                                sendData('2', 'gap', gap.toString());
                               }
                             },
                           ),
@@ -197,7 +197,15 @@ class _SimulateUIstate extends State<SimulatePage> {
                 SizedBox(
                   width: 200,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      setState(() {
+                        crksending = !crksending;
+                        if (crksending == true) {
+                          sendData('2', 'crksend', '1');
+                        }
+                        crksending = !crksending;
+                      });
+                    },
                     style: ElevatedButton.styleFrom(
                       foregroundColor: Colors.white,
                       backgroundColor: Colors.green,

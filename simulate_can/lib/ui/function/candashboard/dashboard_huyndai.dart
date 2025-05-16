@@ -457,7 +457,16 @@ class DashboardHuyndaiState extends State<DashboardHuyndai> {
           Align(
             alignment: Alignment(-0.25, -0.21), // Điều chỉnh vị trí theo tỷ lệ
             child: GestureDetector(
-              onTap: () => setState(() => hyundaiisActive1 = !hyundaiisActive1),
+              onTap: () {
+                setState(() {
+                  hyundaiisActive1 = !hyundaiisActive1;
+                  if (hyundaiisActive1 == true) {
+                    sendData('1', 'LEFT', '40');
+                  } else {
+                    sendData('1', 'LEFT', '00');
+                  }
+                });
+              },
               child: ColorFiltered(
                 colorFilter: ColorFilter.mode(
                   hyundaiisActive1 ? Colors.green : Colors.grey,
@@ -477,7 +486,16 @@ class DashboardHuyndaiState extends State<DashboardHuyndai> {
           Align(
             alignment: Alignment(0.22, -0.21), // Điều chỉnh vị trí theo tỷ lệ
             child: GestureDetector(
-              onTap: () => setState(() => hyundaiisActive2 = !hyundaiisActive2),
+              onTap: () {
+                setState(() {
+                  hyundaiisActive2 = !hyundaiisActive2;
+                  if (hyundaiisActive2 == true) {
+                    sendData('1', 'RIGHT', '40');
+                  } else {
+                    sendData('1', 'RIGHT', '00');
+                  }
+                });
+              },
               child: ColorFiltered(
                 colorFilter: ColorFilter.mode(
                   hyundaiisActive2 ? Colors.green : Colors.grey,
