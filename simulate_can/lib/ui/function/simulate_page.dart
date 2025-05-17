@@ -1585,23 +1585,24 @@ class _SimulateUIstate extends State<SimulatePage> {
                         Text('ANALOG6', style: TextStyle(fontSize: 18)),
                         Expanded(
                           child: Slider(
-                            value: ana6,
+                            value: ana6 / 20,
                             min: 0,
                             max: 5,
                             divisions: 50,
-                            label: ana6.toStringAsFixed(2),
+                            label: (ana6 / 20).toStringAsFixed(2),
                             activeColor: Colors.red,
                             inactiveColor: Colors.red.shade100,
                             onChanged: (value) {
                               setState(() {
                                 ana6 = value * 20;
+                                print(ana6);
                                 sendData('2', 'ana6', ana6.toInt().toString());
                               });
                             },
                           ),
                         ),
                         Text(
-                          '${ana6.toStringAsFixed(2)} V',
+                          '${(ana6 / 20).toStringAsFixed(2)} V',
                           style: TextStyle(fontSize: 18),
                         ),
                         const SizedBox(width: 10),
