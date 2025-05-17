@@ -156,7 +156,7 @@ class _SimulateUIstate extends State<SimulatePage> {
                             controller: teethController,
                             keyboardType: TextInputType.number,
                             decoration: InputDecoration(hintText: '36'),
-                            onSubmitted: (value) {
+                            onChanged: (value) {
                               final teeth = int.tryParse(value);
                               if (teeth != null) {
                                 sendData('2', 'bate', teeth.toString());
@@ -181,7 +181,7 @@ class _SimulateUIstate extends State<SimulatePage> {
                             controller: gapteethController,
                             keyboardType: TextInputType.number,
                             decoration: InputDecoration(hintText: '0'),
-                            onSubmitted: (value) {
+                            onChanged: (value) {
                               final gap = int.tryParse(value);
                               if (gap != null) {
                                 sendData('2', 'gap', gap.toString());
@@ -287,7 +287,7 @@ class _SimulateUIstate extends State<SimulatePage> {
                                         decoration: InputDecoration(
                                           hintText: '72',
                                         ),
-                                        onSubmitted: (value) {
+                                        onChanged: (value) {
                                           final numcamInduct = int.tryParse(
                                             value,
                                           );
@@ -325,7 +325,7 @@ class _SimulateUIstate extends State<SimulatePage> {
                                         decoration: InputDecoration(
                                           hintText: '0',
                                         ),
-                                        onSubmitted: (value) {
+                                        onChanged: (value) {
                                           final difin = int.tryParse(value);
                                           if (difin != null) {
                                             sendData(
@@ -361,7 +361,7 @@ class _SimulateUIstate extends State<SimulatePage> {
                                         decoration: InputDecoration(
                                           hintText: '0',
                                         ),
-                                        onSubmitted: (value) {
+                                        onChanged: (value) {
                                           final difex = int.tryParse(value);
                                           if (difex != null) {
                                             sendData(
@@ -418,7 +418,7 @@ class _SimulateUIstate extends State<SimulatePage> {
                                                   decoration: InputDecoration(
                                                     hintText: '0',
                                                   ),
-                                                  onSubmitted: (value) {
+                                                  onChanged: (value) {
                                                     final camteeth1 =
                                                         int.tryParse(value);
                                                     if (camteeth1 != null) {
@@ -441,7 +441,7 @@ class _SimulateUIstate extends State<SimulatePage> {
                                                   decoration: InputDecoration(
                                                     hintText: '0',
                                                   ),
-                                                  onSubmitted: (value) {
+                                                  onChanged: (value) {
                                                     final camgap1 =
                                                         int.tryParse(value);
                                                     if (camgap1 != null) {
@@ -489,7 +489,7 @@ class _SimulateUIstate extends State<SimulatePage> {
                                                   decoration: InputDecoration(
                                                     hintText: '0',
                                                   ),
-                                                  onSubmitted: (value) {
+                                                  onChanged: (value) {
                                                     final camteeth2 =
                                                         int.tryParse(value);
                                                     if (camteeth2 != null) {
@@ -512,7 +512,7 @@ class _SimulateUIstate extends State<SimulatePage> {
                                                   decoration: InputDecoration(
                                                     hintText: '0',
                                                   ),
-                                                  onSubmitted: (value) {
+                                                  onChanged: (value) {
                                                     final camgap2 =
                                                         int.tryParse(value);
                                                     if (camgap2 != null) {
@@ -560,7 +560,7 @@ class _SimulateUIstate extends State<SimulatePage> {
                                                   decoration: InputDecoration(
                                                     hintText: '0',
                                                   ),
-                                                  onSubmitted: (value) {
+                                                  onChanged: (value) {
                                                     final camteeth3 =
                                                         int.tryParse(value);
                                                     if (camteeth3 != null) {
@@ -583,7 +583,7 @@ class _SimulateUIstate extends State<SimulatePage> {
                                                   decoration: InputDecoration(
                                                     hintText: '0',
                                                   ),
-                                                  onSubmitted: (value) {
+                                                  onChanged: (value) {
                                                     final camgap2 =
                                                         int.tryParse(value);
                                                     if (camgap2 != null) {
@@ -631,7 +631,7 @@ class _SimulateUIstate extends State<SimulatePage> {
                                                   decoration: InputDecoration(
                                                     hintText: '0',
                                                   ),
-                                                  onSubmitted: (value) {
+                                                  onChanged: (value) {
                                                     final camteeth4 =
                                                         int.tryParse(value);
                                                     if (camteeth4 != null) {
@@ -654,7 +654,7 @@ class _SimulateUIstate extends State<SimulatePage> {
                                                   decoration: InputDecoration(
                                                     hintText: '0',
                                                   ),
-                                                  onSubmitted: (value) {
+                                                  onChanged: (value) {
                                                     final camgap4 =
                                                         int.tryParse(value);
                                                     if (camgap4 != null) {
@@ -703,7 +703,7 @@ class _SimulateUIstate extends State<SimulatePage> {
                                                   decoration: InputDecoration(
                                                     hintText: '0',
                                                   ),
-                                                  onSubmitted: (value) {
+                                                  onChanged: (value) {
                                                     final camteeth5 =
                                                         int.tryParse(value);
                                                     if (camteeth5 != null) {
@@ -726,7 +726,7 @@ class _SimulateUIstate extends State<SimulatePage> {
                                                   decoration: InputDecoration(
                                                     hintText: '0',
                                                   ),
-                                                  onSubmitted: (value) {
+                                                  onChanged: (value) {
                                                     final camgap5 =
                                                         int.tryParse(value);
                                                     if (camgap5 != null) {
@@ -774,7 +774,7 @@ class _SimulateUIstate extends State<SimulatePage> {
                                                   decoration: InputDecoration(
                                                     hintText: '0',
                                                   ),
-                                                  onSubmitted: (value) {
+                                                  onChanged: (value) {
                                                     final camteeth6 =
                                                         int.tryParse(value);
                                                     if (camteeth6 != null) {
@@ -797,7 +797,7 @@ class _SimulateUIstate extends State<SimulatePage> {
                                                   decoration: InputDecoration(
                                                     hintText: '0',
                                                   ),
-                                                  onSubmitted: (value) {
+                                                  onChanged: (value) {
                                                     final camgap6 =
                                                         int.tryParse(value);
                                                     if (camgap6 != null) {
@@ -845,7 +845,7 @@ class _SimulateUIstate extends State<SimulatePage> {
                                                   decoration: InputDecoration(
                                                     hintText: '0',
                                                   ),
-                                                  onSubmitted: (value) {
+                                                  onChanged: (value) {
                                                     final camteeth7 =
                                                         int.tryParse(value);
                                                     if (camteeth7 != null) {
@@ -868,7 +868,7 @@ class _SimulateUIstate extends State<SimulatePage> {
                                                   decoration: InputDecoration(
                                                     hintText: '0',
                                                   ),
-                                                  onSubmitted: (value) {
+                                                  onChanged: (value) {
                                                     final camgap7 =
                                                         int.tryParse(value);
                                                     if (camgap7 != null) {
@@ -916,7 +916,7 @@ class _SimulateUIstate extends State<SimulatePage> {
                                                   decoration: InputDecoration(
                                                     hintText: '0',
                                                   ),
-                                                  onSubmitted: (value) {
+                                                  onChanged: (value) {
                                                     final camteeth8 =
                                                         int.tryParse(value);
                                                     if (camteeth8 != null) {
@@ -939,7 +939,7 @@ class _SimulateUIstate extends State<SimulatePage> {
                                                   decoration: InputDecoration(
                                                     hintText: '0',
                                                   ),
-                                                  onSubmitted: (value) {
+                                                  onChanged: (value) {
                                                     final camgap8 =
                                                         int.tryParse(value);
                                                     if (camgap8 != null) {
@@ -1158,7 +1158,7 @@ class _SimulateUIstate extends State<SimulatePage> {
                                       decoration: InputDecoration(
                                         hintText: '0',
                                       ),
-                                      onSubmitted: (value) {
+                                      onChanged: (value) {
                                         final abs1send = int.tryParse(value);
                                         if (abs1send != null) {
                                           sendData("3", "absbate", value);
