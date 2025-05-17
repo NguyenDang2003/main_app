@@ -201,12 +201,8 @@ class _SimulateUIstate extends State<SimulatePage> {
                       setState(() {
                         crksending = !crksending;
                         if (crksending == true) {
-                          if (teethController != null) {
-                            sendData('2', 'bate', teethController.text);
-                          }
-                          if (gapteethController != null) {
-                            sendData('2', 'gap', gapteethController.text);
-                          }
+                          sendData('2', 'bate', teethController.text);
+                          sendData('2', 'gap', gapteethController.text);
                           sendData('2', 'crksend', '1');
                         }
                         crksending = !crksending;
@@ -293,18 +289,18 @@ class _SimulateUIstate extends State<SimulatePage> {
                                         decoration: InputDecoration(
                                           hintText: '72',
                                         ),
-                                        onChanged: (value) {
-                                          final numcamInduct = int.tryParse(
-                                            value,
-                                          );
-                                          if (numcamInduct != null) {
-                                            sendData(
-                                              '2',
-                                              'numcaminduct',
-                                              numcamInduct.toString(),
-                                            );
-                                          }
-                                        },
+                                        // onChanged: (value) {
+                                        //   final numcamInduct = int.tryParse(
+                                        //     value,
+                                        //   );
+                                        //   if (numcamInduct != null) {
+                                        //     sendData(
+                                        //       '2',
+                                        //       'numcaminduct',
+                                        //       numcamInduct.toString(),
+                                        //     );
+                                        //   }
+                                        // },
                                       ),
                                     ),
                                   ],
@@ -331,16 +327,16 @@ class _SimulateUIstate extends State<SimulatePage> {
                                         decoration: InputDecoration(
                                           hintText: '0',
                                         ),
-                                        onChanged: (value) {
-                                          final difin = int.tryParse(value);
-                                          if (difin != null) {
-                                            sendData(
-                                              '2',
-                                              'difin',
-                                              difin.toString(),
-                                            );
-                                          }
-                                        },
+                                        // onChanged: (value) {
+                                        //   final difin = int.tryParse(value);
+                                        //   if (difin != null) {
+                                        //     sendData(
+                                        //       '2',
+                                        //       'difin',
+                                        //       difin.toString(),
+                                        //     );
+                                        //   }
+                                        // },
                                       ),
                                     ),
                                   ],
@@ -367,16 +363,16 @@ class _SimulateUIstate extends State<SimulatePage> {
                                         decoration: InputDecoration(
                                           hintText: '0',
                                         ),
-                                        onChanged: (value) {
-                                          final difex = int.tryParse(value);
-                                          if (difex != null) {
-                                            sendData(
-                                              '2',
-                                              'difout',
-                                              difex.toString(),
-                                            );
-                                          }
-                                        },
+                                        // onChanged: (value) {
+                                        //   final difex = int.tryParse(value);
+                                        //   if (difex != null) {
+                                        //     sendData(
+                                        //       '2',
+                                        //       'difout',
+                                        //       difex.toString(),
+                                        //     );
+                                        //   }
+                                        // },
                                       ),
                                     ),
                                   ],
@@ -424,17 +420,17 @@ class _SimulateUIstate extends State<SimulatePage> {
                                                   decoration: InputDecoration(
                                                     hintText: '0',
                                                   ),
-                                                  onChanged: (value) {
-                                                    final camteeth1 =
-                                                        int.tryParse(value);
-                                                    if (camteeth1 != null) {
-                                                      sendData(
-                                                        '2',
-                                                        'camteeth1',
-                                                        camteeth1.toString(),
-                                                      );
-                                                    }
-                                                  },
+                                                  // onChanged: (value) {
+                                                  //   final camteeth1 =
+                                                  //       int.tryParse(value);
+                                                  //   if (camteeth1 != null) {
+                                                  //     sendData(
+                                                  //       '2',
+                                                  //       'camteeth1',
+                                                  //       camteeth1.toString(),
+                                                  //     );
+                                                  //   }
+                                                  // },
                                                 ),
                                               ),
                                               const SizedBox(width: 20),
@@ -447,17 +443,17 @@ class _SimulateUIstate extends State<SimulatePage> {
                                                   decoration: InputDecoration(
                                                     hintText: '0',
                                                   ),
-                                                  onChanged: (value) {
-                                                    final camgap1 =
-                                                        int.tryParse(value);
-                                                    if (camgap1 != null) {
-                                                      sendData(
-                                                        '2',
-                                                        'camgap1',
-                                                        camgap1.toString(),
-                                                      );
-                                                    }
-                                                  },
+                                                  // onChanged: (value) {
+                                                  //   final camgap1 =
+                                                  //       int.tryParse(value);
+                                                  //   if (camgap1 != null) {
+                                                  //     sendData(
+                                                  //       '2',
+                                                  //       'camgap1',
+                                                  //       camgap1.toString(),
+                                                  //     );
+                                                  //   }
+                                                  // },
                                                 ),
                                               ),
                                             ],
@@ -495,17 +491,17 @@ class _SimulateUIstate extends State<SimulatePage> {
                                                   decoration: InputDecoration(
                                                     hintText: '0',
                                                   ),
-                                                  onChanged: (value) {
-                                                    final camteeth2 =
-                                                        int.tryParse(value);
-                                                    if (camteeth2 != null) {
-                                                      sendData(
-                                                        '2',
-                                                        'camteeth2',
-                                                        camteeth2.toString(),
-                                                      );
-                                                    }
-                                                  },
+                                                  // onChanged: (value) {
+                                                  //   final camteeth2 =
+                                                  //       int.tryParse(value);
+                                                  //   if (camteeth2 != null) {
+                                                  //     sendData(
+                                                  //       '2',
+                                                  //       'camteeth2',
+                                                  //       camteeth2.toString(),
+                                                  //     );
+                                                  //   }
+                                                  // },
                                                 ),
                                               ),
                                               const SizedBox(width: 20),
@@ -518,17 +514,17 @@ class _SimulateUIstate extends State<SimulatePage> {
                                                   decoration: InputDecoration(
                                                     hintText: '0',
                                                   ),
-                                                  onChanged: (value) {
-                                                    final camgap2 =
-                                                        int.tryParse(value);
-                                                    if (camgap2 != null) {
-                                                      sendData(
-                                                        '2',
-                                                        'camgap2',
-                                                        camgap2.toString(),
-                                                      );
-                                                    }
-                                                  },
+                                                  // onChanged: (value) {
+                                                  //   final camgap2 =
+                                                  //       int.tryParse(value);
+                                                  //   if (camgap2 != null) {
+                                                  //     sendData(
+                                                  //       '2',
+                                                  //       'camgap2',
+                                                  //       camgap2.toString(),
+                                                  //     );
+                                                  //   }
+                                                  // },
                                                 ),
                                               ),
                                             ],
@@ -566,17 +562,17 @@ class _SimulateUIstate extends State<SimulatePage> {
                                                   decoration: InputDecoration(
                                                     hintText: '0',
                                                   ),
-                                                  onChanged: (value) {
-                                                    final camteeth3 =
-                                                        int.tryParse(value);
-                                                    if (camteeth3 != null) {
-                                                      sendData(
-                                                        '2',
-                                                        'camteeth3',
-                                                        camteeth3.toString(),
-                                                      );
-                                                    }
-                                                  },
+                                                  // onChanged: (value) {
+                                                  //   final camteeth3 =
+                                                  //       int.tryParse(value);
+                                                  //   if (camteeth3 != null) {
+                                                  //     sendData(
+                                                  //       '2',
+                                                  //       'camteeth3',
+                                                  //       camteeth3.toString(),
+                                                  //     );
+                                                  //   }
+                                                  // },
                                                 ),
                                               ),
                                               const SizedBox(width: 20),
@@ -589,17 +585,17 @@ class _SimulateUIstate extends State<SimulatePage> {
                                                   decoration: InputDecoration(
                                                     hintText: '0',
                                                   ),
-                                                  onChanged: (value) {
-                                                    final camgap2 =
-                                                        int.tryParse(value);
-                                                    if (camgap2 != null) {
-                                                      sendData(
-                                                        '2',
-                                                        'camgap2',
-                                                        camgap2.toString(),
-                                                      );
-                                                    }
-                                                  },
+                                                  // onChanged: (value) {
+                                                  //   final camgap2 =
+                                                  //       int.tryParse(value);
+                                                  //   if (camgap2 != null) {
+                                                  //     sendData(
+                                                  //       '2',
+                                                  //       'camgap2',
+                                                  //       camgap2.toString(),
+                                                  //     );
+                                                  //   }
+                                                  // },
                                                 ),
                                               ),
                                             ],
@@ -637,17 +633,17 @@ class _SimulateUIstate extends State<SimulatePage> {
                                                   decoration: InputDecoration(
                                                     hintText: '0',
                                                   ),
-                                                  onChanged: (value) {
-                                                    final camteeth4 =
-                                                        int.tryParse(value);
-                                                    if (camteeth4 != null) {
-                                                      sendData(
-                                                        '2',
-                                                        'camteeth4',
-                                                        camteeth4.toString(),
-                                                      );
-                                                    }
-                                                  },
+                                                  // onChanged: (value) {
+                                                  //   final camteeth4 =
+                                                  //       int.tryParse(value);
+                                                  //   if (camteeth4 != null) {
+                                                  //     sendData(
+                                                  //       '2',
+                                                  //       'camteeth4',
+                                                  //       camteeth4.toString(),
+                                                  //     );
+                                                  //   }
+                                                  // },
                                                 ),
                                               ),
                                               const SizedBox(width: 20),
@@ -660,17 +656,17 @@ class _SimulateUIstate extends State<SimulatePage> {
                                                   decoration: InputDecoration(
                                                     hintText: '0',
                                                   ),
-                                                  onChanged: (value) {
-                                                    final camgap4 =
-                                                        int.tryParse(value);
-                                                    if (camgap4 != null) {
-                                                      sendData(
-                                                        '2',
-                                                        'camgap4',
-                                                        camgap4.toString(),
-                                                      );
-                                                    }
-                                                  },
+                                                  // onChanged: (value) {
+                                                  //   final camgap4 =
+                                                  //       int.tryParse(value);
+                                                  //   if (camgap4 != null) {
+                                                  //     sendData(
+                                                  //       '2',
+                                                  //       'camgap4',
+                                                  //       camgap4.toString(),
+                                                  //     );
+                                                  //   }
+                                                  // },
                                                 ),
                                               ),
                                             ],
@@ -709,17 +705,17 @@ class _SimulateUIstate extends State<SimulatePage> {
                                                   decoration: InputDecoration(
                                                     hintText: '0',
                                                   ),
-                                                  onChanged: (value) {
-                                                    final camteeth5 =
-                                                        int.tryParse(value);
-                                                    if (camteeth5 != null) {
-                                                      sendData(
-                                                        '2',
-                                                        'camteeth5',
-                                                        camteeth5.toString(),
-                                                      );
-                                                    }
-                                                  },
+                                                  // onChanged: (value) {
+                                                  //   final camteeth5 =
+                                                  //       int.tryParse(value);
+                                                  //   if (camteeth5 != null) {
+                                                  //     sendData(
+                                                  //       '2',
+                                                  //       'camteeth5',
+                                                  //       camteeth5.toString(),
+                                                  //     );
+                                                  //   }
+                                                  // },
                                                 ),
                                               ),
                                               const SizedBox(width: 20),
@@ -732,17 +728,17 @@ class _SimulateUIstate extends State<SimulatePage> {
                                                   decoration: InputDecoration(
                                                     hintText: '0',
                                                   ),
-                                                  onChanged: (value) {
-                                                    final camgap5 =
-                                                        int.tryParse(value);
-                                                    if (camgap5 != null) {
-                                                      sendData(
-                                                        '2',
-                                                        'camgap5',
-                                                        camgap5.toString(),
-                                                      );
-                                                    }
-                                                  },
+                                                  // onChanged: (value) {
+                                                  //   final camgap5 =
+                                                  //       int.tryParse(value);
+                                                  //   if (camgap5 != null) {
+                                                  //     sendData(
+                                                  //       '2',
+                                                  //       'camgap5',
+                                                  //       camgap5.toString(),
+                                                  //     );
+                                                  //   }
+                                                  // },
                                                 ),
                                               ),
                                             ],
@@ -780,17 +776,17 @@ class _SimulateUIstate extends State<SimulatePage> {
                                                   decoration: InputDecoration(
                                                     hintText: '0',
                                                   ),
-                                                  onChanged: (value) {
-                                                    final camteeth6 =
-                                                        int.tryParse(value);
-                                                    if (camteeth6 != null) {
-                                                      sendData(
-                                                        '2',
-                                                        'camteeth6',
-                                                        camteeth6.toString(),
-                                                      );
-                                                    }
-                                                  },
+                                                  // onChanged: (value) {
+                                                  //   final camteeth6 =
+                                                  //       int.tryParse(value);
+                                                  //   if (camteeth6 != null) {
+                                                  //     sendData(
+                                                  //       '2',
+                                                  //       'camteeth6',
+                                                  //       camteeth6.toString(),
+                                                  //     );
+                                                  //   }
+                                                  // },
                                                 ),
                                               ),
                                               const SizedBox(width: 20),
@@ -803,17 +799,17 @@ class _SimulateUIstate extends State<SimulatePage> {
                                                   decoration: InputDecoration(
                                                     hintText: '0',
                                                   ),
-                                                  onChanged: (value) {
-                                                    final camgap6 =
-                                                        int.tryParse(value);
-                                                    if (camgap6 != null) {
-                                                      sendData(
-                                                        '2',
-                                                        'camgap6',
-                                                        camgap6.toString(),
-                                                      );
-                                                    }
-                                                  },
+                                                  // onChanged: (value) {
+                                                  //   final camgap6 =
+                                                  //       int.tryParse(value);
+                                                  //   if (camgap6 != null) {
+                                                  //     sendData(
+                                                  //       '2',
+                                                  //       'camgap6',
+                                                  //       camgap6.toString(),
+                                                  //     );
+                                                  //   }
+                                                  // },
                                                 ),
                                               ),
                                             ],
@@ -851,17 +847,17 @@ class _SimulateUIstate extends State<SimulatePage> {
                                                   decoration: InputDecoration(
                                                     hintText: '0',
                                                   ),
-                                                  onChanged: (value) {
-                                                    final camteeth7 =
-                                                        int.tryParse(value);
-                                                    if (camteeth7 != null) {
-                                                      sendData(
-                                                        '2',
-                                                        'camteeth7',
-                                                        camteeth7.toString(),
-                                                      );
-                                                    }
-                                                  },
+                                                  // onChanged: (value) {
+                                                  //   final camteeth7 =
+                                                  //       int.tryParse(value);
+                                                  //   if (camteeth7 != null) {
+                                                  //     sendData(
+                                                  //       '2',
+                                                  //       'camteeth7',
+                                                  //       camteeth7.toString(),
+                                                  //     );
+                                                  //   }
+                                                  // },
                                                 ),
                                               ),
                                               const SizedBox(width: 20),
@@ -874,17 +870,17 @@ class _SimulateUIstate extends State<SimulatePage> {
                                                   decoration: InputDecoration(
                                                     hintText: '0',
                                                   ),
-                                                  onChanged: (value) {
-                                                    final camgap7 =
-                                                        int.tryParse(value);
-                                                    if (camgap7 != null) {
-                                                      sendData(
-                                                        '2',
-                                                        'camgap7',
-                                                        camgap7.toString(),
-                                                      );
-                                                    }
-                                                  },
+                                                  // onChanged: (value) {
+                                                  //   final camgap7 =
+                                                  //       int.tryParse(value);
+                                                  //   if (camgap7 != null) {
+                                                  //     sendData(
+                                                  //       '2',
+                                                  //       'camgap7',
+                                                  //       camgap7.toString(),
+                                                  //     );
+                                                  //   }
+                                                  // },
                                                 ),
                                               ),
                                             ],
@@ -922,17 +918,17 @@ class _SimulateUIstate extends State<SimulatePage> {
                                                   decoration: InputDecoration(
                                                     hintText: '0',
                                                   ),
-                                                  onChanged: (value) {
-                                                    final camteeth8 =
-                                                        int.tryParse(value);
-                                                    if (camteeth8 != null) {
-                                                      sendData(
-                                                        '2',
-                                                        'camteeth8',
-                                                        camteeth8.toString(),
-                                                      );
-                                                    }
-                                                  },
+                                                  // onChanged: (value) {
+                                                  //   final camteeth8 =
+                                                  //       int.tryParse(value);
+                                                  //   if (camteeth8 != null) {
+                                                  //     sendData(
+                                                  //       '2',
+                                                  //       'camteeth8',
+                                                  //       camteeth8.toString(),
+                                                  //     );
+                                                  //   }
+                                                  // },
                                                 ),
                                               ),
                                               const SizedBox(width: 20),
@@ -945,17 +941,17 @@ class _SimulateUIstate extends State<SimulatePage> {
                                                   decoration: InputDecoration(
                                                     hintText: '0',
                                                   ),
-                                                  onChanged: (value) {
-                                                    final camgap8 =
-                                                        int.tryParse(value);
-                                                    if (camgap8 != null) {
-                                                      sendData(
-                                                        '2',
-                                                        'camgap8',
-                                                        camgap8.toString(),
-                                                      );
-                                                    }
-                                                  },
+                                                  // onChanged: (value) {
+                                                  //   final camgap8 =
+                                                  //       int.tryParse(value);
+                                                  //   if (camgap8 != null) {
+                                                  //     sendData(
+                                                  //       '2',
+                                                  //       'camgap8',
+                                                  //       camgap8.toString(),
+                                                  //     );
+                                                  //   }
+                                                  // },
                                                 ),
                                               ),
                                             ],
@@ -974,6 +970,102 @@ class _SimulateUIstate extends State<SimulatePage> {
                                       setState(() {
                                         caminductsend = !caminductsend;
                                         if (caminductsend == true) {
+                                          sendData(
+                                            "2",
+                                            "numcaminduct",
+                                            numCampInducteethController.text,
+                                          );
+                                          sendData(
+                                            "2",
+                                            "difin",
+                                            difInCampCrkInducController.text,
+                                          );
+                                          sendData(
+                                            "2",
+                                            "difout",
+                                            difExCampCrkInducController.text,
+                                          );
+                                          sendData(
+                                            "2",
+                                            "camteeth1",
+                                            teeth1widthController.text,
+                                          );
+                                          sendData(
+                                            "2",
+                                            "gapteeth1",
+                                            gap1widthController.text,
+                                          );
+                                          sendData(
+                                            "2",
+                                            "camteeth2",
+                                            teeth2widthController.text,
+                                          );
+                                          sendData(
+                                            "2",
+                                            "gapteeth2",
+                                            gap2widthController.text,
+                                          );
+                                          sendData(
+                                            "2",
+                                            "camteeth3",
+                                            teeth3widthController.text,
+                                          );
+                                          sendData(
+                                            "2",
+                                            "gapteeth3",
+                                            gap3widthController.text,
+                                          );
+                                          sendData(
+                                            "2",
+                                            "camteeth4",
+                                            teeth4widthController.text,
+                                          );
+                                          sendData(
+                                            "2",
+                                            "gapteeth4",
+                                            gap4widthController.text,
+                                          );
+                                          sendData(
+                                            "2",
+                                            "camteeth5",
+                                            teeth5widthController.text,
+                                          );
+                                          sendData(
+                                            "2",
+                                            "gapteeth5",
+                                            gap5widthController.text,
+                                          );
+                                          sendData(
+                                            "2",
+                                            "camteeth6",
+                                            teeth6widthController.text,
+                                          );
+                                          sendData(
+                                            "2",
+                                            "gapteeth6",
+                                            gap6widthController.text,
+                                          );
+                                          sendData(
+                                            "2",
+                                            "camteeth7",
+                                            teeth7widthController.text,
+                                          );
+                                          sendData(
+                                            "2",
+                                            "gapteeth7",
+                                            gap7widthController.text,
+                                          );
+                                          sendData(
+                                            "2",
+                                            "camteeth8",
+                                            teeth8widthController.text,
+                                          );
+                                          sendData(
+                                            "2",
+                                            "gapteeth8",
+                                            gap8widthController.text,
+                                          );
+
                                           sendData("2", "caminductsend", "1");
                                         }
                                         caminductsend = !caminductsend;
