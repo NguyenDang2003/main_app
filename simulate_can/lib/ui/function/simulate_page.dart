@@ -1444,7 +1444,7 @@ class _SimulateUIstate extends State<SimulatePage> {
                             inactiveColor: Colors.red.shade100,
                             onChanged: (value) {
                               setState(() {
-                                ana1 = value;
+                                ana1 = value * 20;
                                 sendData('2', 'ana1', ana1.toInt().toString());
                               });
                             },
@@ -1474,7 +1474,7 @@ class _SimulateUIstate extends State<SimulatePage> {
                             inactiveColor: Colors.red.shade100,
                             onChanged: (value) {
                               setState(() {
-                                ana2 = value;
+                                ana2 = value * 20;
                                 sendData('2', 'ana2', ana2.toInt().toString());
                               });
                             },
@@ -1504,7 +1504,7 @@ class _SimulateUIstate extends State<SimulatePage> {
                             inactiveColor: Colors.red.shade100,
                             onChanged: (value) {
                               setState(() {
-                                ana3 = value;
+                                ana3 = value * 20;
                                 sendData('2', 'ana3', ana3.toInt().toString());
                               });
                             },
@@ -1534,7 +1534,7 @@ class _SimulateUIstate extends State<SimulatePage> {
                             inactiveColor: Colors.red.shade100,
                             onChanged: (value) {
                               setState(() {
-                                ana4 = value;
+                                ana4 = value * 20;
                                 sendData('2', 'ana4', ana4.toInt().toString());
                               });
                             },
@@ -1564,7 +1564,7 @@ class _SimulateUIstate extends State<SimulatePage> {
                             inactiveColor: Colors.red.shade100,
                             onChanged: (value) {
                               setState(() {
-                                ana5 = value;
+                                ana5 = value * 20;
                                 sendData('2', 'ana5', ana5.toInt().toString());
                               });
                             },
@@ -1594,7 +1594,7 @@ class _SimulateUIstate extends State<SimulatePage> {
                             inactiveColor: Colors.red.shade100,
                             onChanged: (value) {
                               setState(() {
-                                ana6 = value;
+                                ana6 = value * 20;
                                 sendData('2', 'ana6', ana6.toInt().toString());
                               });
                             },
