@@ -202,10 +202,10 @@ class _SimulateUIstate extends State<SimulatePage> {
                         crksending = !crksending;
                         if (crksending == true) {
                           if (teethController != null) {
-                            sendData('2', 'bate', teethController.toString());
+                            sendData('2', 'bate', teethController.text);
                           }
                           if (gapteethController != null) {
-                            sendData('2', 'gap', gapteethController.toString());
+                            sendData('2', 'gap', gapteethController.text);
                           }
                           sendData('2', 'crksend', '1');
                         }
