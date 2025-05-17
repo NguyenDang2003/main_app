@@ -156,12 +156,12 @@ class _SimulateUIstate extends State<SimulatePage> {
                             controller: teethController,
                             keyboardType: TextInputType.number,
                             decoration: InputDecoration(hintText: '36'),
-                            onChanged: (value) {
-                              final teeth = int.tryParse(value);
-                              if (teeth != null) {
-                                sendData('2', 'bate', teeth.toString());
-                              }
-                            },
+                            // onChanged: (value) {
+                            //   final teeth = int.tryParse(value);
+                            //   if (teeth != null) {
+                            //     sendData('2', 'bate', teeth.toString());
+                            //   }
+                            // },
                           ),
                         ),
                       ],
@@ -181,12 +181,12 @@ class _SimulateUIstate extends State<SimulatePage> {
                             controller: gapteethController,
                             keyboardType: TextInputType.number,
                             decoration: InputDecoration(hintText: '0'),
-                            onChanged: (value) {
-                              final gap = int.tryParse(value);
-                              if (gap != null) {
-                                sendData('2', 'gap', gap.toString());
-                              }
-                            },
+                            // onChanged: (value) {
+                            //   final gap = int.tryParse(value);
+                            //   if (gap != null) {
+                            //     sendData('2', 'gap', gap.toString());
+                            //   }
+                            // },
                           ),
                         ),
                       ],
@@ -201,6 +201,12 @@ class _SimulateUIstate extends State<SimulatePage> {
                       setState(() {
                         crksending = !crksending;
                         if (crksending == true) {
+                          if (teethController != null) {
+                            sendData('2', 'bate', teethController.toString());
+                          }
+                          if (gapteethController != null) {
+                            sendData('2', 'gap', gapteethController.toString());
+                          }
                           sendData('2', 'crksend', '1');
                         }
                         crksending = !crksending;
@@ -1222,7 +1228,7 @@ class _SimulateUIstate extends State<SimulatePage> {
                         onChanged: (value) {
                           setState(() {
                             abs1 = value;
-                            sendData("3", "abs1speed", abs1.toString());
+                            sendData("3", "abs1speed", abs1.toInt().toString());
                           });
                         },
                       ),
@@ -1249,7 +1255,7 @@ class _SimulateUIstate extends State<SimulatePage> {
                         onChanged: (value) {
                           setState(() {
                             abs2 = value;
-                            sendData("3", "abs2speed", abs2.toString());
+                            sendData("3", "abs2speed", abs2.toInt().toString());
                           });
                         },
                       ),
@@ -1276,7 +1282,7 @@ class _SimulateUIstate extends State<SimulatePage> {
                         onChanged: (value) {
                           setState(() {
                             abs3 = value;
-                            sendData("3", "abs3speed", abs3.toString());
+                            sendData("3", "abs3speed", abs3.toInt().toString());
                           });
                         },
                       ),
@@ -1303,7 +1309,7 @@ class _SimulateUIstate extends State<SimulatePage> {
                         onChanged: (value) {
                           setState(() {
                             abs4 = value;
-                            sendData("3", "abs4speed", abs4.toString());
+                            sendData("3", "abs4speed", abs4.toInt().toString());
                           });
                         },
                       ),
