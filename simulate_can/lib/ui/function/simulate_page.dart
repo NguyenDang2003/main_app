@@ -1445,6 +1445,7 @@ class _SimulateUIstate extends State<SimulatePage> {
                             onChanged: (value) {
                               setState(() {
                                 ana1 = value;
+                                sendData('2', 'ana1', ana1.toInt().toString());
                               });
                             },
                           ),
@@ -1474,6 +1475,7 @@ class _SimulateUIstate extends State<SimulatePage> {
                             onChanged: (value) {
                               setState(() {
                                 ana2 = value;
+                                sendData('2', 'ana2', ana2.toInt().toString());
                               });
                             },
                           ),
@@ -1503,6 +1505,7 @@ class _SimulateUIstate extends State<SimulatePage> {
                             onChanged: (value) {
                               setState(() {
                                 ana3 = value;
+                                sendData('2', 'ana3', ana3.toInt().toString());
                               });
                             },
                           ),
@@ -1532,6 +1535,7 @@ class _SimulateUIstate extends State<SimulatePage> {
                             onChanged: (value) {
                               setState(() {
                                 ana4 = value;
+                                sendData('2', 'ana4', ana4.toInt().toString());
                               });
                             },
                           ),
@@ -1561,6 +1565,7 @@ class _SimulateUIstate extends State<SimulatePage> {
                             onChanged: (value) {
                               setState(() {
                                 ana5 = value;
+                                sendData('2', 'ana5', ana5.toInt().toString());
                               });
                             },
                           ),
@@ -1590,6 +1595,7 @@ class _SimulateUIstate extends State<SimulatePage> {
                             onChanged: (value) {
                               setState(() {
                                 ana6 = value;
+                                sendData('2', 'ana6', ana6.toInt().toString());
                               });
                             },
                           ),
