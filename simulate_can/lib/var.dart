@@ -140,6 +140,8 @@ TextEditingController teeth7widthController = TextEditingController();
 TextEditingController gap7widthController = TextEditingController();
 TextEditingController teeth8widthController = TextEditingController();
 TextEditingController gap8widthController = TextEditingController();
+bool caminductsend = false;
+
 // Biến dùng cho DataStream
 bool isConnectedData = false;
 String shifter = 'P';

@@ -964,7 +964,15 @@ class _SimulateUIstate extends State<SimulatePage> {
                                 SizedBox(
                                   width: 200,
                                   child: ElevatedButton(
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      setState(() {
+                                        caminductsend = !caminductsend;
+                                        if (caminductsend == true) {
+                                          sendData("2", "caminductsend", "1");
+                                        }
+                                        caminductsend = !caminductsend;
+                                      });
+                                    },
                                     style: ElevatedButton.styleFrom(
                                       foregroundColor: Colors.white,
                                       backgroundColor: Colors.green,
