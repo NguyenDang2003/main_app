@@ -1138,29 +1138,68 @@ class _SimulateUIstate extends State<SimulatePage> {
                 ),
                 const SizedBox(height: 20),
                 Center(
-                  child: SizedBox(
-                    width: 500,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text('Teeth Count', style: TextStyle(fontSize: 18)),
-                        const SizedBox(width: 20),
-                        SizedBox(
-                          width: 300,
-                          child: Row(
-                            children: [
-                              Expanded(
-                                child: TextField(
-                                  controller: teethabsController,
-                                  keyboardType: TextInputType.number,
-                                  decoration: InputDecoration(hintText: '0'),
-                                ),
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        width: 500,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text('Teeth Count', style: TextStyle(fontSize: 18)),
+                            const SizedBox(width: 20),
+                            SizedBox(
+                              width: 300,
+                              child: Row(
+                                children: [
+                                  Expanded(
+                                    child: TextField(
+                                      controller: teethabsController,
+                                      keyboardType: TextInputType.number,
+                                      decoration: InputDecoration(
+                                        hintText: '0',
+                                      ),
+                                      onSubmitted: (value) {
+                                        final abs1send = int.tryParse(value);
+                                        if (abs1send != null) {
+                                          sendData("3", "absbate", value);
+                                        }
+                                      },
+                                    ),
+                                  ),
+                                  const SizedBox(width: 20),
+                                  ElevatedButton(
+                                    onPressed: () {
+                                      setState(() {
+                                        abssending = !abssending;
+                                        if (abssending == true) {
+                                          sendData('3', 'abssend', '1');
+                                        }
+                                        abssending = !abssending;
+                                      });
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                      foregroundColor: Colors.white,
+                                      backgroundColor: Colors.green,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.zero, // Button vuông
+                                      ),
+                                    ),
+                                    child: Text(
+                                      'SEND SIGNAL',
+                                      style: TextStyle(
+                                        fontFamily: 'Roboto',
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
 
@@ -1183,6 +1222,7 @@ class _SimulateUIstate extends State<SimulatePage> {
                         onChanged: (value) {
                           setState(() {
                             abs1 = value;
+                            sendData("3", "abs1speed", abs1.toString());
                           });
                         },
                       ),
@@ -1209,6 +1249,7 @@ class _SimulateUIstate extends State<SimulatePage> {
                         onChanged: (value) {
                           setState(() {
                             abs2 = value;
+                            sendData("3", "abs2speed", abs2.toString());
                           });
                         },
                       ),
@@ -1235,6 +1276,7 @@ class _SimulateUIstate extends State<SimulatePage> {
                         onChanged: (value) {
                           setState(() {
                             abs3 = value;
+                            sendData("3", "abs3speed", abs3.toString());
                           });
                         },
                       ),
@@ -1261,6 +1303,7 @@ class _SimulateUIstate extends State<SimulatePage> {
                         onChanged: (value) {
                           setState(() {
                             abs4 = value;
+                            sendData("3", "abs4speed", abs4.toString());
                           });
                         },
                       ),

@@ -101,6 +101,7 @@ double abs1 = 0;
 double abs2 = 0;
 double abs3 = 0;
 double abs4 = 0;
+bool abssending = false;
 
 double ana1 = 0;
 double ana2 = 0;
