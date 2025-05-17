@@ -1435,23 +1435,24 @@ class _SimulateUIstate extends State<SimulatePage> {
                         Text('ANALOG1', style: TextStyle(fontSize: 18)),
                         Expanded(
                           child: Slider(
-                            value: ana1,
+                            value: ana1 / 20,
                             min: 0,
                             max: 5,
                             divisions: 50,
-                            label: ana1.toStringAsFixed(2),
+                            label: (ana1 / 20).toStringAsFixed(2),
                             activeColor: Colors.red,
                             inactiveColor: Colors.red.shade100,
                             onChanged: (value) {
                               setState(() {
                                 ana1 = value * 20;
+                                // print(ana1);
                                 sendData('2', 'ana1', ana1.toInt().toString());
                               });
                             },
                           ),
                         ),
                         Text(
-                          '${ana1.toStringAsFixed(2)} V',
+                          '${(ana1 / 20).toStringAsFixed(2)} V',
                           style: TextStyle(fontSize: 18),
                         ),
                         const SizedBox(width: 10),
@@ -1465,23 +1466,24 @@ class _SimulateUIstate extends State<SimulatePage> {
                         Text('ANALOG2', style: TextStyle(fontSize: 18)),
                         Expanded(
                           child: Slider(
-                            value: ana2,
+                            value: ana2 / 20,
                             min: 0,
                             max: 5,
                             divisions: 50,
-                            label: ana2.toStringAsFixed(2),
+                            label: (ana2 / 20).toStringAsFixed(2),
                             activeColor: Colors.red,
                             inactiveColor: Colors.red.shade100,
                             onChanged: (value) {
                               setState(() {
                                 ana2 = value * 20;
+                                // print(ana2);
                                 sendData('2', 'ana2', ana2.toInt().toString());
                               });
                             },
                           ),
                         ),
                         Text(
-                          '${ana2.toStringAsFixed(2)} V',
+                          '${(ana2 / 20).toStringAsFixed(2)} V',
                           style: TextStyle(fontSize: 18),
                         ),
                         const SizedBox(width: 10),
@@ -1495,23 +1497,24 @@ class _SimulateUIstate extends State<SimulatePage> {
                         Text('ANALOG3', style: TextStyle(fontSize: 18)),
                         Expanded(
                           child: Slider(
-                            value: ana3,
+                            value: ana3 / 20,
                             min: 0,
                             max: 5,
                             divisions: 50,
-                            label: ana3.toStringAsFixed(2),
+                            label: (ana3 / 20).toStringAsFixed(2),
                             activeColor: Colors.red,
                             inactiveColor: Colors.red.shade100,
                             onChanged: (value) {
                               setState(() {
                                 ana3 = value * 20;
+                                // print(ana6);
                                 sendData('2', 'ana3', ana3.toInt().toString());
                               });
                             },
                           ),
                         ),
                         Text(
-                          '${ana3.toStringAsFixed(2)} V',
+                          '${(ana3 / 20).toStringAsFixed(2)} V',
                           style: TextStyle(fontSize: 18),
                         ),
                         const SizedBox(width: 10),
@@ -1525,23 +1528,24 @@ class _SimulateUIstate extends State<SimulatePage> {
                         Text('ANALOG4', style: TextStyle(fontSize: 18)),
                         Expanded(
                           child: Slider(
-                            value: ana4,
+                            value: ana4 / 20,
                             min: 0,
                             max: 5,
                             divisions: 50,
-                            label: ana4.toStringAsFixed(2),
+                            label: (ana4 / 20).toStringAsFixed(2),
                             activeColor: Colors.red,
                             inactiveColor: Colors.red.shade100,
                             onChanged: (value) {
                               setState(() {
                                 ana4 = value * 20;
+                                // print(ana6);
                                 sendData('2', 'ana4', ana4.toInt().toString());
                               });
                             },
                           ),
                         ),
                         Text(
-                          '${ana4.toStringAsFixed(2)} V',
+                          '${(ana4 / 20).toStringAsFixed(2)} V',
                           style: TextStyle(fontSize: 18),
                         ),
                         const SizedBox(width: 10),
@@ -1555,23 +1559,24 @@ class _SimulateUIstate extends State<SimulatePage> {
                         Text('ANALOG5', style: TextStyle(fontSize: 18)),
                         Expanded(
                           child: Slider(
-                            value: ana5,
+                            value: ana5 / 20,
                             min: 0,
                             max: 5,
                             divisions: 50,
-                            label: ana5.toStringAsFixed(2),
+                            label: (ana5 / 20).toStringAsFixed(2),
                             activeColor: Colors.red,
                             inactiveColor: Colors.red.shade100,
                             onChanged: (value) {
                               setState(() {
                                 ana5 = value * 20;
+                                // print(ana5);
                                 sendData('2', 'ana5', ana5.toInt().toString());
                               });
                             },
                           ),
                         ),
                         Text(
-                          '${ana5.toStringAsFixed(2)} V',
+                          '${(ana5 / 20).toStringAsFixed(2)} V',
                           style: TextStyle(fontSize: 18),
                         ),
                         const SizedBox(width: 10),
@@ -1595,7 +1600,7 @@ class _SimulateUIstate extends State<SimulatePage> {
                             onChanged: (value) {
                               setState(() {
                                 ana6 = value * 20;
-                                print(ana6);
+                                // print(ana6);
                                 sendData('2', 'ana6', ana6.toInt().toString());
                               });
                             },
