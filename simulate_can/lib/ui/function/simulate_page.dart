@@ -1649,6 +1649,11 @@ class _SimulateUIstate extends State<SimulatePage> {
                             onChanged: (value) {
                               setState(() {
                                 actua1 = value;
+                                sendData(
+                                  '3',
+                                  'act1',
+                                  actua1.toInt().toString(),
+                                );
                               });
                             },
                           ),
@@ -1678,6 +1683,11 @@ class _SimulateUIstate extends State<SimulatePage> {
                             onChanged: (value) {
                               setState(() {
                                 actua2 = value;
+                                sendData(
+                                  '3',
+                                  'act2',
+                                  actua2.toInt().toString(),
+                                );
                               });
                             },
                           ),
@@ -1707,6 +1717,11 @@ class _SimulateUIstate extends State<SimulatePage> {
                             onChanged: (value) {
                               setState(() {
                                 actua3 = value;
+                                sendData(
+                                  '3',
+                                  'act3',
+                                  actua3.toInt().toString(),
+                                );
                               });
                             },
                           ),
@@ -1736,6 +1751,11 @@ class _SimulateUIstate extends State<SimulatePage> {
                             onChanged: (value) {
                               setState(() {
                                 actua4 = value;
+                                sendData(
+                                  '3',
+                                  'act4',
+                                  actua4.toInt().toString(),
+                                );
                               });
                             },
                           ),
