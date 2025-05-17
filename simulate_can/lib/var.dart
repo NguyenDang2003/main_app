@@ -115,32 +115,44 @@ double actua2 = 0;
 double actua3 = 0;
 double actua4 = 0;
 
-TextEditingController teethController = TextEditingController();
-TextEditingController gapteethController = TextEditingController();
+TextEditingController teethController = TextEditingController(text: '36');
+TextEditingController gapteethController = TextEditingController(text: '0');
 bool crksending = false;
 
-TextEditingController numCampInducteethController = TextEditingController();
-TextEditingController difInCampCrkInducController = TextEditingController();
-TextEditingController difExCampCrkInducController = TextEditingController();
-TextEditingController numCampHallteethController = TextEditingController();
-TextEditingController difInCampCrkHallController = TextEditingController();
-TextEditingController difExCampCrkHallController = TextEditingController();
-TextEditingController teeth1widthController = TextEditingController();
-TextEditingController gap1widthController = TextEditingController();
-TextEditingController teeth2widthController = TextEditingController();
-TextEditingController gap2widthController = TextEditingController();
-TextEditingController teeth3widthController = TextEditingController();
-TextEditingController gap3widthController = TextEditingController();
-TextEditingController teeth4widthController = TextEditingController();
-TextEditingController gap4widthController = TextEditingController();
-TextEditingController teeth5widthController = TextEditingController();
-TextEditingController gap5widthController = TextEditingController();
-TextEditingController teeth6widthController = TextEditingController();
-TextEditingController gap6widthController = TextEditingController();
-TextEditingController teeth7widthController = TextEditingController();
-TextEditingController gap7widthController = TextEditingController();
-TextEditingController teeth8widthController = TextEditingController();
-TextEditingController gap8widthController = TextEditingController();
+TextEditingController numCampInducteethController = TextEditingController(
+  text: '3',
+);
+TextEditingController difInCampCrkInducController = TextEditingController(
+  text: '0',
+);
+TextEditingController difExCampCrkInducController = TextEditingController(
+  text: '0',
+);
+TextEditingController numCampHallteethController = TextEditingController(
+  text: '0',
+);
+TextEditingController difInCampCrkHallController = TextEditingController(
+  text: '0',
+);
+TextEditingController difExCampCrkHallController = TextEditingController(
+  text: '0',
+);
+TextEditingController teeth1widthController = TextEditingController(text: '0');
+TextEditingController gap1widthController = TextEditingController(text: '0');
+TextEditingController teeth2widthController = TextEditingController(text: '0');
+TextEditingController gap2widthController = TextEditingController(text: '0');
+TextEditingController teeth3widthController = TextEditingController(text: '0');
+TextEditingController gap3widthController = TextEditingController(text: '0');
+TextEditingController teeth4widthController = TextEditingController(text: '0');
+TextEditingController gap4widthController = TextEditingController(text: '0');
+TextEditingController teeth5widthController = TextEditingController(text: '0');
+TextEditingController gap5widthController = TextEditingController(text: '0');
+TextEditingController teeth6widthController = TextEditingController(text: '0');
+TextEditingController gap6widthController = TextEditingController(text: '0');
+TextEditingController teeth7widthController = TextEditingController(text: '0');
+TextEditingController gap7widthController = TextEditingController(text: '0');
+TextEditingController teeth8widthController = TextEditingController(text: '0');
+TextEditingController gap8widthController = TextEditingController(text: '0');
 bool caminductsend = false;
 
 // Biến dùng cho DataStream

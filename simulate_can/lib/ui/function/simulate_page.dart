@@ -287,7 +287,7 @@ class _SimulateUIstate extends State<SimulatePage> {
                                         controller: numCampInducteethController,
                                         keyboardType: TextInputType.number,
                                         decoration: InputDecoration(
-                                          hintText: '72',
+                                          hintText: '3',
                                         ),
                                         // onChanged: (value) {
                                         //   final numcamInduct = int.tryParse(
@@ -992,7 +992,7 @@ class _SimulateUIstate extends State<SimulatePage> {
                                           );
                                           sendData(
                                             "2",
-                                            "gapteeth1",
+                                            "camgap1",
                                             gap1widthController.text,
                                           );
                                           sendData(
@@ -1002,7 +1002,7 @@ class _SimulateUIstate extends State<SimulatePage> {
                                           );
                                           sendData(
                                             "2",
-                                            "gapteeth2",
+                                            "camgap2",
                                             gap2widthController.text,
                                           );
                                           sendData(
@@ -1012,7 +1012,7 @@ class _SimulateUIstate extends State<SimulatePage> {
                                           );
                                           sendData(
                                             "2",
-                                            "gapteeth3",
+                                            "camgap3",
                                             gap3widthController.text,
                                           );
                                           sendData(
@@ -1022,7 +1022,7 @@ class _SimulateUIstate extends State<SimulatePage> {
                                           );
                                           sendData(
                                             "2",
-                                            "gapteeth4",
+                                            "camgap4",
                                             gap4widthController.text,
                                           );
                                           sendData(
@@ -1032,7 +1032,7 @@ class _SimulateUIstate extends State<SimulatePage> {
                                           );
                                           sendData(
                                             "2",
-                                            "gapteeth5",
+                                            "camgap5",
                                             gap5widthController.text,
                                           );
                                           sendData(
@@ -1042,7 +1042,7 @@ class _SimulateUIstate extends State<SimulatePage> {
                                           );
                                           sendData(
                                             "2",
-                                            "gapteeth6",
+                                            "camgap6",
                                             gap6widthController.text,
                                           );
                                           sendData(
@@ -1052,7 +1052,7 @@ class _SimulateUIstate extends State<SimulatePage> {
                                           );
                                           sendData(
                                             "2",
-                                            "gapteeth7",
+                                            "camgap7",
                                             gap7widthController.text,
                                           );
                                           sendData(
@@ -1062,7 +1062,7 @@ class _SimulateUIstate extends State<SimulatePage> {
                                           );
                                           sendData(
                                             "2",
-                                            "gapteeth8",
+                                            "camgap8",
                                             gap8widthController.text,
                                           );
 
