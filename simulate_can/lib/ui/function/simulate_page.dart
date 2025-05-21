@@ -1523,16 +1523,16 @@ class _SimulateUIstate extends State<SimulatePage> {
                                       decoration: InputDecoration(
                                         hintText: '0',
                                       ),
-                                      onChanged: (value) {
-                                        final abs1send = int.tryParse(value);
-                                        if (abs1send != null) {
-                                          sendData(
-                                            "3",
-                                            "absbate",
-                                            abs1send.toString(),
-                                          );
-                                        }
-                                      },
+                                      // onChanged: (value) {
+                                      //   final abs1send = int.tryParse(value);
+                                      //   if (abs1send != null) {
+                                      //     sendData(
+                                      //       "3",
+                                      //       "absbate",
+                                      //       abs1send.toString(),
+                                      //     );
+                                      //   }
+                                      // },
                                     ),
                                   ),
                                   const SizedBox(width: 20),
@@ -1547,6 +1547,7 @@ class _SimulateUIstate extends State<SimulatePage> {
                                             teethabsController.text,
                                           );
                                         }
+                                        sendData('3', 'abssend', '1');
                                         abssending = !abssending;
                                       });
                                     },
