@@ -97,10 +97,10 @@ bool isSending = false;
 double crankValue = 1500;
 
 TextEditingController teethabsController = TextEditingController(text: '0');
-double abs1 = 0;
-double abs2 = 0;
-double abs3 = 0;
-double abs4 = 0;
+double abs1 = 50;
+double abs2 = 50;
+double abs3 = 50;
+double abs4 = 50;
 bool abssending = false;
 
 double ana1 = 0;
@@ -333,6 +333,7 @@ bool fordisActive7 = false;
 // Biến dùng cho điều hòa
 bool fordisActive8 = false;
 TextEditingController fordvehicleSpeedController = TextEditingController();
+bool fordisConnectedDashboard = false;
 // Biến dùng cho Car doc
 final List<Widget> cardocScreens = [
   CardocAudiScreen(),
@@ -419,7 +420,8 @@ final carData = {
       "manuals": {
         "2018": "assets/mitsubishi/xpander/2018_manual.pdf",
         "2019":
-            "https://drive.google.com/uc?export=download&id=18YkIfWWO-Namiwgs_06C9w2csLl4TwET",
+            "https://drive.google.com/uc?export=download&id=1mYra3SpqNlzirLNLbeOJcVp3IlVAtxbf",
+
         "2010": "assets/mitsubishi/xpander/2020_manual.pdf",
       },
 
@@ -463,7 +465,7 @@ final List<Map<String, dynamic>> carDocSections = [
   },
   {
     'id': 'manuals',
-    'title': 'Owner\'s Manuals',
+    'title': 'Repair Manuals',
     'widget':
         (String carBrand, String carName, dynamic data) => PDFManualListPage(
           carBrand: carBrand,

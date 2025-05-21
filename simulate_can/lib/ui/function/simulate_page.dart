@@ -1357,126 +1357,6 @@ class _SimulateUIstate extends State<SimulatePage> {
                           ],
                         ),
                         const SizedBox(width: 100),
-                        //   Column(
-                        //     children: [
-                        //       const SizedBox(height: 20),
-                        //       Container(
-                        //         padding: EdgeInsets.all(10),
-                        //         decoration: BoxDecoration(
-                        //           color: Colors.redAccent,
-                        //         ),
-                        //         child: Text(
-                        //           "HALL CAMSHAFT SIGNAL",
-                        //           style: TextStyle(
-                        //             color: Colors.white,
-                        //             fontWeight: FontWeight.bold,
-                        //             fontFamily: "Roboto",
-                        //             fontSize: 15,
-                        //           ),
-                        //         ),
-                        //       ),
-                        //       // Center(
-                        //       //   child: SizedBox(
-                        //       //     width: 260,
-                        //       //     child: Row(
-                        //       //       mainAxisAlignment:
-                        //       //           MainAxisAlignment.spaceBetween,
-                        //       //       children: [
-                        //       //         Text(
-                        //       //           'Number of Teeth',
-                        //       //           style: TextStyle(fontSize: 18),
-                        //       //         ),
-                        //       //         SizedBox(
-                        //       //           width: 60,
-                        //       //           child: TextField(
-                        //       //             controller: numCampHallteethController,
-                        //       //             keyboardType: TextInputType.number,
-                        //       //             decoration: InputDecoration(
-                        //       //               hintText: '72',
-                        //       //             ),
-                        //       //           ),
-                        //       //         ),
-                        //       //       ],
-                        //       //     ),
-                        //       //   ),
-                        //       // ),
-                        //       const SizedBox(height: 20),
-                        //       Center(
-                        //         child: SizedBox(
-                        //           width: 260,
-                        //           child: Row(
-                        //             mainAxisAlignment:
-                        //                 MainAxisAlignment.spaceBetween,
-                        //             children: [
-                        //               Text(
-                        //                 'Cam IN Crank Offset',
-                        //                 style: TextStyle(fontSize: 18),
-                        //               ),
-                        //               SizedBox(
-                        //                 width: 60,
-                        //                 child: TextField(
-                        //                   controller: difInCampCrkHallController,
-                        //                   keyboardType: TextInputType.number,
-                        //                   decoration: InputDecoration(
-                        //                     hintText: '0',
-                        //                   ),
-                        //                 ),
-                        //               ),
-                        //             ],
-                        //           ),
-                        //         ),
-                        //       ),
-                        //       const SizedBox(height: 20),
-                        //       Center(
-                        //         child: SizedBox(
-                        //           width: 260,
-                        //           child: Row(
-                        //             mainAxisAlignment:
-                        //                 MainAxisAlignment.spaceBetween,
-                        //             children: [
-                        //               Text(
-                        //                 'Cam EX Crank Offset',
-                        //                 style: TextStyle(fontSize: 18),
-                        //               ),
-                        //               SizedBox(
-                        //                 width: 60,
-                        //                 child: TextField(
-                        //                   controller: difExCampCrkHallController,
-                        //                   keyboardType: TextInputType.number,
-                        //                   decoration: InputDecoration(
-                        //                     hintText: '0',
-                        //                   ),
-                        //                 ),
-                        //               ),
-                        //             ],
-                        //           ),
-                        //         ),
-                        //       ),
-
-                        //       const SizedBox(height: 440),
-                        //       SizedBox(
-                        //         width: 200,
-                        //         child: ElevatedButton(
-                        //           onPressed: () {},
-                        //           style: ElevatedButton.styleFrom(
-                        //             foregroundColor: Colors.white,
-                        //             backgroundColor: Colors.green,
-                        //             shape: RoundedRectangleBorder(
-                        //               borderRadius:
-                        //                   BorderRadius.zero, // Button vuông
-                        //             ),
-                        //           ),
-                        //           child: Text(
-                        //             'SEND SIGNAL',
-                        //             style: TextStyle(
-                        //               fontFamily: 'Roboto',
-                        //               fontWeight: FontWeight.bold,
-                        //             ),
-                        //           ),
-                        //         ),
-                        //       ),
-                        //     ],
-                        //   ),
                       ],
                     ),
                   ),
@@ -1586,9 +1466,9 @@ class _SimulateUIstate extends State<SimulatePage> {
                     Expanded(
                       child: Slider(
                         value: abs1,
-                        min: 0,
+                        min: 50,
                         max: 1000,
-                        divisions: 50,
+                        divisions: 95,
                         label: abs1.toInt().toString(),
                         activeColor: Colors.red, // Màu của phần đã trượt
                         inactiveColor:
@@ -1614,9 +1494,9 @@ class _SimulateUIstate extends State<SimulatePage> {
                     Expanded(
                       child: Slider(
                         value: abs2,
-                        min: 0,
+                        min: 50,
                         max: 1000,
-                        divisions: 50,
+                        divisions: 95,
                         label: abs2.toInt().toString(),
                         activeColor: Colors.red, // Màu của phần đã trượt
                         inactiveColor:
@@ -1641,9 +1521,9 @@ class _SimulateUIstate extends State<SimulatePage> {
                     Expanded(
                       child: Slider(
                         value: abs3,
-                        min: 0,
+                        min: 50,
                         max: 1000,
-                        divisions: 50,
+                        divisions: 95,
                         label: abs3.toInt().toString(),
                         activeColor: Colors.red, // Màu của phần đã trượt
                         inactiveColor:
@@ -1668,9 +1548,9 @@ class _SimulateUIstate extends State<SimulatePage> {
                     Expanded(
                       child: Slider(
                         value: abs4,
-                        min: 0,
+                        min: 50,
                         max: 1000,
-                        divisions: 50,
+                        divisions: 95,
                         label: abs4.toInt().toString(),
                         activeColor: Colors.red, // Màu của phần đã trượt
                         inactiveColor:
