@@ -15,6 +15,7 @@ class CarSectionPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(title: Text(carName), centerTitle: true),
       body: ListView.builder(
         itemCount: carDocSections.length,
@@ -25,6 +26,7 @@ class CarSectionPage extends StatelessWidget {
               ((carData[carBrand] as Map?)?[carName] as Map?)?[section['id']];
           print(sectionData);
           return Card(
+            color: Colors.grey[200],
             margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
             child: ListTile(
               title: Text(

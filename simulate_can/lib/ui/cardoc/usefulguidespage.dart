@@ -55,6 +55,7 @@ class GuideDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(title: Text(title)),
       body: ListView(
         children:
@@ -67,7 +68,7 @@ class GuideDetailPage extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                       builder:
-                          (_) => PDFViewerPage(title: e.key, pdfPath: e.value),
+                          (_) => PDFViewerPage(title: e.key, pdfUrl: e.value),
                     ),
                   );
                 },

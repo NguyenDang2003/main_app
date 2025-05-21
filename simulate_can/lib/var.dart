@@ -96,7 +96,7 @@ bool isConnectedCarDoor = false;
 bool isSending = false;
 double crankValue = 1500;
 
-TextEditingController teethabsController = TextEditingController();
+TextEditingController teethabsController = TextEditingController(text: '0');
 double abs1 = 0;
 double abs2 = 0;
 double abs3 = 0;
@@ -314,6 +314,25 @@ TextEditingController kiavehicleSpeedController = TextEditingController();
 
 // Biến dùng cho Ford Dashboard
 
+// Biến dùng cho abs
+bool fordisActive = false;
+// Biến dùng cho phanh tay
+bool fordisActive1 = false;
+// Biến dùng cho túi khí
+bool fordisActive2 = false;
+// Biến dùng cho esp on
+bool fordisActive3 = false;
+// Biến dùng cho esp on
+bool fordisActive4 = false;
+// Biến dùng cho adblue
+bool fordisActive5 = false;
+// Biến dùng cho áp suất lốp
+bool fordisActive6 = false;
+// Biến dùng cho engine
+bool fordisActive7 = false;
+// Biến dùng cho điều hòa
+bool fordisActive8 = false;
+TextEditingController fordvehicleSpeedController = TextEditingController();
 // Biến dùng cho Car doc
 final List<Widget> cardocScreens = [
   CardocAudiScreen(),
@@ -399,7 +418,8 @@ final carData = {
       ],
       "manuals": {
         "2018": "assets/mitsubishi/xpander/2018_manual.pdf",
-        "2019": "assets/mitsubishi/xpander/2019_manual.pdf",
+        "2019":
+            "https://drive.google.com/uc?export=download&id=18YkIfWWO-Namiwgs_06C9w2csLl4TwET",
         "2010": "assets/mitsubishi/xpander/2020_manual.pdf",
       },
 

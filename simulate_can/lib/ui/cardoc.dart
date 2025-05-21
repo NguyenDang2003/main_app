@@ -20,7 +20,9 @@ class Cardoc extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
+        backgroundColor: Colors.grey[300],
         title: const Text(
           "CAR DOCUMENTS",
           style: TextStyle(
@@ -59,6 +61,7 @@ class Cardoc extends StatelessWidget {
   }) {
     return Card(
       margin: const EdgeInsets.symmetric(vertical: 6, horizontal: 4),
+      color: Colors.grey[100],
       child: ListTile(
         leading: Image.asset(
           nameimage,

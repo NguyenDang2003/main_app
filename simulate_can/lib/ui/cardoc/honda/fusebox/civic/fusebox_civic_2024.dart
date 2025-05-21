@@ -44,6 +44,7 @@ class _FuseboxCivic2024State extends State<FuseboxCivic2024> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text("Fuse Box - Honda Civic 2024"),
         centerTitle: true,

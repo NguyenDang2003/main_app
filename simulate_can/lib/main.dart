@@ -15,6 +15,7 @@ void main() async {
     await windowManager.setResizable(true);
     await windowManager.show();
   });
+
   // Chạy backend khi app khởi động
   runApp(const MyApp());
 }

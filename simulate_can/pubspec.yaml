@@ -48,6 +48,7 @@ dependencies:
   flutter_pdfview: ^1.0.0+3
   package_info_plus: ^4.0.2
   url_launcher: ^6.2.5
+  syncfusion_flutter_pdfviewer: ^24.1.41
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -101,6 +102,8 @@ flutter:
     - assets/images/airbag.png
     - assets/images/brake1.png
     - assets/images/trunk.png
+    - assets/images/adblue.png
+    - assets/images/ac.png
     - assets/images/carbrand/audi.png
     - assets/images/carbrand/bmw.png
     - assets/images/carbrand/chevrolet.png
@@ -127,6 +130,7 @@ flutter:
     - assets/images/obd.png
     - assets/images/Dashboard/KIA.png
     - assets/images/Dashboard/HYUNDAI.png
+    - assets/images/Dashboard/FORD.jpg
     - assets/images/carbrand/kia.png
     - assets/images/fusebox/civic2024_fusebox1.png
     - assets/images/fusebox/civic2024_fusebox2.png

@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'dart:ui'; // Để sử dụng BackdropFilter
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+
+import 'package:simulate_can/var.dart';
 
 class DashboardFord extends StatefulWidget {
   const DashboardFord({super.key});
@@ -8,6 +12,29 @@ class DashboardFord extends StatefulWidget {
 }
 
 class DashboardFordState extends State<DashboardFord> {
+  void sendData(String addr, String field, String value) async {
+    final url = Uri.parse('http://127.0.0.1:8000/send'); // thay <raspi-ip>
+
+    try {
+      final response = await http.post(
+        url,
+        headers: {'Content-Type': 'application/json'},
+        body: jsonEncode({'addr': addr, 'field': field, 'value': value}),
+      );
+
+      if (response.statusCode == 200) {
+        print('✅ Gửi thành công tới $addr: $field = $value');
+      } else {
+        print('❌ Lỗi khi gửi: ${response.body}');
+      }
+    } catch (e) {
+      print('❌ Lỗi kết nối: $e');
+    }
+  }
+
+  final double imageOriginalWidth = 1920;
+  final double imageOriginalHeight = 1080;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,49 +54,333 @@ class DashboardFordState extends State<DashboardFord> {
           },
         ),
       ),
-      body: Stack(
-        children: [
-          Positioned.fill(
-            child: Image.asset(
-              "assets/images/dashboard.png", // Thay bằng ảnh bảng đồng hồ của bạn
-              fit: BoxFit.cover,
-            ),
-          ),
-          Positioned.fill(
-            child: BackdropFilter(
-              filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0), // Làm mờ ảnh
-              child: Container(
-                color: Colors.black.withAlpha(0), // Đảm bảo ảnh vẫn nhìn thấy
-              ),
-            ),
-          ),
-          Center(
-            // Sử dụng Center để căn giữa khung chữ
-            child: Container(
-              padding: EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                color: Colors.white.withAlpha(
-                  179,
-                ), // Màu nền của khung chữ với độ mờ
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          final parentWidth = constraints.maxWidth;
+          final parentHeight = constraints.maxHeight;
+
+          final scale =
+              (parentWidth / imageOriginalWidth <
+                      parentHeight / imageOriginalHeight)
+                  ? parentWidth / imageOriginalWidth
+                  : parentHeight / imageOriginalHeight;
+
+          final imageDisplayWidth = imageOriginalWidth * scale;
+          final imageDisplayHeight = imageOriginalHeight * scale;
+
+          final offsetX = (parentWidth - imageDisplayWidth) / 2;
+          final offsetY = (parentHeight - imageDisplayHeight) / 2;
+          return Stack(
+            children: [
+              Stack(
                 children: [
-                  Icon(Icons.update_outlined, size: 40),
-                  Text(
-                    'UPDATING...', // Chữ trong khung
-                    style: TextStyle(
-                      fontSize: 40,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
+                  Positioned.fill(
+                    child: Image.asset(
+                      'assets/images/Dashboard/FORD.jpg',
+                      fit: BoxFit.contain,
                     ),
                   ),
                 ],
               ),
-            ),
+              // ABS
+              buildToggleImageButton(
+                x: 700,
+                y: 600,
+                offsetX: offsetX,
+                offsetY: offsetY,
+                sizex: 50,
+                sizey: 50,
+                scale: scale,
+                addr: '2',
+                field: '',
+                valueOn: '',
+                valueOff: '',
+                isActive: fordisActive,
+                onToggle: (newState) {
+                  setState(() {
+                    fordisActive = newState;
+                  });
+                },
+                activeColor: Colors.orange,
+                assetPath: 'assets/images/abs.png',
+              ),
+              // Phanh tay
+              buildToggleImageButton(
+                x: 1150,
+                y: 600,
+                offsetX: offsetX,
+                offsetY: offsetY,
+                sizex: 50,
+                sizey: 50,
+                scale: scale,
+                addr: '2',
+                field: 'brake',
+                valueOn: '20',
+                valueOff: '0',
+                isActive: fordisActive1,
+                onToggle: (newState) {
+                  setState(() {
+                    fordisActive1 = newState;
+                  });
+                },
+                activeColor: Colors.red,
+                assetPath: 'assets/images/brake.png',
+              ),
+              // airbag
+              buildToggleImageButton(
+                x: 1250,
+                y: 600,
+                offsetX: offsetX,
+                offsetY: offsetY,
+                sizex: 70,
+                sizey: 70,
+                scale: scale,
+                addr: '2',
+                field: 'srs',
+                valueOn: '20',
+                valueOff: '0',
+                isActive: fordisActive2,
+                onToggle: (newState) {
+                  setState(() {
+                    fordisActive2 = newState;
+                  });
+                },
+                activeColor: Colors.orange,
+                assetPath: 'assets/images/airbag.png',
+              ),
+              // ESP on
+              buildToggleImageButton(
+                x: 1250,
+                y: 330,
+                offsetX: offsetX,
+                offsetY: offsetY,
+                sizex: 50,
+                sizey: 50,
+                scale: scale,
+                addr: '2',
+                field: '',
+                valueOn: '20',
+                valueOff: '0',
+                isActive: fordisActive3,
+                onToggle: (newState) {
+                  setState(() {
+                    fordisActive3 = newState;
+                  });
+                },
+                activeColor: Colors.orange,
+                assetPath: 'assets/images/esp.png',
+              ),
+              // ESP  off
+              buildToggleImageButton(
+                x: 1200,
+                y: 340,
+                offsetX: offsetX,
+                offsetY: offsetY,
+                sizex: 40,
+                sizey: 35,
+                scale: scale,
+                addr: '2',
+                field: 'srs',
+                valueOn: '20',
+                valueOff: '0',
+                isActive: fordisActive4,
+                onToggle: (newState) {
+                  setState(() {
+                    fordisActive4 = newState;
+                  });
+                },
+                activeColor: Colors.orange,
+                assetPath: 'assets/images/esp_off.png',
+              ),
+              // adblue  off
+              buildToggleImageButton(
+                x: 700,
+                y: 300,
+                offsetX: offsetX,
+                offsetY: offsetY,
+                sizex: 90,
+                sizey: 120,
+                scale: scale,
+                addr: '2',
+                field: 'srs',
+                valueOn: '20',
+                valueOff: '0',
+                isActive: fordisActive5,
+                onToggle: (newState) {
+                  setState(() {
+                    fordisActive5 = newState;
+                  });
+                },
+                activeColor: Colors.orange,
+                assetPath: 'assets/images/adblue.png',
+              ),
+              // Tyre pressure
+              buildToggleImageButton(
+                x: 650,
+                y: 330,
+                offsetX: offsetX,
+                offsetY: offsetY,
+                sizex: 50,
+                sizey: 50,
+                scale: scale,
+                addr: '2',
+                field: 'srs',
+                valueOn: '20',
+                valueOff: '0',
+                isActive: fordisActive6,
+                onToggle: (newState) {
+                  setState(() {
+                    fordisActive6 = newState;
+                  });
+                },
+                activeColor: Colors.orange,
+                assetPath: 'assets/images/tyrepressure.png',
+              ),
+              // engine
+              buildToggleImageButton(
+                x: 580,
+                y: 330,
+                offsetX: offsetX,
+                offsetY: offsetY,
+                sizex: 50,
+                sizey: 50,
+                scale: scale,
+                addr: '2',
+                field: 'srs',
+                valueOn: '20',
+                valueOff: '0',
+                isActive: fordisActive7,
+                onToggle: (newState) {
+                  setState(() {
+                    fordisActive7 = newState;
+                  });
+                },
+                activeColor: Colors.orange,
+                assetPath: 'assets/images/engine.png',
+              ),
+              buildToggleImageButton(
+                x: 1300,
+                y: 470,
+                offsetX: offsetX,
+                offsetY: offsetY,
+                sizex: 50,
+                sizey: 50,
+                scale: scale,
+                addr: '2',
+                field: 'srs',
+                valueOn: '20',
+                valueOff: '0',
+                isActive: fordisActive8,
+                onToggle: (newState) {
+                  setState(() {
+                    fordisActive8 = newState;
+                  });
+                },
+                activeColor: Colors.blue,
+                assetPath: 'assets/images/ac.png',
+              ),
+              Positioned(
+                left: offsetX + 900 * scale,
+                top: offsetY + 500 * scale,
+                width: 140 * scale,
+                height: 70 * scale,
+                child: GestureDetector(
+                  child: SizedBox(
+                    height: 70 * scale,
+                    width: 140 * scale,
+                    child: Container(
+                      padding: EdgeInsets.all(5),
+                      decoration: BoxDecoration(color: Colors.grey[200]),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            // Sử dụng Expanded để TextField lấp đầy không gian còn lại
+                            child: TextField(
+                              controller: fordvehicleSpeedController,
+                              decoration: InputDecoration(
+                                contentPadding: EdgeInsets.symmetric(
+                                  vertical: 0,
+                                  horizontal: 0,
+                                ), // Canh nội dung TextField
+                                label: Text(
+                                  "  km/h",
+                                  style: TextStyle(
+                                    fontFamily: 'Roboto',
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 7,
+                                  ),
+                                ),
+                                labelStyle: TextStyle(
+                                  color: Colors.red,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Colors.red,
+                                  ), // Viền khi không focus
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Colors.red,
+                                    width: 2,
+                                  ), // Viền khi focus
+                                ),
+                                border: OutlineInputBorder(),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          );
+        },
+      ),
+    );
+  }
+
+  Widget buildToggleImageButton({
+    required double x,
+    required double y,
+    required double offsetX,
+    required double offsetY,
+    required double sizex,
+    required double sizey,
+    required double scale,
+    required String addr,
+    required String field,
+    required String valueOn,
+    required String valueOff,
+    required bool isActive,
+    required void Function(bool newState) onToggle,
+    required Color activeColor,
+    required String assetPath,
+  }) {
+    return Positioned(
+      left: offsetX + x * scale,
+      top: offsetY + y * scale,
+      width: sizex * scale,
+      height: sizey * scale,
+      child: GestureDetector(
+        onTap: () {
+          bool newState = !isActive;
+          onToggle(newState);
+          sendData(addr, field, newState ? valueOn : valueOff);
+        },
+        child: ColorFiltered(
+          colorFilter: ColorFilter.mode(
+            isActive ? activeColor : Colors.grey,
+            BlendMode.srcATop,
           ),
-        ],
+          child: Image.asset(
+            assetPath,
+            height: sizey * scale,
+            width: sizex * scale,
+          ),
+        ),
       ),
     );
   }

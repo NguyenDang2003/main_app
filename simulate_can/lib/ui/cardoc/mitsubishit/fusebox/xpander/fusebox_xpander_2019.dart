@@ -44,6 +44,7 @@ class _FuseboxMitsubishi2019State extends State<FuseboxMitsubishi2019> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text("Fuse Box - Mitsubishi Xpander 2019"),
         centerTitle: true,

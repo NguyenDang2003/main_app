@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 // import 'package:sleek_circular_slider/sleek_circular_slider.dart';
 import 'package:simulate_can/var.dart';
@@ -40,6 +41,7 @@ class _SimulateUIstate extends State<SimulatePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text(
           "WAVEFORM SIMULATION",
@@ -111,6 +113,7 @@ class _SimulateUIstate extends State<SimulatePage> {
                         onChanged: (value) {
                           setState(() {
                             crankValue = value;
+
                             sendData('2', 'rpm', crankValue.toInt().toString());
                           });
                         },
@@ -155,6 +158,9 @@ class _SimulateUIstate extends State<SimulatePage> {
                           child: TextField(
                             controller: teethController,
                             keyboardType: TextInputType.number,
+                            inputFormatters: <TextInputFormatter>[
+                              FilteringTextInputFormatter.digitsOnly,
+                            ],
                             decoration: InputDecoration(hintText: '36'),
                             // onChanged: (value) {
                             //   final teeth = int.tryParse(value);
@@ -180,6 +186,9 @@ class _SimulateUIstate extends State<SimulatePage> {
                           child: TextField(
                             controller: gapteethController,
                             keyboardType: TextInputType.number,
+                            inputFormatters: <TextInputFormatter>[
+                              FilteringTextInputFormatter.digitsOnly,
+                            ],
                             decoration: InputDecoration(hintText: '0'),
                             // onChanged: (value) {
                             //   final gap = int.tryParse(value);
@@ -201,8 +210,20 @@ class _SimulateUIstate extends State<SimulatePage> {
                       setState(() {
                         crksending = !crksending;
                         if (crksending == true) {
-                          sendData('2', 'bate', teethController.text);
-                          sendData('2', 'gap', gapteethController.text);
+                          if (teethController.text.trim().isNotEmpty) {
+                            sendData('2', 'bate', teethController.text.trim());
+                          } else {
+                            sendData('2', 'bate', '36');
+                          }
+                          if (gapteethController.text.trim().isNotEmpty) {
+                            sendData(
+                              '2',
+                              'gap',
+                              gapteethController.text.trim(),
+                            );
+                          } else {
+                            sendData('2', 'gap', '4');
+                          }
                           sendData('2', 'crksend', '1');
                         }
                         crksending = !crksending;
@@ -240,7 +261,7 @@ class _SimulateUIstate extends State<SimulatePage> {
                   ),
                 ),
 
-                // Nhập số teeth
+                // Nhập số teeth cam induct và cam hall dùng chung biến
                 ScrollConfiguration(
                   behavior: MaterialScrollBehavior().copyWith(
                     dragDevices: {
@@ -254,22 +275,22 @@ class _SimulateUIstate extends State<SimulatePage> {
                       children: [
                         Column(
                           children: [
-                            const SizedBox(height: 20),
-                            Container(
-                              padding: EdgeInsets.all(10),
-                              decoration: BoxDecoration(
-                                color: Colors.redAccent,
-                              ),
-                              child: Text(
-                                "INDUCTIVE CAMSHAFT SIGNAL",
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: "Roboto",
-                                  fontSize: 15,
-                                ),
-                              ),
-                            ),
+                            // const SizedBox(height: 20),
+                            // Container(
+                            //   padding: EdgeInsets.all(10),
+                            //   decoration: BoxDecoration(
+                            //     color: Colors.redAccent,
+                            //   ),
+                            //   child: Text(
+                            //     "INDUCTIVE CAMSHAFT SIGNAL",
+                            //     style: TextStyle(
+                            //       color: Colors.white,
+                            //       fontWeight: FontWeight.bold,
+                            //       fontFamily: "Roboto",
+                            //       fontSize: 15,
+                            //     ),
+                            //   ),
+                            // ),
                             Center(
                               child: SizedBox(
                                 width: 260,
@@ -286,6 +307,10 @@ class _SimulateUIstate extends State<SimulatePage> {
                                       child: TextField(
                                         controller: numCampInducteethController,
                                         keyboardType: TextInputType.number,
+                                        inputFormatters: <TextInputFormatter>[
+                                          FilteringTextInputFormatter
+                                              .digitsOnly,
+                                        ],
                                         decoration: InputDecoration(
                                           hintText: '3',
                                         ),
@@ -324,6 +349,10 @@ class _SimulateUIstate extends State<SimulatePage> {
                                       child: TextField(
                                         controller: difInCampCrkInducController,
                                         keyboardType: TextInputType.number,
+                                        inputFormatters: <TextInputFormatter>[
+                                          FilteringTextInputFormatter
+                                              .digitsOnly,
+                                        ],
                                         decoration: InputDecoration(
                                           hintText: '0',
                                         ),
@@ -360,6 +389,10 @@ class _SimulateUIstate extends State<SimulatePage> {
                                       child: TextField(
                                         controller: difExCampCrkInducController,
                                         keyboardType: TextInputType.number,
+                                        inputFormatters: <TextInputFormatter>[
+                                          FilteringTextInputFormatter
+                                              .digitsOnly,
+                                        ],
                                         decoration: InputDecoration(
                                           hintText: '0',
                                         ),
@@ -417,6 +450,12 @@ class _SimulateUIstate extends State<SimulatePage> {
                                                       teeth1widthController,
                                                   keyboardType:
                                                       TextInputType.number,
+                                                  inputFormatters: <
+                                                    TextInputFormatter
+                                                  >[
+                                                    FilteringTextInputFormatter
+                                                        .digitsOnly,
+                                                  ],
                                                   decoration: InputDecoration(
                                                     hintText: '0',
                                                   ),
@@ -440,6 +479,12 @@ class _SimulateUIstate extends State<SimulatePage> {
                                                       gap1widthController,
                                                   keyboardType:
                                                       TextInputType.number,
+                                                  inputFormatters: <
+                                                    TextInputFormatter
+                                                  >[
+                                                    FilteringTextInputFormatter
+                                                        .digitsOnly,
+                                                  ],
                                                   decoration: InputDecoration(
                                                     hintText: '0',
                                                   ),
@@ -488,6 +533,12 @@ class _SimulateUIstate extends State<SimulatePage> {
                                                       teeth2widthController,
                                                   keyboardType:
                                                       TextInputType.number,
+                                                  inputFormatters: <
+                                                    TextInputFormatter
+                                                  >[
+                                                    FilteringTextInputFormatter
+                                                        .digitsOnly,
+                                                  ],
                                                   decoration: InputDecoration(
                                                     hintText: '0',
                                                   ),
@@ -511,6 +562,12 @@ class _SimulateUIstate extends State<SimulatePage> {
                                                       gap2widthController,
                                                   keyboardType:
                                                       TextInputType.number,
+                                                  inputFormatters: <
+                                                    TextInputFormatter
+                                                  >[
+                                                    FilteringTextInputFormatter
+                                                        .digitsOnly,
+                                                  ],
                                                   decoration: InputDecoration(
                                                     hintText: '0',
                                                   ),
@@ -559,6 +616,12 @@ class _SimulateUIstate extends State<SimulatePage> {
                                                       teeth3widthController,
                                                   keyboardType:
                                                       TextInputType.number,
+                                                  inputFormatters: <
+                                                    TextInputFormatter
+                                                  >[
+                                                    FilteringTextInputFormatter
+                                                        .digitsOnly,
+                                                  ],
                                                   decoration: InputDecoration(
                                                     hintText: '0',
                                                   ),
@@ -582,6 +645,12 @@ class _SimulateUIstate extends State<SimulatePage> {
                                                       gap3widthController,
                                                   keyboardType:
                                                       TextInputType.number,
+                                                  inputFormatters: <
+                                                    TextInputFormatter
+                                                  >[
+                                                    FilteringTextInputFormatter
+                                                        .digitsOnly,
+                                                  ],
                                                   decoration: InputDecoration(
                                                     hintText: '0',
                                                   ),
@@ -630,6 +699,12 @@ class _SimulateUIstate extends State<SimulatePage> {
                                                       teeth4widthController,
                                                   keyboardType:
                                                       TextInputType.number,
+                                                  inputFormatters: <
+                                                    TextInputFormatter
+                                                  >[
+                                                    FilteringTextInputFormatter
+                                                        .digitsOnly,
+                                                  ],
                                                   decoration: InputDecoration(
                                                     hintText: '0',
                                                   ),
@@ -653,6 +728,12 @@ class _SimulateUIstate extends State<SimulatePage> {
                                                       gap4widthController,
                                                   keyboardType:
                                                       TextInputType.number,
+                                                  inputFormatters: <
+                                                    TextInputFormatter
+                                                  >[
+                                                    FilteringTextInputFormatter
+                                                        .digitsOnly,
+                                                  ],
                                                   decoration: InputDecoration(
                                                     hintText: '0',
                                                   ),
@@ -702,6 +783,12 @@ class _SimulateUIstate extends State<SimulatePage> {
                                                       teeth5widthController,
                                                   keyboardType:
                                                       TextInputType.number,
+                                                  inputFormatters: <
+                                                    TextInputFormatter
+                                                  >[
+                                                    FilteringTextInputFormatter
+                                                        .digitsOnly,
+                                                  ],
                                                   decoration: InputDecoration(
                                                     hintText: '0',
                                                   ),
@@ -725,6 +812,12 @@ class _SimulateUIstate extends State<SimulatePage> {
                                                       gap5widthController,
                                                   keyboardType:
                                                       TextInputType.number,
+                                                  inputFormatters: <
+                                                    TextInputFormatter
+                                                  >[
+                                                    FilteringTextInputFormatter
+                                                        .digitsOnly,
+                                                  ],
                                                   decoration: InputDecoration(
                                                     hintText: '0',
                                                   ),
@@ -773,6 +866,12 @@ class _SimulateUIstate extends State<SimulatePage> {
                                                       teeth6widthController,
                                                   keyboardType:
                                                       TextInputType.number,
+                                                  inputFormatters: <
+                                                    TextInputFormatter
+                                                  >[
+                                                    FilteringTextInputFormatter
+                                                        .digitsOnly,
+                                                  ],
                                                   decoration: InputDecoration(
                                                     hintText: '0',
                                                   ),
@@ -796,6 +895,12 @@ class _SimulateUIstate extends State<SimulatePage> {
                                                       gap6widthController,
                                                   keyboardType:
                                                       TextInputType.number,
+                                                  inputFormatters: <
+                                                    TextInputFormatter
+                                                  >[
+                                                    FilteringTextInputFormatter
+                                                        .digitsOnly,
+                                                  ],
                                                   decoration: InputDecoration(
                                                     hintText: '0',
                                                   ),
@@ -844,6 +949,12 @@ class _SimulateUIstate extends State<SimulatePage> {
                                                       teeth7widthController,
                                                   keyboardType:
                                                       TextInputType.number,
+                                                  inputFormatters: <
+                                                    TextInputFormatter
+                                                  >[
+                                                    FilteringTextInputFormatter
+                                                        .digitsOnly,
+                                                  ],
                                                   decoration: InputDecoration(
                                                     hintText: '0',
                                                   ),
@@ -867,6 +978,12 @@ class _SimulateUIstate extends State<SimulatePage> {
                                                       gap7widthController,
                                                   keyboardType:
                                                       TextInputType.number,
+                                                  inputFormatters: <
+                                                    TextInputFormatter
+                                                  >[
+                                                    FilteringTextInputFormatter
+                                                        .digitsOnly,
+                                                  ],
                                                   decoration: InputDecoration(
                                                     hintText: '0',
                                                   ),
@@ -915,6 +1032,12 @@ class _SimulateUIstate extends State<SimulatePage> {
                                                       teeth8widthController,
                                                   keyboardType:
                                                       TextInputType.number,
+                                                  inputFormatters: <
+                                                    TextInputFormatter
+                                                  >[
+                                                    FilteringTextInputFormatter
+                                                        .digitsOnly,
+                                                  ],
                                                   decoration: InputDecoration(
                                                     hintText: '0',
                                                   ),
@@ -938,6 +1061,12 @@ class _SimulateUIstate extends State<SimulatePage> {
                                                       gap8widthController,
                                                   keyboardType:
                                                       TextInputType.number,
+                                                  inputFormatters: <
+                                                    TextInputFormatter
+                                                  >[
+                                                    FilteringTextInputFormatter
+                                                        .digitsOnly,
+                                                  ],
                                                   decoration: InputDecoration(
                                                     hintText: '0',
                                                   ),
@@ -970,101 +1099,236 @@ class _SimulateUIstate extends State<SimulatePage> {
                                       setState(() {
                                         caminductsend = !caminductsend;
                                         if (caminductsend == true) {
-                                          sendData(
-                                            "2",
-                                            "numcaminduct",
-                                            numCampInducteethController.text,
-                                          );
-                                          sendData(
-                                            "2",
-                                            "difin",
-                                            difInCampCrkInducController.text,
-                                          );
-                                          sendData(
-                                            "2",
-                                            "difout",
-                                            difExCampCrkInducController.text,
-                                          );
-                                          sendData(
-                                            "2",
-                                            "camteeth1",
-                                            teeth1widthController.text,
-                                          );
-                                          sendData(
-                                            "2",
-                                            "camgap1",
-                                            gap1widthController.text,
-                                          );
-                                          sendData(
-                                            "2",
-                                            "camteeth2",
-                                            teeth2widthController.text,
-                                          );
-                                          sendData(
-                                            "2",
-                                            "camgap2",
-                                            gap2widthController.text,
-                                          );
-                                          sendData(
-                                            "2",
-                                            "camteeth3",
-                                            teeth3widthController.text,
-                                          );
-                                          sendData(
-                                            "2",
-                                            "camgap3",
-                                            gap3widthController.text,
-                                          );
-                                          sendData(
-                                            "2",
-                                            "camteeth4",
-                                            teeth4widthController.text,
-                                          );
-                                          sendData(
-                                            "2",
-                                            "camgap4",
-                                            gap4widthController.text,
-                                          );
-                                          sendData(
-                                            "2",
-                                            "camteeth5",
-                                            teeth5widthController.text,
-                                          );
-                                          sendData(
-                                            "2",
-                                            "camgap5",
-                                            gap5widthController.text,
-                                          );
-                                          sendData(
-                                            "2",
-                                            "camteeth6",
-                                            teeth6widthController.text,
-                                          );
-                                          sendData(
-                                            "2",
-                                            "camgap6",
-                                            gap6widthController.text,
-                                          );
-                                          sendData(
-                                            "2",
-                                            "camteeth7",
-                                            teeth7widthController.text,
-                                          );
-                                          sendData(
-                                            "2",
-                                            "camgap7",
-                                            gap7widthController.text,
-                                          );
-                                          sendData(
-                                            "2",
-                                            "camteeth8",
-                                            teeth8widthController.text,
-                                          );
-                                          sendData(
-                                            "2",
-                                            "camgap8",
-                                            gap8widthController.text,
-                                          );
+                                          if (numCampInducteethController.text
+                                              .trim()
+                                              .isNotEmpty) {
+                                            sendData(
+                                              "2",
+                                              "numcaminduct",
+                                              numCampInducteethController.text
+                                                  .trim(),
+                                            );
+                                          } else {
+                                            sendData("2", "numcaminduct", '0');
+                                          }
+
+                                          if (difInCampCrkInducController.text
+                                              .trim()
+                                              .isNotEmpty) {
+                                            sendData(
+                                              "2",
+                                              "difin",
+                                              difInCampCrkInducController.text
+                                                  .trim(),
+                                            );
+                                          } else {
+                                            sendData("2", "difin", '0');
+                                          }
+
+                                          if (difExCampCrkInducController.text
+                                              .trim()
+                                              .isNotEmpty) {
+                                            sendData(
+                                              "2",
+                                              "difout",
+                                              difExCampCrkInducController.text
+                                                  .trim(),
+                                            );
+                                          } else {
+                                            sendData("2", "difout", '0');
+                                          }
+
+                                          if (teeth1widthController.text
+                                              .trim()
+                                              .isNotEmpty) {
+                                            sendData(
+                                              "2",
+                                              "camteeth1",
+                                              teeth1widthController.text.trim(),
+                                            );
+                                          } else {
+                                            sendData("2", "camteeth1", '0');
+                                          }
+
+                                          if (gap1widthController.text
+                                              .trim()
+                                              .isNotEmpty) {
+                                            sendData(
+                                              "2",
+                                              "camgap1",
+                                              gap1widthController.text.trim(),
+                                            );
+                                          } else {
+                                            sendData("2", "camgap1", '0');
+                                          }
+
+                                          if (teeth2widthController.text
+                                              .trim()
+                                              .isNotEmpty) {
+                                            sendData(
+                                              "2",
+                                              "camteeth2",
+                                              teeth2widthController.text.trim(),
+                                            );
+                                          } else {
+                                            sendData("2", "camteeth2", '0');
+                                          }
+
+                                          if (gap2widthController.text
+                                              .trim()
+                                              .isNotEmpty) {
+                                            sendData(
+                                              "2",
+                                              "camgap2",
+                                              gap2widthController.text.trim(),
+                                            );
+                                          } else {
+                                            sendData("2", "camgap2", '0');
+                                          }
+
+                                          if (teeth3widthController.text
+                                              .trim()
+                                              .isNotEmpty) {
+                                            sendData(
+                                              "2",
+                                              "camteeth3",
+                                              teeth3widthController.text.trim(),
+                                            );
+                                          } else {
+                                            sendData("2", "camteeth3", '0');
+                                          }
+
+                                          if (gap3widthController.text
+                                              .trim()
+                                              .isNotEmpty) {
+                                            sendData(
+                                              "2",
+                                              "camgap3",
+                                              gap3widthController.text.trim(),
+                                            );
+                                          } else {
+                                            sendData("2", "camgap3", '0');
+                                          }
+
+                                          if (teeth4widthController.text
+                                              .trim()
+                                              .isNotEmpty) {
+                                            sendData(
+                                              "2",
+                                              "camteeth4",
+                                              teeth4widthController.text.trim(),
+                                            );
+                                          } else {
+                                            sendData("2", "camteeth4", '0');
+                                          }
+
+                                          if (gap4widthController.text
+                                              .trim()
+                                              .isNotEmpty) {
+                                            sendData(
+                                              "2",
+                                              "camgap4",
+                                              gap4widthController.text.trim(),
+                                            );
+                                          } else {
+                                            sendData("2", "camgap4", '0');
+                                          }
+
+                                          if (teeth5widthController.text
+                                              .trim()
+                                              .isNotEmpty) {
+                                            sendData(
+                                              "2",
+                                              "camteeth5",
+                                              teeth5widthController.text.trim(),
+                                            );
+                                          } else {
+                                            sendData("2", "camteeth5", '0');
+                                          }
+
+                                          if (gap5widthController.text
+                                              .trim()
+                                              .isNotEmpty) {
+                                            sendData(
+                                              "2",
+                                              "camgap5",
+                                              gap5widthController.text.trim(),
+                                            );
+                                          } else {
+                                            sendData("2", "camgap5", '0');
+                                          }
+
+                                          if (teeth6widthController.text
+                                              .trim()
+                                              .isNotEmpty) {
+                                            sendData(
+                                              "2",
+                                              "camteeth6",
+                                              teeth6widthController.text.trim(),
+                                            );
+                                          } else {
+                                            sendData("2", "camteeth6", '0');
+                                          }
+
+                                          if (gap6widthController.text
+                                              .trim()
+                                              .isNotEmpty) {
+                                            sendData(
+                                              "2",
+                                              "camgap6",
+                                              gap6widthController.text.trim(),
+                                            );
+                                          } else {
+                                            sendData("2", "camgap6", '0');
+                                          }
+
+                                          if (teeth7widthController.text
+                                              .trim()
+                                              .isNotEmpty) {
+                                            sendData(
+                                              "2",
+                                              "camteeth7",
+                                              teeth7widthController.text.trim(),
+                                            );
+                                          } else {
+                                            sendData("2", "camteeth7", '0');
+                                          }
+
+                                          if (gap7widthController.text
+                                              .trim()
+                                              .isNotEmpty) {
+                                            sendData(
+                                              "2",
+                                              "camgap7",
+                                              gap7widthController.text.trim(),
+                                            );
+                                          } else {
+                                            sendData("2", "camgap7", '0');
+                                          }
+
+                                          if (teeth8widthController.text
+                                              .trim()
+                                              .isNotEmpty) {
+                                            sendData(
+                                              "2",
+                                              "camteeth8",
+                                              teeth8widthController.text.trim(),
+                                            );
+                                          } else {
+                                            sendData("2", "camteeth8", '0');
+                                          }
+
+                                          if (gap8widthController.text
+                                              .trim()
+                                              .isNotEmpty) {
+                                            sendData(
+                                              "2",
+                                              "camgap8",
+                                              gap8widthController.text.trim(),
+                                            );
+                                          } else {
+                                            sendData("2", "camgap8", '0');
+                                          }
 
                                           sendData("2", "caminductsend", "1");
                                         }
@@ -1093,126 +1357,126 @@ class _SimulateUIstate extends State<SimulatePage> {
                           ],
                         ),
                         const SizedBox(width: 100),
-                        Column(
-                          children: [
-                            const SizedBox(height: 20),
-                            Container(
-                              padding: EdgeInsets.all(10),
-                              decoration: BoxDecoration(
-                                color: Colors.redAccent,
-                              ),
-                              child: Text(
-                                "HALL CAMSHAFT SIGNAL",
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: "Roboto",
-                                  fontSize: 15,
-                                ),
-                              ),
-                            ),
-                            Center(
-                              child: SizedBox(
-                                width: 260,
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      'Number of Teeth',
-                                      style: TextStyle(fontSize: 18),
-                                    ),
-                                    SizedBox(
-                                      width: 60,
-                                      child: TextField(
-                                        controller: numCampHallteethController,
-                                        keyboardType: TextInputType.number,
-                                        decoration: InputDecoration(
-                                          hintText: '72',
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            const SizedBox(height: 20),
-                            Center(
-                              child: SizedBox(
-                                width: 260,
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      'Cam IN Crank Offset',
-                                      style: TextStyle(fontSize: 18),
-                                    ),
-                                    SizedBox(
-                                      width: 60,
-                                      child: TextField(
-                                        controller: difInCampCrkHallController,
-                                        keyboardType: TextInputType.number,
-                                        decoration: InputDecoration(
-                                          hintText: '0',
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            const SizedBox(height: 20),
-                            Center(
-                              child: SizedBox(
-                                width: 260,
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      'Cam EX Crank Offset',
-                                      style: TextStyle(fontSize: 18),
-                                    ),
-                                    SizedBox(
-                                      width: 60,
-                                      child: TextField(
-                                        controller: difExCampCrkHallController,
-                                        keyboardType: TextInputType.number,
-                                        decoration: InputDecoration(
-                                          hintText: '0',
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
+                        //   Column(
+                        //     children: [
+                        //       const SizedBox(height: 20),
+                        //       Container(
+                        //         padding: EdgeInsets.all(10),
+                        //         decoration: BoxDecoration(
+                        //           color: Colors.redAccent,
+                        //         ),
+                        //         child: Text(
+                        //           "HALL CAMSHAFT SIGNAL",
+                        //           style: TextStyle(
+                        //             color: Colors.white,
+                        //             fontWeight: FontWeight.bold,
+                        //             fontFamily: "Roboto",
+                        //             fontSize: 15,
+                        //           ),
+                        //         ),
+                        //       ),
+                        //       // Center(
+                        //       //   child: SizedBox(
+                        //       //     width: 260,
+                        //       //     child: Row(
+                        //       //       mainAxisAlignment:
+                        //       //           MainAxisAlignment.spaceBetween,
+                        //       //       children: [
+                        //       //         Text(
+                        //       //           'Number of Teeth',
+                        //       //           style: TextStyle(fontSize: 18),
+                        //       //         ),
+                        //       //         SizedBox(
+                        //       //           width: 60,
+                        //       //           child: TextField(
+                        //       //             controller: numCampHallteethController,
+                        //       //             keyboardType: TextInputType.number,
+                        //       //             decoration: InputDecoration(
+                        //       //               hintText: '72',
+                        //       //             ),
+                        //       //           ),
+                        //       //         ),
+                        //       //       ],
+                        //       //     ),
+                        //       //   ),
+                        //       // ),
+                        //       const SizedBox(height: 20),
+                        //       Center(
+                        //         child: SizedBox(
+                        //           width: 260,
+                        //           child: Row(
+                        //             mainAxisAlignment:
+                        //                 MainAxisAlignment.spaceBetween,
+                        //             children: [
+                        //               Text(
+                        //                 'Cam IN Crank Offset',
+                        //                 style: TextStyle(fontSize: 18),
+                        //               ),
+                        //               SizedBox(
+                        //                 width: 60,
+                        //                 child: TextField(
+                        //                   controller: difInCampCrkHallController,
+                        //                   keyboardType: TextInputType.number,
+                        //                   decoration: InputDecoration(
+                        //                     hintText: '0',
+                        //                   ),
+                        //                 ),
+                        //               ),
+                        //             ],
+                        //           ),
+                        //         ),
+                        //       ),
+                        //       const SizedBox(height: 20),
+                        //       Center(
+                        //         child: SizedBox(
+                        //           width: 260,
+                        //           child: Row(
+                        //             mainAxisAlignment:
+                        //                 MainAxisAlignment.spaceBetween,
+                        //             children: [
+                        //               Text(
+                        //                 'Cam EX Crank Offset',
+                        //                 style: TextStyle(fontSize: 18),
+                        //               ),
+                        //               SizedBox(
+                        //                 width: 60,
+                        //                 child: TextField(
+                        //                   controller: difExCampCrkHallController,
+                        //                   keyboardType: TextInputType.number,
+                        //                   decoration: InputDecoration(
+                        //                     hintText: '0',
+                        //                   ),
+                        //                 ),
+                        //               ),
+                        //             ],
+                        //           ),
+                        //         ),
+                        //       ),
 
-                            const SizedBox(height: 440),
-                            SizedBox(
-                              width: 200,
-                              child: ElevatedButton(
-                                onPressed: () {},
-                                style: ElevatedButton.styleFrom(
-                                  foregroundColor: Colors.white,
-                                  backgroundColor: Colors.green,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius:
-                                        BorderRadius.zero, // Button vuông
-                                  ),
-                                ),
-                                child: Text(
-                                  'SEND SIGNAL',
-                                  style: TextStyle(
-                                    fontFamily: 'Roboto',
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
+                        //       const SizedBox(height: 440),
+                        //       SizedBox(
+                        //         width: 200,
+                        //         child: ElevatedButton(
+                        //           onPressed: () {},
+                        //           style: ElevatedButton.styleFrom(
+                        //             foregroundColor: Colors.white,
+                        //             backgroundColor: Colors.green,
+                        //             shape: RoundedRectangleBorder(
+                        //               borderRadius:
+                        //                   BorderRadius.zero, // Button vuông
+                        //             ),
+                        //           ),
+                        //           child: Text(
+                        //             'SEND SIGNAL',
+                        //             style: TextStyle(
+                        //               fontFamily: 'Roboto',
+                        //               fontWeight: FontWeight.bold,
+                        //             ),
+                        //           ),
+                        //         ),
+                        //       ),
+                        //     ],
+                        //   ),
                       ],
                     ),
                   ),
@@ -1253,13 +1517,20 @@ class _SimulateUIstate extends State<SimulatePage> {
                                     child: TextField(
                                       controller: teethabsController,
                                       keyboardType: TextInputType.number,
+                                      inputFormatters: <TextInputFormatter>[
+                                        FilteringTextInputFormatter.digitsOnly,
+                                      ],
                                       decoration: InputDecoration(
                                         hintText: '0',
                                       ),
                                       onChanged: (value) {
                                         final abs1send = int.tryParse(value);
                                         if (abs1send != null) {
-                                          sendData("3", "absbate", value);
+                                          sendData(
+                                            "3",
+                                            "absbate",
+                                            abs1send.toString(),
+                                          );
                                         }
                                       },
                                     ),
@@ -1270,7 +1541,11 @@ class _SimulateUIstate extends State<SimulatePage> {
                                       setState(() {
                                         abssending = !abssending;
                                         if (abssending == true) {
-                                          sendData('3', 'abssend', '1');
+                                          sendData(
+                                            '3',
+                                            'absbate',
+                                            teethabsController.text,
+                                          );
                                         }
                                         abssending = !abssending;
                                       });
@@ -1301,6 +1576,7 @@ class _SimulateUIstate extends State<SimulatePage> {
                   ),
                 ),
 
+                // Cụm tín hiệu ABS
                 const SizedBox(height: 20),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -1636,7 +1912,7 @@ class _SimulateUIstate extends State<SimulatePage> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text('ACTUA1', style: TextStyle(fontSize: 18)),
+                        Text('ACTUA1 - 4', style: TextStyle(fontSize: 18)),
                         Expanded(
                           child: Slider(
                             value: actua1,
@@ -1649,11 +1925,7 @@ class _SimulateUIstate extends State<SimulatePage> {
                             onChanged: (value) {
                               setState(() {
                                 actua1 = value;
-                                sendData(
-                                  '3',
-                                  'act1',
-                                  actua1.toInt().toString(),
-                                );
+                                sendData('3', 'act', actua1.toInt().toString());
                               });
                             },
                           ),
@@ -1665,108 +1937,108 @@ class _SimulateUIstate extends State<SimulatePage> {
                         const SizedBox(width: 10),
                       ],
                     ),
-                    const SizedBox(height: 20),
+                    // const SizedBox(height: 20),
 
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text('ACTUA2', style: TextStyle(fontSize: 18)),
-                        Expanded(
-                          child: Slider(
-                            value: actua2,
-                            min: 0,
-                            max: 100,
-                            divisions: 100,
-                            label: actua2.toInt().toString(),
-                            activeColor: Colors.red,
-                            inactiveColor: Colors.red.shade100,
-                            onChanged: (value) {
-                              setState(() {
-                                actua2 = value;
-                                sendData(
-                                  '3',
-                                  'act2',
-                                  actua2.toInt().toString(),
-                                );
-                              });
-                            },
-                          ),
-                        ),
-                        Text(
-                          '${actua2.toInt()} Hz',
-                          style: TextStyle(fontSize: 18),
-                        ),
-                        const SizedBox(width: 10),
-                      ],
-                    ),
-                    const SizedBox(height: 20),
+                    // Row(
+                    //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    //   children: [
+                    //     Text('ACTUA2', style: TextStyle(fontSize: 18)),
+                    //     Expanded(
+                    //       child: Slider(
+                    //         value: actua2,
+                    //         min: 0,
+                    //         max: 100,
+                    //         divisions: 100,
+                    //         label: actua2.toInt().toString(),
+                    //         activeColor: Colors.red,
+                    //         inactiveColor: Colors.red.shade100,
+                    //         onChanged: (value) {
+                    //           setState(() {
+                    //             actua2 = value;
+                    //             sendData(
+                    //               '3',
+                    //               'act2',
+                    //               actua2.toInt().toString(),
+                    //             );
+                    //           });
+                    //         },
+                    //       ),
+                    //     ),
+                    //     Text(
+                    //       '${actua2.toInt()} Hz',
+                    //       style: TextStyle(fontSize: 18),
+                    //     ),
+                    //     const SizedBox(width: 10),
+                    //   ],
+                    // ),
+                    // const SizedBox(height: 20),
 
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text('ACTUA3', style: TextStyle(fontSize: 18)),
-                        Expanded(
-                          child: Slider(
-                            value: actua3,
-                            min: 0,
-                            max: 100,
-                            divisions: 100,
-                            label: actua3.toInt().toString(),
-                            activeColor: Colors.red,
-                            inactiveColor: Colors.red.shade100,
-                            onChanged: (value) {
-                              setState(() {
-                                actua3 = value;
-                                sendData(
-                                  '3',
-                                  'act3',
-                                  actua3.toInt().toString(),
-                                );
-                              });
-                            },
-                          ),
-                        ),
-                        Text(
-                          '${actua3.toInt()} Hz',
-                          style: TextStyle(fontSize: 18),
-                        ),
-                        const SizedBox(width: 10),
-                      ],
-                    ),
-                    const SizedBox(height: 20),
+                    // Row(
+                    //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    //   children: [
+                    //     Text('ACTUA3', style: TextStyle(fontSize: 18)),
+                    //     Expanded(
+                    //       child: Slider(
+                    //         value: actua3,
+                    //         min: 0,
+                    //         max: 100,
+                    //         divisions: 100,
+                    //         label: actua3.toInt().toString(),
+                    //         activeColor: Colors.red,
+                    //         inactiveColor: Colors.red.shade100,
+                    //         onChanged: (value) {
+                    //           setState(() {
+                    //             actua3 = value;
+                    //             sendData(
+                    //               '3',
+                    //               'act3',
+                    //               actua3.toInt().toString(),
+                    //             );
+                    //           });
+                    //         },
+                    //       ),
+                    //     ),
+                    //     Text(
+                    //       '${actua3.toInt()} Hz',
+                    //       style: TextStyle(fontSize: 18),
+                    //     ),
+                    //     const SizedBox(width: 10),
+                    //   ],
+                    // ),
+                    // const SizedBox(height: 20),
 
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text('ACTUA4', style: TextStyle(fontSize: 18)),
-                        Expanded(
-                          child: Slider(
-                            value: actua4,
-                            min: 0,
-                            max: 100,
-                            divisions: 100,
-                            label: actua4.toInt().toString(),
-                            activeColor: Colors.red,
-                            inactiveColor: Colors.red.shade100,
-                            onChanged: (value) {
-                              setState(() {
-                                actua4 = value;
-                                sendData(
-                                  '3',
-                                  'act4',
-                                  actua4.toInt().toString(),
-                                );
-                              });
-                            },
-                          ),
-                        ),
-                        Text(
-                          '${actua4.toInt()} Hz',
-                          style: TextStyle(fontSize: 18),
-                        ),
-                        const SizedBox(width: 10),
-                      ],
-                    ),
+                    // Row(
+                    //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    //   children: [
+                    //     Text('ACTUA4', style: TextStyle(fontSize: 18)),
+                    //     Expanded(
+                    //       child: Slider(
+                    //         value: actua4,
+                    //         min: 0,
+                    //         max: 100,
+                    //         divisions: 100,
+                    //         label: actua4.toInt().toString(),
+                    //         activeColor: Colors.red,
+                    //         inactiveColor: Colors.red.shade100,
+                    //         onChanged: (value) {
+                    //           setState(() {
+                    //             actua4 = value;
+                    //             sendData(
+                    //               '3',
+                    //               'act4',
+                    //               actua4.toInt().toString(),
+                    //             );
+                    //           });
+                    //         },
+                    //       ),
+                    //     ),
+                    //     Text(
+                    //       '${actua4.toInt()} Hz',
+                    //       style: TextStyle(fontSize: 18),
+                    //     ),
+                    //     const SizedBox(width: 10),
+                    //   ],
+                    // ),
                   ],
                 ),
               ],

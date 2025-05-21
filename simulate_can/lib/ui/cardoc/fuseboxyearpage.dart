@@ -16,6 +16,7 @@ class FuseBoxYearPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(title: Text('$carName - Fuse Box')),
       body: ScrollConfiguration(
         behavior: MaterialScrollBehavior().copyWith(
