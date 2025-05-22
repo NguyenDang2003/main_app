@@ -332,6 +332,12 @@ bool fordisActive6 = false;
 bool fordisActive7 = false;
 // Biến dùng cho điều hòa
 bool fordisActive8 = false;
+// Biến dùng cho nhan trái
+bool fordisActive9 = false;
+// Biến dùng cho nhan phải
+bool fordisActive10 = false;
+// Biến dùng cho đèn headlight
+bool fordisActive11 = false;
 TextEditingController fordvehicleSpeedController = TextEditingController();
 bool fordisConnectedDashboard = false;
 // Biến dùng cho Car doc

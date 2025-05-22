@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
+import 'package:flutter/gestures.dart';
 
 class PDFManualListPage extends StatelessWidget {
   final String carBrand;
@@ -64,7 +65,15 @@ class _PDFViewerPageState extends State<PDFViewerPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(widget.title)),
-      body: SfPdfViewer.network(widget.pdfUrl),
+      body: GestureDetector(
+        onVerticalDragUpdate: (_) {},
+        child: ScrollConfiguration(
+          behavior: const MaterialScrollBehavior().copyWith(
+            dragDevices: {PointerDeviceKind.touch, PointerDeviceKind.mouse},
+          ),
+          child: SfPdfViewer.network(widget.pdfUrl),
+        ),
+      ),
     );
   }
 }

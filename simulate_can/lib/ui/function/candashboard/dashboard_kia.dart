@@ -3,6 +3,7 @@ import 'dart:ui'; // Để sử dụng BackdropFilter
 import 'package:simulate_can/var.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:flutter/services.dart';
 
 class DashboardKia extends StatefulWidget {
   const DashboardKia({super.key});
@@ -177,9 +178,9 @@ class DashboardKiaState extends State<DashboardKia> {
                 setState(() {
                   kiaisActive1 = !kiaisActive1;
                   if (kiaisActive1 == true) {
-                    sendData('1', 'EBD', '04');
+                    sendData('1', 'KIA_EBD', '04');
                   } else {
-                    sendData('1', 'EBD', '00');
+                    sendData('1', 'KIA_EBD', '00');
                   }
                 });
               },
@@ -218,6 +219,10 @@ class DashboardKiaState extends State<DashboardKia> {
                         // Sử dụng Expanded để TextField lấp đầy không gian còn lại
                         child: TextField(
                           controller: kiaengineSpeedController,
+                          keyboardType: TextInputType.number,
+                          inputFormatters: <TextInputFormatter>[
+                            FilteringTextInputFormatter.digitsOnly,
+                          ],
                           decoration: InputDecoration(
                             contentPadding: EdgeInsets.symmetric(
                               vertical: 0,
@@ -248,6 +253,16 @@ class DashboardKiaState extends State<DashboardKia> {
                             ),
                             border: OutlineInputBorder(),
                           ),
+                          onChanged: (value) {
+                            setState(() {
+                              final kiarpm = value;
+                              sendData(
+                                '1',
+                                'KIA_ENGINE_SPD',
+                                kiarpm.trim().toString(),
+                              );
+                            });
+                          },
                         ),
                       ),
                     ],
@@ -273,6 +288,10 @@ class DashboardKiaState extends State<DashboardKia> {
                         // Sử dụng Expanded để TextField lấp đầy không gian còn lại
                         child: TextField(
                           controller: kiavehicleSpeedController,
+                          keyboardType: TextInputType.number,
+                          inputFormatters: <TextInputFormatter>[
+                            FilteringTextInputFormatter.digitsOnly,
+                          ],
                           decoration: InputDecoration(
                             contentPadding: EdgeInsets.symmetric(
                               vertical: 0,
@@ -303,6 +322,16 @@ class DashboardKiaState extends State<DashboardKia> {
                             ),
                             border: OutlineInputBorder(),
                           ),
+                          onChanged: (value) {
+                            setState(() {
+                              final kiaspeed = value;
+                              sendData(
+                                '1',
+                                'KIA_SEH_SPD',
+                                kiaspeed.trim().toString(),
+                              );
+                            });
+                          },
                         ),
                       ),
                     ],
@@ -407,9 +436,9 @@ class DashboardKiaState extends State<DashboardKia> {
                 setState(() {
                   kiaisActive4 = !kiaisActive4;
                   if (kiaisActive4 == true) {
-                    sendData('1', 'MIL', '02');
+                    sendData('1', 'KIA_MIL', '02');
                   } else {
-                    sendData('1', 'MIL', '00');
+                    sendData('1', 'KIA_MIL', '00');
                   }
                 });
               },
@@ -456,9 +485,9 @@ class DashboardKiaState extends State<DashboardKia> {
                 setState(() {
                   kiaisActive6 = !kiaisActive6;
                   if (kiaisActive6 == true) {
-                    sendData('1', 'SBELT', '160');
+                    sendData('1', 'KIA_SBELT', '160');
                   } else {
-                    sendData('1', 'SBELT', '00');
+                    sendData('1', 'KIA_SBELT', '00');
                   }
                 });
               },
@@ -485,9 +514,9 @@ class DashboardKiaState extends State<DashboardKia> {
                 setState(() {
                   kiaisActive7 = !kiaisActive7;
                   if (kiaisActive7 == true) {
-                    sendData('1', 'MDPS', '01');
+                    sendData('1', 'KIA_MDPS', '01');
                   } else {
-                    sendData('1', 'MDPS', '00');
+                    sendData('1', 'KIA_MDPS', '00');
                   }
                 });
               },
@@ -515,9 +544,9 @@ class DashboardKiaState extends State<DashboardKia> {
                 setState(() {
                   kiaisActive8 = !kiaisActive8;
                   if (kiaisActive8 == true) {
-                    sendData('1', 'TPMS', '03');
+                    sendData('1', 'KIA_TPMS', '03');
                   } else {
-                    sendData('1', 'TPMS', '00');
+                    sendData('1', 'KIA_TPMS', '00');
                   }
                 });
               },
@@ -544,9 +573,9 @@ class DashboardKiaState extends State<DashboardKia> {
                 setState(() {
                   kiaisActive9 = !kiaisActive9;
                   if (kiaisActive9 == true) {
-                    sendData('1', 'ABS', '03');
+                    sendData('1', 'KIA_ABS', '03');
                   } else {
-                    sendData('1', 'ABS', '02');
+                    sendData('1', 'KIA_ABS', '02');
                   }
                 });
               },

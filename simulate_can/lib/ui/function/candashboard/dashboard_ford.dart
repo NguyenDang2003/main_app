@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'dart:ui'; // Để sử dụng BackdropFilter
+// import 'dart:ui'; // Để sử dụng BackdropFilter
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
@@ -359,6 +359,7 @@ class DashboardFordState extends State<DashboardFord> {
                 activeColor: Colors.orange,
                 assetPath: 'assets/images/engine.png',
               ),
+              // air bag
               buildToggleImageButton(
                 x: 1300,
                 y: 470,
@@ -380,6 +381,73 @@ class DashboardFordState extends State<DashboardFord> {
                 activeColor: Colors.blue,
                 assetPath: 'assets/images/ac.png',
               ),
+              // turn left
+              buildToggleImageButton(
+                x: 900,
+                y: 400,
+                offsetX: offsetX,
+                offsetY: offsetY,
+                sizex: 40,
+                sizey: 40,
+                scale: scale,
+                addr: '2',
+                field: 'field',
+                valueOn: '20',
+                valueOff: '0',
+                isActive: fordisActive9,
+                onToggle: (newState) {
+                  setState(() {
+                    fordisActive9 = newState;
+                  });
+                },
+                activeColor: Colors.green,
+                assetPath: 'assets/images/left.png',
+              ),
+              // turn right
+              buildToggleImageButton(
+                x: 970,
+                y: 400,
+                offsetX: offsetX,
+                offsetY: offsetY,
+                sizex: 40,
+                sizey: 40,
+                scale: scale,
+                addr: '2',
+                field: 'field',
+                valueOn: '20',
+                valueOff: '0',
+                isActive: fordisActive10,
+                onToggle: (newState) {
+                  setState(() {
+                    fordisActive10 = newState;
+                  });
+                },
+                activeColor: Colors.green,
+                assetPath: 'assets/images/right.png',
+              ),
+              // headlight
+              buildToggleImageButton(
+                x: 450,
+                y: 600,
+                offsetX: offsetX,
+                offsetY: offsetY,
+                sizex: 45,
+                sizey: 45,
+                scale: scale,
+                addr: '2',
+                field: 'field',
+                valueOn: '20',
+                valueOff: '0',
+                isActive: fordisActive11,
+                onToggle: (newState) {
+                  setState(() {
+                    fordisActive11 = newState;
+                  });
+                },
+                activeColor: Colors.green,
+                assetPath: 'assets/images/headlight.png',
+              ),
+
               Positioned(
                 left: offsetX + 900 * scale,
                 top: offsetY + 500 * scale,

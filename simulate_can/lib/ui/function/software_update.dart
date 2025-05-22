@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:package_info_plus/package_info_plus.dart';
-import 'package:url_launcher/url_launcher.dart';
+// import 'package:url_launcher/url_launcher.dart';
 
 class SoftwareUpdate extends StatefulWidget {
   const SoftwareUpdate({super.key});
@@ -61,18 +61,18 @@ class _SoftwareUpdateState extends State<SoftwareUpdate> {
     }
   }
 
-  void _launchUpdateUrl() async {
-    if (await canLaunchUrl(Uri.parse(downloadUrl))) {
-      await launchUrl(
-        Uri.parse(downloadUrl),
-        mode: LaunchMode.externalApplication,
-      );
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("Unable to open the update link.")),
-      );
-    }
-  }
+  // void _launchUpdateUrl() async {
+  //   if (await canLaunchUrl(Uri.parse(downloadUrl))) {
+  //     await launchUrl(
+  //       Uri.parse(downloadUrl),
+  //       mode: LaunchMode.externalApplication,
+  //     );
+  //   } else {
+  //     ScaffoldMessenger.of(context).showSnackBar(
+  //       SnackBar(content: Text("Unable to open the update link.")),
+  //     );
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class ComparisonPage extends StatelessWidget {
+  // const ComparisonPage({super.key});
+
   final String carBrand;
   final String carName;
   final List<dynamic> comparisons;
