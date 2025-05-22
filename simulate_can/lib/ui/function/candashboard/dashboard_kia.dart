@@ -253,7 +253,7 @@ class DashboardKiaState extends State<DashboardKia> {
                             ),
                             border: OutlineInputBorder(),
                           ),
-                          onChanged: (value) {
+                          onSubmitted: (value) {
                             setState(() {
                               final kiarpm = value;
                               sendData(
@@ -322,12 +322,12 @@ class DashboardKiaState extends State<DashboardKia> {
                             ),
                             border: OutlineInputBorder(),
                           ),
-                          onChanged: (value) {
+                          onSubmitted: (value) {
                             setState(() {
                               final kiaspeed = value;
                               sendData(
                                 '1',
-                                'KIA_SEH_SPD',
+                                'KIA_VEH_SPD',
                                 kiaspeed.trim().toString(),
                               );
                             });
