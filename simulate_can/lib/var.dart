@@ -311,6 +311,7 @@ bool kiaisActive10 = false;
 
 TextEditingController kiaengineSpeedController = TextEditingController();
 TextEditingController kiavehicleSpeedController = TextEditingController();
+TextEditingController kiaengineTempController = TextEditingController();
 
 // Biến dùng cho Ford Dashboard
 

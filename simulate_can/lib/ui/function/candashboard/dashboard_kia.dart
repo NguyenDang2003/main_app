@@ -226,7 +226,7 @@ class DashboardKiaState extends State<DashboardKia> {
                           Expanded(
                             // Sử dụng Expanded để TextField lấp đầy không gian còn lại
                             child: TextField(
-                              controller: kiaengineSpeedController,
+                              controller: kiaengineTempController,
                               keyboardType: TextInputType.number,
                               inputFormatters: <TextInputFormatter>[
                                 FilteringTextInputFormatter.digitsOnly,
