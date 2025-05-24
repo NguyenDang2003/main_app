@@ -286,8 +286,8 @@ class DashboardFordState extends State<DashboardFord> {
                 scale: scale,
                 addr: '1',
                 field: 'FORD_TCS_OFF',
-                valueOn: '08',
-                valueOff: '00',
+                valueOn: '235',
+                valueOff: '227',
                 isActive: fordisActive4,
                 onToggle: (newState) {
                   setState(() {
