@@ -330,7 +330,7 @@ class DashboardFordState extends State<DashboardFord> {
                 scale: scale,
                 addr: '1',
                 field: 'FORD_TPMS',
-                valueOn: '256',
+                valueOn: '255',
                 valueOff: '00',
                 isActive: fordisActive6,
                 onToggle: (newState) {
