@@ -105,6 +105,7 @@ flutter:
     - assets/images/adblue.png
     - assets/images/ac.png
     - assets/images/headlight.png
+    - assets/images/beamlight.png
     - assets/images/carbrand/audi.png
     - assets/images/carbrand/bmw.png
     - assets/images/carbrand/chevrolet.png

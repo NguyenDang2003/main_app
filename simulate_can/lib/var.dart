@@ -309,28 +309,34 @@ bool kiaisActive9 = true;
 // Biến cho đèn báo fuel
 bool kiaisActive10 = false;
 
-TextEditingController kiaengineSpeedController = TextEditingController();
-TextEditingController kiavehicleSpeedController = TextEditingController();
-TextEditingController kiaengineTempController = TextEditingController();
+TextEditingController kiaengineSpeedController = TextEditingController(
+  text: '0',
+);
+TextEditingController kiavehicleSpeedController = TextEditingController(
+  text: '0',
+);
+TextEditingController kiaengineTempController = TextEditingController(
+  text: '0',
+);
 
 // Biến dùng cho Ford Dashboard
 
 // Biến dùng cho abs
-bool fordisActive = false;
+bool fordisActive = true;
 // Biến dùng cho phanh tay
-bool fordisActive1 = false;
+bool fordisActive1 = true;
 // Biến dùng cho túi khí
-bool fordisActive2 = false;
+bool fordisActive2 = true;
 // Biến dùng cho esp on
-bool fordisActive3 = false;
-// Biến dùng cho esp on
+bool fordisActive3 = true;
+// Biến dùng cho esp off
 bool fordisActive4 = false;
 // Biến dùng cho adblue
 bool fordisActive5 = false;
 // Biến dùng cho áp suất lốp
-bool fordisActive6 = false;
+bool fordisActive6 = true;
 // Biến dùng cho engine
-bool fordisActive7 = false;
+bool fordisActive7 = true;
 // Biến dùng cho điều hòa
 bool fordisActive8 = false;
 // Biến dùng cho nhan trái
@@ -339,7 +345,9 @@ bool fordisActive9 = false;
 bool fordisActive10 = false;
 // Biến dùng cho đèn headlight
 bool fordisActive11 = false;
-TextEditingController fordvehicleSpeedController = TextEditingController();
+TextEditingController fordvehicleSpeedController = TextEditingController(
+  text: '0',
+);
 bool fordisConnectedDashboard = false;
 // Biến dùng cho Car doc
 final List<Widget> cardocScreens = [

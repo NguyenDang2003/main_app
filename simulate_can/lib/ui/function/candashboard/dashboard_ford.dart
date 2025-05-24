@@ -242,8 +242,8 @@ class DashboardFordState extends State<DashboardFord> {
                 scale: scale,
                 addr: '1',
                 field: 'FORD_SRS',
-                valueOn: '',
-                valueOff: '',
+                valueOn: '64',
+                valueOff: '00',
                 isActive: fordisActive2,
                 onToggle: (newState) {
                   setState(() {
@@ -385,76 +385,76 @@ class DashboardFordState extends State<DashboardFord> {
                 activeColor: Colors.blue,
                 assetPath: 'assets/images/ac.png',
               ),
-              // turn left
-              buildToggleImageButton(
-                x: 900,
-                y: 400,
-                offsetX: offsetX,
-                offsetY: offsetY,
-                sizex: 40,
-                sizey: 40,
-                scale: scale,
-                addr: '2',
-                field: 'field',
-                valueOn: '20',
-                valueOff: '0',
-                isActive: fordisActive9,
-                onToggle: (newState) {
-                  setState(() {
-                    fordisActive9 = newState;
-                  });
-                },
-                activeColor: Colors.green,
-                assetPath: 'assets/images/left.png',
-              ),
-              // turn right
-              buildToggleImageButton(
-                x: 970,
-                y: 400,
-                offsetX: offsetX,
-                offsetY: offsetY,
-                sizex: 40,
-                sizey: 40,
-                scale: scale,
-                addr: '2',
-                field: 'field',
-                valueOn: '20',
-                valueOff: '0',
-                isActive: fordisActive10,
-                onToggle: (newState) {
-                  setState(() {
-                    fordisActive10 = newState;
-                  });
-                },
-                activeColor: Colors.green,
-                assetPath: 'assets/images/right.png',
-              ),
+              // // turn left
+              // buildToggleImageButton(
+              //   x: 900,
+              //   y: 400,
+              //   offsetX: offsetX,
+              //   offsetY: offsetY,
+              //   sizex: 40,
+              //   sizey: 40,
+              //   scale: scale,
+              //   addr: '2',
+              //   field: 'field',
+              //   valueOn: '20',
+              //   valueOff: '0',
+              //   isActive: fordisActive9,
+              //   onToggle: (newState) {
+              //     setState(() {
+              //       fordisActive9 = newState;
+              //     });
+              //   },
+              //   activeColor: Colors.green,
+              //   assetPath: 'assets/images/left.png',
+              // ),
+              // // turn right
+              // buildToggleImageButton(
+              //   x: 970,
+              //   y: 400,
+              //   offsetX: offsetX,
+              //   offsetY: offsetY,
+              //   sizex: 40,
+              //   sizey: 40,
+              //   scale: scale,
+              //   addr: '2',
+              //   field: 'field',
+              //   valueOn: '20',
+              //   valueOff: '0',
+              //   isActive: fordisActive10,
+              //   onToggle: (newState) {
+              //     setState(() {
+              //       fordisActive10 = newState;
+              //     });
+              //   },
+              //   activeColor: Colors.green,
+              //   assetPath: 'assets/images/right.png',
+              // ),
               // headlight
               buildToggleImageButton(
-                x: 450,
-                y: 600,
+                x: 925,
+                y: 530,
                 offsetX: offsetX,
                 offsetY: offsetY,
                 sizex: 45,
                 sizey: 45,
                 scale: scale,
-                addr: '2',
-                field: 'field',
-                valueOn: '20',
-                valueOff: '0',
+                addr: '1',
+                field: 'FORD_BEAMLIGHT',
+                valueOn: '78',
+                valueOff: '76',
                 isActive: fordisActive11,
                 onToggle: (newState) {
                   setState(() {
                     fordisActive11 = newState;
                   });
                 },
-                activeColor: Colors.green,
-                assetPath: 'assets/images/headlight.png',
+                activeColor: Colors.blue,
+                assetPath: 'assets/images/beamlight.png',
               ),
 
               Positioned(
-                left: offsetX + 900 * scale,
-                top: offsetY + 500 * scale,
+                left: offsetX + 885 * scale,
+                top: offsetY + 400 * scale,
                 width: 140 * scale,
                 height: 70 * scale,
                 child: GestureDetector(
