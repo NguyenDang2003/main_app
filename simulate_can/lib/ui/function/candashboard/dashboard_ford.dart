@@ -1,3 +1,5 @@
+import 'dart:isolate';
+
 import 'package:flutter/material.dart';
 // import 'dart:ui'; // Để sử dụng BackdropFilter
 import 'package:http/http.dart' as http;
@@ -138,6 +140,7 @@ class DashboardFordState extends State<DashboardFord> {
                               onPressed: () {
                                 setState(() {
                                   fordisConnectedDashboard = true;
+                                  sendData('1', 'FORD_ON', '64');
                                 });
                               },
                               style: ElevatedButton.styleFrom(
@@ -158,6 +161,7 @@ class DashboardFordState extends State<DashboardFord> {
                               onPressed: () {
                                 setState(() {
                                   fordisConnectedDashboard = false;
+                                  sendData('1', 'FORD_OFF', '00');
                                 });
                               },
                               style: ElevatedButton.styleFrom(
@@ -192,10 +196,10 @@ class DashboardFordState extends State<DashboardFord> {
                 sizex: 50,
                 sizey: 50,
                 scale: scale,
-                addr: '2',
-                field: '',
-                valueOn: '',
-                valueOff: '',
+                addr: '1',
+                field: 'FORD_ABS',
+                valueOn: '80',
+                valueOff: '00',
                 isActive: fordisActive,
                 onToggle: (newState) {
                   setState(() {
@@ -214,10 +218,10 @@ class DashboardFordState extends State<DashboardFord> {
                 sizex: 50,
                 sizey: 50,
                 scale: scale,
-                addr: '2',
-                field: 'brake',
+                addr: '1',
+                field: 'FORD_BRAKE',
                 valueOn: '20',
-                valueOff: '0',
+                valueOff: '00',
                 isActive: fordisActive1,
                 onToggle: (newState) {
                   setState(() {
@@ -236,10 +240,10 @@ class DashboardFordState extends State<DashboardFord> {
                 sizex: 70,
                 sizey: 70,
                 scale: scale,
-                addr: '2',
-                field: 'srs',
-                valueOn: '20',
-                valueOff: '0',
+                addr: '1',
+                field: 'FORD_SRS',
+                valueOn: '',
+                valueOff: '',
                 isActive: fordisActive2,
                 onToggle: (newState) {
                   setState(() {
@@ -258,10 +262,10 @@ class DashboardFordState extends State<DashboardFord> {
                 sizex: 50,
                 sizey: 50,
                 scale: scale,
-                addr: '2',
-                field: '',
-                valueOn: '20',
-                valueOff: '0',
+                addr: '1',
+                field: 'FORD_TCS',
+                valueOn: '227',
+                valueOff: '00',
                 isActive: fordisActive3,
                 onToggle: (newState) {
                   setState(() {
@@ -280,10 +284,10 @@ class DashboardFordState extends State<DashboardFord> {
                 sizex: 40,
                 sizey: 35,
                 scale: scale,
-                addr: '2',
-                field: 'srs',
-                valueOn: '20',
-                valueOff: '0',
+                addr: '1',
+                field: 'FORD_TCS_OFF',
+                valueOn: '08',
+                valueOff: '00',
                 isActive: fordisActive4,
                 onToggle: (newState) {
                   setState(() {
@@ -324,10 +328,10 @@ class DashboardFordState extends State<DashboardFord> {
                 sizex: 50,
                 sizey: 50,
                 scale: scale,
-                addr: '2',
-                field: 'srs',
-                valueOn: '20',
-                valueOff: '0',
+                addr: '1',
+                field: 'FORD_TPMS',
+                valueOn: '256',
+                valueOff: '00',
                 isActive: fordisActive6,
                 onToggle: (newState) {
                   setState(() {
@@ -346,10 +350,10 @@ class DashboardFordState extends State<DashboardFord> {
                 sizex: 50,
                 sizey: 50,
                 scale: scale,
-                addr: '2',
-                field: 'srs',
-                valueOn: '20',
-                valueOff: '0',
+                addr: '1',
+                field: 'FORD_MIL',
+                valueOn: '12',
+                valueOff: '00',
                 isActive: fordisActive7,
                 onToggle: (newState) {
                   setState(() {
@@ -359,7 +363,7 @@ class DashboardFordState extends State<DashboardFord> {
                 activeColor: Colors.orange,
                 assetPath: 'assets/images/engine.png',
               ),
-              // air bag
+              // ac
               buildToggleImageButton(
                 x: 1300,
                 y: 470,
@@ -368,10 +372,10 @@ class DashboardFordState extends State<DashboardFord> {
                 sizex: 50,
                 sizey: 50,
                 scale: scale,
-                addr: '2',
-                field: 'srs',
-                valueOn: '20',
-                valueOff: '0',
+                addr: '1',
+                field: 'FORD_AC',
+                valueOn: '',
+                valueOff: '',
                 isActive: fordisActive8,
                 onToggle: (newState) {
                   setState(() {

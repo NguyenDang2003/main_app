@@ -146,7 +146,7 @@ class DashboardKiaState extends State<DashboardKia> {
                 child: GestureDetector(
                   child: SizedBox(
                     height: MediaQuery.of(context).size.height * 0.07,
-                    width: MediaQuery.of(context).size.width * 0.07,
+                    width: MediaQuery.of(context).size.width * 0.1,
                     child: Container(
                       padding: EdgeInsets.all(
                         5,
@@ -192,16 +192,41 @@ class DashboardKiaState extends State<DashboardKia> {
                                 ),
                                 border: OutlineInputBorder(),
                               ),
-                              onSubmitted: (value) {
-                                setState(() {
-                                  final kiarpm = value;
-                                  sendData(
-                                    '1',
-                                    'KIA_ENGINE_SPD',
-                                    kiarpm.trim().toString(),
-                                  );
-                                });
-                              },
+                            ),
+                          ),
+                          Expanded(
+                            child: SizedBox(
+                              height: 40, // hoặc bằng chiều cao TextField
+                              child: ElevatedButton(
+                                onPressed: () {
+                                  setState(() {
+                                    final kiaspeed =
+                                        kiaengineSpeedController.text;
+                                    sendData(
+                                      '1',
+                                      'KIA_ENGINE_SPD',
+                                      kiaspeed.trim().toString(),
+                                    );
+                                  });
+                                },
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.green,
+                                  foregroundColor: Colors.white,
+                                  padding:
+                                      EdgeInsets
+                                          .zero, // XÓA padding nội bộ để tránh lệch dọc
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.zero,
+                                  ),
+                                ),
+                                child: Icon(
+                                  Icons.arrow_right_alt,
+                                  size: 28,
+                                  color:
+                                      Colors
+                                          .white, // Tuỳ chỉnh kích thước đẹp mắt
+                                ),
+                              ),
                             ),
                           ),
                         ],
@@ -224,53 +249,35 @@ class DashboardKiaState extends State<DashboardKia> {
                       child: Row(
                         children: [
                           Expanded(
-                            // Sử dụng Expanded để TextField lấp đầy không gian còn lại
-                            child: TextField(
-                              controller: kiaengineTempController,
-                              keyboardType: TextInputType.number,
-                              inputFormatters: <TextInputFormatter>[
-                                FilteringTextInputFormatter.digitsOnly,
-                              ],
-                              decoration: InputDecoration(
-                                contentPadding: EdgeInsets.symmetric(
-                                  vertical: 0,
-                                  horizontal: 0,
-                                ), // Canh nội dung TextField
-                                label: Text(
-                                  "  °C",
-                                  style: TextStyle(
-                                    fontFamily: 'Roboto',
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 7,
+                            child: SizedBox(
+                              height: 40, // hoặc bằng chiều cao TextField
+                              child: ElevatedButton(
+                                onPressed: () {
+                                  setState(() {
+                                    sendData('1', 'KIA_ENGINE_TEMP', '256');
+                                  });
+                                },
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.green,
+                                  foregroundColor: Colors.white,
+                                  padding:
+                                      EdgeInsets
+                                          .zero, // XÓA padding nội bộ để tránh lệch dọc
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.zero,
                                   ),
                                 ),
-                                labelStyle: TextStyle(
-                                  color: Colors.red,
-                                  fontWeight: FontWeight.bold,
+                                child: Text(
+                                  'CHECK',
+                                  style: TextStyle(
+                                    fontFamily: 'Roboto',
+                                    fontSize:
+                                        MediaQuery.of(context).size.height *
+                                        0.02,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: Colors.red,
-                                  ), // Viền khi không focus
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: Colors.red,
-                                    width: 2,
-                                  ), // Viền khi focus
-                                ),
-                                border: OutlineInputBorder(),
                               ),
-                              onSubmitted: (value) {
-                                setState(() {
-                                  final kiatemp = value;
-                                  sendData(
-                                    '1',
-                                    'KIA_ENGINE_TEMP',
-                                    kiatemp.trim().toString(),
-                                  );
-                                });
-                              },
                             ),
                           ),
                         ],
@@ -285,7 +292,7 @@ class DashboardKiaState extends State<DashboardKia> {
                 child: GestureDetector(
                   child: SizedBox(
                     height: MediaQuery.of(context).size.height * 0.07,
-                    width: MediaQuery.of(context).size.width * 0.07,
+                    width: MediaQuery.of(context).size.width * 0.15,
                     child: Container(
                       padding: EdgeInsets.all(
                         5,
@@ -331,16 +338,41 @@ class DashboardKiaState extends State<DashboardKia> {
                                 ),
                                 border: OutlineInputBorder(),
                               ),
-                              onSubmitted: (value) {
-                                setState(() {
-                                  final kiaspeed = value;
-                                  sendData(
-                                    '1',
-                                    'KIA_VEH_SPD',
-                                    kiaspeed.trim().toString(),
-                                  );
-                                });
-                              },
+                            ),
+                          ),
+                          Expanded(
+                            child: SizedBox(
+                              height: 40, // hoặc bằng chiều cao TextField
+                              child: ElevatedButton(
+                                onPressed: () {
+                                  setState(() {
+                                    final kiaspeed =
+                                        kiavehicleSpeedController.text;
+                                    sendData(
+                                      '1',
+                                      'KIA_VEH_SPD',
+                                      kiaspeed.trim().toString(),
+                                    );
+                                  });
+                                },
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.green,
+                                  foregroundColor: Colors.white,
+                                  padding:
+                                      EdgeInsets
+                                          .zero, // XÓA padding nội bộ để tránh lệch dọc
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.zero,
+                                  ),
+                                ),
+                                child: Icon(
+                                  Icons.arrow_right_alt,
+                                  size: 28,
+                                  color:
+                                      Colors
+                                          .white, // Tuỳ chỉnh kích thước đẹp mắt
+                                ),
+                              ),
                             ),
                           ),
                         ],
