@@ -1417,20 +1417,7 @@ class _SimulateUIstate extends State<SimulatePage> {
                                   ),
                                   const SizedBox(width: 20),
                                   ElevatedButton(
-                                    onPressed: () {
-                                      setState(() {
-                                        abssending = !abssending;
-                                        if (abssending == true) {
-                                          sendData(
-                                            '3',
-                                            'absbate',
-                                            teethabsController.text,
-                                          );
-                                        }
-                                        sendData('3', 'abssend', '1');
-                                        abssending = !abssending;
-                                      });
-                                    },
+                                    onPressed: () {},
                                     style: ElevatedButton.styleFrom(
                                       foregroundColor: Colors.white,
                                       backgroundColor: Colors.green,
