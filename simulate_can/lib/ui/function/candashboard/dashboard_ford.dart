@@ -161,7 +161,7 @@ class DashboardFordState extends State<DashboardFord> {
                               onPressed: () {
                                 setState(() {
                                   fordisConnectedDashboard = false;
-                                  sendData('1', 'FORD_OFF', '00');
+                                  sendData('1', 'FORD_ON', '00');
                                 });
                               },
                               style: ElevatedButton.styleFrom(
