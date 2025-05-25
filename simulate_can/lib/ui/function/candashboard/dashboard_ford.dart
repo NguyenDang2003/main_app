@@ -220,7 +220,7 @@ class DashboardFordState extends State<DashboardFord> {
                 scale: scale,
                 addr: '1',
                 field: 'FORD_BRAKE',
-                valueOn: '20',
+                valueOn: '16',
                 valueOff: '00',
                 isActive: fordisActive1,
                 onToggle: (newState) {

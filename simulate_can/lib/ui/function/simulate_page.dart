@@ -1378,74 +1378,10 @@ class _SimulateUIstate extends State<SimulatePage> {
                     textAlign: TextAlign.center,
                   ),
                 ),
-                const SizedBox(height: 20),
-                Center(
-                  child: Column(
-                    children: [
-                      SizedBox(
-                        width: 500,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text('Teeth Count', style: TextStyle(fontSize: 18)),
-                            const SizedBox(width: 20),
-                            SizedBox(
-                              width: 300,
-                              child: Row(
-                                children: [
-                                  Expanded(
-                                    child: TextField(
-                                      controller: teethabsController,
-                                      keyboardType: TextInputType.number,
-                                      inputFormatters: <TextInputFormatter>[
-                                        FilteringTextInputFormatter.digitsOnly,
-                                      ],
-                                      decoration: InputDecoration(
-                                        hintText: '0',
-                                      ),
-                                      // onChanged: (value) {
-                                      //   final abs1send = int.tryParse(value);
-                                      //   if (abs1send != null) {
-                                      //     sendData(
-                                      //       "3",
-                                      //       "absbate",
-                                      //       abs1send.toString(),
-                                      //     );
-                                      //   }
-                                      // },
-                                    ),
-                                  ),
-                                  const SizedBox(width: 20),
-                                  ElevatedButton(
-                                    onPressed: () {},
-                                    style: ElevatedButton.styleFrom(
-                                      foregroundColor: Colors.white,
-                                      backgroundColor: Colors.green,
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.zero, // Button vuông
-                                      ),
-                                    ),
-                                    child: Text(
-                                      'SEND SIGNAL',
-                                      style: TextStyle(
-                                        fontFamily: 'Roboto',
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+                // const SizedBox(height: 20),
 
                 // Cụm tín hiệu ABS
-                const SizedBox(height: 20),
+                // const SizedBox(height: 20),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
