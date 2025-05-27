@@ -40,6 +40,7 @@ class DashboardFordState extends State<DashboardFord> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text(
           'DASHBOARD SIMULATE - FORD',
@@ -470,11 +471,23 @@ class DashboardFordState extends State<DashboardFord> {
                             // Sử dụng Expanded để TextField lấp đầy không gian còn lại
                             child: TextField(
                               controller: fordvehicleSpeedController,
+                              onSubmitted: (value) {
+                                setState(() {
+                                  final fordspeed =
+                                      kiavehicleSpeedController.text;
+                                  sendData(
+                                    '1',
+                                    'FORD_SPEED',
+                                    fordspeed.trim().toString(),
+                                  );
+                                });
+                              },
                               decoration: InputDecoration(
                                 contentPadding: EdgeInsets.symmetric(
                                   vertical: 0,
                                   horizontal: 0,
-                                ), // Canh nội dung TextField
+                                ),
+                                // Canh nội dung TextField
                                 label: Text(
                                   "  km/h",
                                   style: TextStyle(
